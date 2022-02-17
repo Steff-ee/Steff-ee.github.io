@@ -199,7 +199,7 @@ export const Resume: React.FunctionComponent = () => {
 								isMobile={isMobile}
 								body={
 									<>
-										<ListHeader>Full Stack development</ListHeader>
+										<ListHeader>Full stack development</ListHeader>
 										<ListItem>
 											Design and create an asyncronous, agnostic event system
 											for managing alerts, notifications, or other events,
@@ -216,7 +216,7 @@ export const Resume: React.FunctionComponent = () => {
 								isMobile={isMobile}
 								body={
 									<>
-										<ListHeader>Complex Challenges</ListHeader>
+										<ListHeader>Complex challenges</ListHeader>
 										<ListItem>
 											Build the entire UX for PowerPlatform Settings while
 											assisting with the APIs, collaborating with project
@@ -293,7 +293,7 @@ export const Resume: React.FunctionComponent = () => {
 					isMobile={isMobile}
 					body={
 						<>
-							<ListHeader>Lead Back-End Engineer</ListHeader>
+							<ListHeader>Lead back-end engineer</ListHeader>
 							<ListItem>
 								"Xylem" project: Re-architect the client/server framework in a team
 								of two: unifying duplicate code, simplifying data access, and
