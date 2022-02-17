@@ -68,10 +68,11 @@ const ResumeHeader: React.FunctionComponent<IResumeHeaderProps> = (props) => {
 			</div>
 			<Divider thickness={2} rootStyle={{ width: '96%', padding: '8px 2% 8px 2%' }} />
 			<div style={{ ...lightTextStyle, lineHeight: '21px' }}>
-				Resourceful and collaborative Full Stack Software Engineer with 11 years of coding
-				experience. Adept at maximizing customer impact through a balance of rapid feature
-				deployment and robust, performant code design. Motivated to optimize, redesign, or
-				altogether revamp outdated code, patterns, and architecture.
+				Resourceful and collaborative Full Stack Senior Software Engineer. Adept at
+				maximizing customer impact through a balance of rapid feature deployment and robust,
+				performant code design. Avid about supporting teams with persistent pull request
+				reviews and documentation improvements. Keen on adopting the latest and greatest
+				coding patterns and architectures.
 			</div>
 		</div>
 	)
@@ -119,9 +120,9 @@ const ListHeader: React.FunctionComponent = (props) => {
 }
 
 interface IExperienceSubSectionProps {
-	title: string
+	title?: string
 	subtitle?: string
-	timeRange: string
+	timeRange?: string
 	subtext?: string
 	body: JSX.Element
 	isMobile: boolean
@@ -132,17 +133,19 @@ const ExperienceSubSection: React.FunctionComponent<IExperienceSubSectionProps> 
 
 	return (
 		<div style={{ marginBottom: commonVerticalMargin }}>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					flexDirection: isMobile ? 'column' : 'row',
-					lineHeight: '25px',
-				}}
-			>
-				<div style={h2Style}>{title}</div>
-				<div style={{ margin: '0px 6px' }}>{timeRange}</div>
-			</div>
+			{title && (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						flexDirection: isMobile ? 'column' : 'row',
+						lineHeight: '25px',
+					}}
+				>
+					<div style={h2Style}>{title}</div>
+					<div style={{ margin: '0px 6px' }}>{timeRange}</div>
+				</div>
+			)}
 			{subtitle && <div style={h3Style}>{subtitle}</div>}
 			{subtext && <div style={{ marginTop: 2 }}>{subtext}</div>}
 			<div style={{ margin: isMobile ? '10px 0px 0px 5px' : '4px 50px 0px 15px' }}>
@@ -190,18 +193,34 @@ export const Resume: React.FunctionComponent = () => {
 						<>
 							<ExperienceSubSection
 								title={'Microsoft'}
-								subtitle={'PowerApps Lifecycle Management'}
-								timeRange={'Sept 2020 - Present'}
-								subtext={`PowerApps empowers organizations to build apps easily with project solutions that incorporate Microsoft's Common Data Service. App Lifecycle Management supports the back end for solution layering and full-stack experiences for managing the app lifeycle and app settings.`}
+								subtitle={'Supply Chain Insights (SCI)'}
+								timeRange={'Dec 2021 - Present'}
+								subtext={`SCI empowers businesses to proactively mitigate supply chain risks via prescriptive insights, powered by AI.`}
+								isMobile={isMobile}
+								body={
+									<>
+										<ListHeader>Full Stack development</ListHeader>
+										<ListItem>
+											Design and create an asyncronous, agnostic event system
+											for managing alerts, notifications, or other events,
+											building both the back and front ends.
+										</ListItem>
+									</>
+								}
+							/>
+							<ExperienceSubSection
+								title={'Microsoft'}
+								subtitle={'PowerApps Lifecycle Management (ALM)'}
+								timeRange={'Sept 2020 - Dec 2021'}
+								subtext={`PowerApps enables organizations to create apps easily inside of Dataverse solutions. ALM supports the layering, lifecycle, and deployment of solutions, settings, and apps.`}
 								isMobile={isMobile}
 								body={
 									<>
 										<ListHeader>Complex Challenges</ListHeader>
 										<ListItem>
-											Build back-end APIs and front-end components,
-											collaborate with project managers and designers, and
-											manage junior engineers to drive the creation of SiteMap
-											Settings.
+											Build the entire UX for PowerPlatform Settings while
+											assisting with the APIs, collaborating with project
+											managers and designers, and managing junior engineers.
 										</ListItem>
 										<ListItem>
 											Refashion the intricate layering logic for solution app
@@ -238,20 +257,6 @@ export const Resume: React.FunctionComponent = () => {
 											Drive team to adopt React Hooks and Function Components
 											in lieu of Redux.
 										</ListItem>
-										<ListHeader>Reliability</ListHeader>
-										<ListItem>
-											Generate weekly service reports, triage customer
-											incidents, and assist bug triage.
-										</ListItem>
-										<ListItem>
-											Revamped telemetry framework to better distinguish error
-											rates.
-										</ListItem>
-										<ListItem>
-											Increase apps page reliability (98.5% to 99.3%) by
-											reducing client errors and preventing failure state with
-											partial loading.
-										</ListItem>
 									</>
 								}
 							/>
@@ -260,6 +265,25 @@ export const Resume: React.FunctionComponent = () => {
 				/>
 			</ResumePage>
 			<ResumePage>
+				<ExperienceSubSection
+					isMobile={isMobile}
+					body={
+						<>
+							<ListHeader>Reliability</ListHeader>
+							<ListItem>
+								Generate weekly service reports, triage customer incidents, and
+								assist bug triage.
+							</ListItem>
+							<ListItem>
+								Revamped telemetry framework to better distinguish error rates.
+							</ListItem>
+							<ListItem>
+								Increase apps page reliability (98.5% to 99.3%) by reducing client
+								errors and preventing failure state with partial loading.
+							</ListItem>
+						</>
+					}
+				/>
 				<ExperienceSubSection
 					title={'TreeRing'}
 					timeRange={'Feb 2015 - July 2018'}

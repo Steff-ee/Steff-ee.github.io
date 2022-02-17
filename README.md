@@ -13,6 +13,8 @@ Personal website
     // Start the development environment
     npm run start:dev
 
+    // Then open localhost:3000
+
 ## How to build
 
     // Build the production environment
