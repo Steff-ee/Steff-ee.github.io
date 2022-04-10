@@ -60,7 +60,7 @@ const ResumeHeader: React.FunctionComponent<IResumeHeaderProps> = (props) => {
 			>
 				<div>dsteffee@alumni.stanford.edu</div>
 				{dividerStar}
-				<div>Bellevue, WA</div>
+				<div>Redmond, WA</div>
 				{dividerStar}
 				<div>steff-ee.github.io</div>
 				{dividerStar}
@@ -68,11 +68,10 @@ const ResumeHeader: React.FunctionComponent<IResumeHeaderProps> = (props) => {
 			</div>
 			<Divider thickness={2} rootStyle={{ width: '96%', padding: '8px 2% 8px 2%' }} />
 			<div style={{ ...lightTextStyle, lineHeight: '21px' }}>
-				Resourceful and collaborative Full Stack Senior Software Engineer. Adept at
-				maximizing customer impact through a balance of rapid feature deployment and robust,
-				performant code design. Avid about supporting teams with persistent pull request
-				reviews and documentation improvements. Keen on adopting the latest and greatest
-				coding patterns and architectures.
+				Senior Full Stack Software Engineer. Resourceful and collaborative; keen to maximize
+				customer impact with features deployed on robust, performant code; eager to learn
+				new architectures; avid about supporting team members, providing guidance, and
+				reviewing code.
 			</div>
 		</div>
 	)
@@ -195,7 +194,7 @@ export const Resume: React.FunctionComponent = () => {
 								title={'Microsoft'}
 								subtitle={'Supply Chain Insights (SCI)'}
 								timeRange={'Dec 2021 - Present'}
-								subtext={`SCI empowers businesses to proactively mitigate supply chain risks via prescriptive insights, powered by AI.`}
+								subtext={`SCI empowers businesses to mitigate supply chain risks via prescriptive insights powered by AI.`}
 								isMobile={isMobile}
 								body={
 									<>
@@ -204,6 +203,10 @@ export const Resume: React.FunctionComponent = () => {
 											Design and create an asyncronous, agnostic event system
 											for managing alerts, notifications, or other events,
 											building both the back and front ends.
+										</ListItem>
+										<ListItem>
+											Assist with back end infra and the transition from SQL
+											to NoSQL and Dataverse.
 										</ListItem>
 									</>
 								}
@@ -218,14 +221,14 @@ export const Resume: React.FunctionComponent = () => {
 									<>
 										<ListHeader>Complex challenges</ListHeader>
 										<ListItem>
-											Build the entire UX for PowerPlatform Settings while
+											Built the entire UX for PowerPlatform Settings while
 											assisting with the APIs, collaborating with project
-											managers and designers, and managing junior engineers.
+											managers and designers, and guiding junior engineers.
 										</ListItem>
 										<ListItem>
-											Refashion the intricate layering logic for solution app
-											components to eliminate inconsistencies and drive down
-											our customer reported incident load by ~25%.
+											Refashioned the intricate logic of solution app
+											component layering to eliminate inconsistencies and
+											drive down our customer reported incident load by ~25%.
 										</ListItem>
 									</>
 								}
@@ -242,20 +245,16 @@ export const Resume: React.FunctionComponent = () => {
 									<>
 										<ListHeader>Teamwork</ListHeader>
 										<ListItem>
-											Assist partner teams, mentor interns, and guide vendors
-											with code changes.
+											Assisted partner teams, mentored interns, and guided
+											vendors with code changes.
 										</ListItem>
 										<ListItem>
-											2nd highest pull request reviewer in monorepo and top 10
-											contributor.
+											Reviewed the second-most number of pull requests in the
+											monorepo and ranked among the top 10 of contributors.
 										</ListItem>
 										<ListItem>
-											Responsively dive into at-risk featurework to aid any
+											Responsively dove into at-risk featurework to aid any
 											team members in need.
-										</ListItem>
-										<ListItem>
-											Drive team to adopt React Hooks and Function Components
-											in lieu of Redux.
 										</ListItem>
 									</>
 								}
@@ -269,17 +268,21 @@ export const Resume: React.FunctionComponent = () => {
 					isMobile={isMobile}
 					body={
 						<>
-							<ListHeader>Reliability</ListHeader>
+							<ListHeader>Maintainability</ListHeader>
 							<ListItem>
-								Generate weekly service reports, triage customer incidents, and
+								Drove team to adopt React Function Components and Hooks, simplifying
+								logic for state management and effects.
+							</ListItem>
+							<ListItem>
+								Generated weekly service reports, triage customer incidents, and
 								assist bug triage.
 							</ListItem>
 							<ListItem>
 								Revamped telemetry framework to better distinguish error rates.
 							</ListItem>
 							<ListItem>
-								Increase apps page reliability (98.5% to 99.3%) by reducing client
-								errors and preventing failure state with partial loading.
+								Improved reliability by replacing failures with partially loaded
+								states.
 							</ListItem>
 						</>
 					}
@@ -295,18 +298,20 @@ export const Resume: React.FunctionComponent = () => {
 						<>
 							<ListHeader>Lead back-end engineer</ListHeader>
 							<ListItem>
-								"Xylem" project: Re-architect the client/server framework in a team
-								of two: unifying duplicate code, simplifying data access, and
-								increasing expressiveness.
+								"Xylem" project: Re-architected the client/server framework in a
+								two-person team to unify duplicate code, simplify data access, and
+								increase expressiveness.
 							</ListItem>
 							<ListItem>
-								Supervise all SQL queries and APIs: optimizing for efficiency,
-								producing for new features, and advancing the duplicate user
-								detection algorithm.
+								Supervised all SQL queries, creating them for new APIs and rewriting
+								existing ones to reduce response times.
 							</ListItem>
 							<ListItem>
-								Identify, triage, and resolve customer issues with rapid repairs,
-								then preventing regressions with automated testing.
+								Increased parallelism and reduced latency of AWS EC2 machines
+								responsible for generating high-resolution renders.
+							</ListItem>
+							<ListItem>
+								Identified, triaged, and resolved customer-reported incidents.
 							</ListItem>
 						</>
 					}
@@ -322,8 +327,8 @@ export const Resume: React.FunctionComponent = () => {
 							body={
 								<>
 									<ListItem>
-										Focus on graduate-level Theoretical Computer Science
-										(algorithms and computability).
+										Bachelor of Computer Science, focused on theory (algorithms
+										and computability).
 									</ListItem>
 									<ListItem>
 										Teaching Assistant for “Logic and Automated Reasoning”.
@@ -344,19 +349,19 @@ export const Resume: React.FunctionComponent = () => {
 					body={
 						<div style={{ padding: '6px 50px 0px 15px' }}>
 							<ListItem>
-								TypeScript, JavaScript, Python, C#, React, Redux, GraphQL, Moq,
-								Jest.
+								TypeScript, JavaScript, C#, React, Redux, GraphQL, SQL, NoSQL, and
+								various testing frameworks.
 							</ListItem>
 							<ListItem>
-								Prior Proficiencies: MySQL, Angular, AWS, PHP, Java, C, C++, Ruby.
+								Prior Proficiencies: Python, Ruby, C++, C, Java, PHP, AWS, Angular.
 							</ListItem>
 							<ListItem>
 								Eager to learn new skills, learn from the best, and share what I
 								learn.
 							</ListItem>
 							<ListItem>
-								Interested in computer science theory, algorithms, cryptography, and
-								quantum computing.
+								Interested in computer science theory, algorithms, quantum
+								computing, and cryptography (not including cryptocurrencies).
 							</ListItem>
 						</div>
 					}
