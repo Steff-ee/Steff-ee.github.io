@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import { Divider } from '../../components/content/divider'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 
-const pagePadding = 88
+const horizontalPadding = 88
+const verticalPadding = 64
 // this creates an 8.5 x 11 ratio
-const pageWidth = 850 - 2 * pagePadding
-const pageHeight = 1100 - 2 * pagePadding
+const pageWidth = 850 - 2 * horizontalPadding
+const pageHeight = 1100 - 2 * verticalPadding
 const commonVerticalMargin = '30px'
 
 const lightTextStyle: React.CSSProperties = {
@@ -147,7 +148,7 @@ const ExperienceSubSection: React.FunctionComponent<IExperienceSubSectionProps> 
 			)}
 			{subtitle && <div style={h3Style}>{subtitle}</div>}
 			{subtext && <div style={{ marginTop: 2 }}>{subtext}</div>}
-			<div style={{ margin: isMobile ? '10px 0px 0px 5px' : '4px 50px 0px 15px' }}>
+			<div style={{ margin: isMobile ? '10px 0px 0px 5px' : '4px 40px 0px 15px' }}>
 				{body}
 			</div>
 		</div>
@@ -157,6 +158,10 @@ const ExperienceSubSection: React.FunctionComponent<IExperienceSubSectionProps> 
 export const ResumePage: React.FunctionComponent = (props) => {
 	const mediaSize = useContext(MediaContext)
 	const isMobile = mediaSize === MediaSize.Small
+	let padding = '10px'
+	if (!isMobile) {
+		padding = `${verticalPadding}px ${horizontalPadding}px`
+	}
 
 	return (
 		<div
@@ -166,7 +171,7 @@ export const ResumePage: React.FunctionComponent = (props) => {
 				maxWidth: pageWidth,
 				height: mediaSize === MediaSize.Large ? pageHeight : '',
 				backgroundColor: 'white',
-				padding: isMobile ? '10px' : pagePadding,
+				padding,
 				border: '1px black solid',
 				boxShadow: '3px 3px 1px darkgray',
 				marginBottom: commonVerticalMargin,
@@ -193,20 +198,21 @@ export const Resume: React.FunctionComponent = () => {
 							<ExperienceSubSection
 								title={'Microsoft'}
 								subtitle={'Supply Chain Insights (SCI)'}
-								timeRange={'Dec 2021 - Present'}
+								timeRange={'Jan 2022 - Present'}
 								subtext={`SCI empowers businesses to mitigate supply chain risks via prescriptive insights powered by AI.`}
 								isMobile={isMobile}
 								body={
 									<>
 										<ListHeader>Full stack development</ListHeader>
 										<ListItem>
-											Design and create an asyncronous, agnostic event system
-											for managing alerts, notifications, or other events,
-											building both the back and front ends.
+											Assisting with the transition of our back-end store to
+											Dataverse, which will enable tenant isolation of data
+											and integration with other Power Platform services.
 										</ListItem>
 										<ListItem>
-											Assist with back end infra and the transition from SQL
-											to NoSQL and Dataverse.
+											Designed and created an asyncronous, agnostic event
+											system for managing alerts, notifications, or other
+											events, building both the back and front ends.
 										</ListItem>
 									</>
 								}
@@ -224,11 +230,14 @@ export const Resume: React.FunctionComponent = () => {
 											Built the entire UX for PowerPlatform Settings while
 											assisting with the APIs, collaborating with project
 											managers and designers, and guiding junior engineers.
+											13,000+ production apps now use 900+ settings created by
+											first/third party teams.
 										</ListItem>
 										<ListItem>
-											Refashioned the intricate logic of solution app
-											component layering to eliminate inconsistencies and
-											drive down our customer reported incident load by ~25%.
+											Refashioned the intricate solution app-component
+											layering logic to eliminate inconsistencies and drive
+											down our customer incidents by ~25%, with no
+											regressions.
 										</ListItem>
 									</>
 								}
