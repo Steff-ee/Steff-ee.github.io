@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
-import { DrumMachinePage } from '../components/drumMachine/drumMachinePage'
 import { MediaProvider } from '../components/mediaProvider'
 import { ClassicPageContainer } from '../modes/classic/classicPageContainer'
 import { SeasonsProvider } from '../modes/seasons/seasons'
@@ -40,7 +39,6 @@ export const Root: React.FunctionComponent = (): JSX.Element => {
 											path={`/conjecture`}
 											component={ClassicPageContainer}
 										/>
-										<Route path={`/drumkit`} component={DrumMachinePage} />
 										<Route component={PageNotFound} />
 									</Switch>
 								</HashRouter>

@@ -19,7 +19,7 @@ import { useTextMorph } from './useTextMorph'
 // (TODO) add documentation
 
 export const usePivots = (props: IUsePivotProps): IUsePivotKeyReturns => {
-	const { titlePhrases, titleMap, defaultTitle, skip } = props
+	let { allTitles, titlePhrases, titleMap, defaultTitle, skip } = props
 	const params = usePageParams()
 	let selectedPivotTitle = params.pivot
 	const location = useLocation()
@@ -58,6 +58,7 @@ export const usePivots = (props: IUsePivotProps): IUsePivotKeyReturns => {
 	}
 
 	const baseTitles = titlePhrases.map((phrase, index) => phrase[index])
+	allTitles = allTitles ?? baseTitles
 	let titles = baseTitles
 	if (hoverPivotTitle !== undefined) {
 		const titlePhraseIndex = titleMap[hoverPivotTitle]
@@ -82,7 +83,7 @@ export const usePivots = (props: IUsePivotProps): IUsePivotKeyReturns => {
 	}))
 
 	let redirectPath
-	const isValidTitle = baseTitles.indexOf(selectedPivotTitle || '') > -1
+	const isValidTitle = allTitles.indexOf(selectedPivotTitle || '') > -1
 	if (!isValidTitle) {
 		selectedPivotTitle = prevPivot || defaultTitle
 		redirectPath = getPath(pageRoute, selectedPivotTitle)

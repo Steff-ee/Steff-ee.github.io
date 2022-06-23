@@ -15,6 +15,7 @@ export interface IUsePivotProps {
 	titlePhrases: IPivotTitlePhrases
 	defaultTitle: PivotRoutes
 	titleMap: ITitleMap
+	allTitles?: string[]
 	skip?: boolean
 }
 

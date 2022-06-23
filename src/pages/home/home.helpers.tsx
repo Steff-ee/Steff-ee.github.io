@@ -14,7 +14,8 @@ import { PivotRoutes } from '../../shared/posts/post.types'
 import { makeTitleMap } from '../../shared/presentational/hooks/usePivots.helpers'
 import { IUsePivotProps } from '../../shared/presentational/hooks/usePivots.types'
 import { AboutPage } from './about'
-import { HomePivots, homePivotTitlePhrases } from './home.types'
+import { CatsPage } from './cats'
+import { HomePivots, homePivots, homePivotTitlePhrases } from './home.types'
 import { Resume } from './resume'
 
 // (TODO)
@@ -29,6 +30,7 @@ export const getHomeUsePivotsProps = (): IUsePivotProps => {
 	return {
 		titlePhrases: homePivotTitlePhrases,
 		defaultTitle: HomePivots.Posts,
+		allTitles: homePivots,
 		titleMap,
 	}
 }
@@ -44,6 +46,8 @@ export const getHomePageContent = (
 		return <AboutPage />
 	} else if (selectedPivotTitle === HomePivots.Resume) {
 		return <Resume />
+	} else if (selectedPivotTitle === HomePivots.Cats) {
+		return <CatsPage />
 	}
 
 	return undefined

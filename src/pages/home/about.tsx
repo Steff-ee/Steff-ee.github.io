@@ -29,7 +29,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 	}
 
 	return (
-		<div style={{ display: 'block', padding: '0px 8px', marginTop: '32px' }}>
+		<div style={{ display: 'block', padding: '0px 8px' }}>
 			<div
 				style={{
 					display: 'flex',
@@ -38,8 +38,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 					justifyContent: 'space-around',
 				}}
 			>
-				<FadeLoadImage src={profileImg} style={aboutImageStyle} />
-				<div style={{ maxWidth: '800px', flexGrow: 1 }}>
+				<div style={{ maxWidth: '800px', flexGrow: 1, marginBottom: '64px' }}>
 					<div
 						style={{
 							display: 'flex',
@@ -56,12 +55,10 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 								flexGrow: 1,
 							}}
 						>
-							<div>Daniel Steffee</div>
-							<div>Microsoft SDE</div>
-							<div>Bellevue, Washington</div>
-							<a href={'https://www.linkedin.com/in/daniel-steffee-aba414159/'}>
-								LinkedIn
-							</a>
+							<div style={{ fontSize: 21 }}>
+								<div>Check out my</div>
+								<a href={'#/home/resume'}>resume</a>
+							</div>
 						</div>
 					</div>
 					<p>When not writing code, writing stories.</p>
@@ -70,7 +67,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 						(así será).
 					</p>
 					<p>
-						Wrote this blog using React 16. Check out the code{' '}
+						Wrote this blog using React 18. Check out the code{' '}
 						<a href="https://github.com/Steff-ee/Steff-ee.github.io" target="_blank">
 							here
 						</a>
@@ -85,6 +82,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 						<div>the company of a good book</div>
 					</div>
 				</div>
+				<FadeLoadImage src={profileImg} style={aboutImageStyle} />
 			</div>
 		</div>
 	)
