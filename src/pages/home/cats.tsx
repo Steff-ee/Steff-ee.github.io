@@ -17,11 +17,7 @@ export const CatsPage: React.FunctionComponent = () => {
 		<ImageList variant="masonry" cols={cols} gap={8}>
 			{catPhotos.map((url, idx) => (
 				<ImageListItem key={`catPhoto-${idx}`}>
-					<img
-						src={`${url}?w=248&fit=crop&auto=format`}
-						srcSet={`${url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-						loading="lazy"
-					/>
+					<img src={url} loading="lazy" />
 				</ImageListItem>
 			))}
 		</ImageList>
