@@ -9,6 +9,7 @@ import { OpenPostsProvider } from '../shared/posts/openPosts'
 import { PivotRoutes } from '../shared/posts/post.types'
 import { IsNavBarOpenContext } from '../shared/presentational/components/navBarHelpers'
 import { ColorsProvider } from '../shared/presentational/hooks/useColors'
+import { CatsPage } from './cats/cats'
 import { PageNotFound } from './pageNotFound'
 
 export const Root: React.FunctionComponent = (): JSX.Element => {
@@ -39,6 +40,7 @@ export const Root: React.FunctionComponent = (): JSX.Element => {
 											path={`/conjecture`}
 											component={ClassicPageContainer}
 										/>
+										<Route path={`/cats`} component={CatsPage} />
 										<Route component={PageNotFound} />
 									</Switch>
 								</HashRouter>

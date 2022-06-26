@@ -84,9 +84,12 @@ const getPageContent = (
 export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => {
 	const { page } = usePageParams()
 
-	const { selectedPivotTitle, setPivot, pivotsItems, redirectPath: redirectPath1 } = usePivots(
-		getUsePivotProps(page)
-	)
+	const {
+		selectedPivotTitle,
+		setPivot,
+		pivotsItems,
+		redirectPath: redirectPath1,
+	} = usePivots(getUsePivotProps(page))
 
 	const showPostsNav: boolean = getShowPostsNav(page, selectedPivotTitle)
 

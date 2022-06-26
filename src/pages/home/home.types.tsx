@@ -6,14 +6,14 @@ export enum HomePivots {
 	About = 'about',
 	Posts = 'posts',
 	Resume = 'resume',
-	Cats = 'cats',
+	Links = 'links',
 }
 
 export const homePivots: string[] = [
 	HomePivots.About,
 	HomePivots.Posts,
 	HomePivots.Resume,
-	HomePivots.Cats,
+	HomePivots.Links,
 ]
 
 export const homePivotTitlePhrases: IPivotTitlePhrases = [
@@ -21,6 +21,6 @@ export const homePivotTitlePhrases: IPivotTitlePhrases = [
 	[HomePivots.About, 'the', 'author'],
 	// all posts by date
 	['all', HomePivots.Posts, 'by date'],
-	// cats cats cats cats
-	['cats', 'cats', HomePivots.Cats],
+	// some interesting links
+	['some', 'interesting', HomePivots.Links],
 ]

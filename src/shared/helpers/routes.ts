@@ -7,6 +7,7 @@ export enum PageRoutes {
 	Stories = 'stories',
 	Games = 'games',
 	Conjecture = 'conjecture',
+	Cats = 'cats',
 }
 
 export interface IRouteParams {

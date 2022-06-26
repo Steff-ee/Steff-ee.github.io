@@ -128,7 +128,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	// (TODO) both useScrolls rely on the same scrollbar, so it should be possible to reduce computation
 	useScroll(scrollRef, pivotsPositionRef, onPivotsScroll)
 
-	let pivots: JSX.Element
+	let pivots: JSX.Element = <></>
 	let titleElement: JSX.Element
 	let scrollRefStyle: React.CSSProperties
 	let navBarStyle: React.CSSProperties
@@ -142,15 +142,18 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 		pivots = <div style={{ height: '96px' }} ref={pivotsPositionRef} />
 		navBarStyle = navBarStyleMobile
 	} else {
-		pivots = (
-			<ParallaxPivots
-				arePivotsSticky={arePivotsSticky}
-				setPivot={setPivot}
-				selectedPivotTitle={selectedPivotTitle}
-				pivotsItems={pivotsItems}
-				pivotsPositionRef={pivotsPositionRef}
-			/>
-		)
+		if (!!pivotsItems && !!setPivot && !!selectedPivotTitle) {
+			pivots = (
+				<ParallaxPivots
+					arePivotsSticky={arePivotsSticky}
+					setPivot={setPivot}
+					selectedPivotTitle={selectedPivotTitle}
+					pivotsItems={pivotsItems}
+					pivotsPositionRef={pivotsPositionRef}
+				/>
+			)
+		}
+
 		titleElement = (
 			<ParallaxTitle
 				headerBackgroundImage={headerBackgroundImage}
@@ -202,7 +205,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					<div style={contentWrapperStyle}>
 						<div style={{ maxWidth: '100%' }}>{Content}</div>
 					</div>
-					{mediaSize === MediaSize.Small && (
+					{mediaSize === MediaSize.Small && !!setPivot && !!pivotsItems && (
 						<MobilePivots setPivot={setPivot} pivotsItems={pivotsItems} />
 					)}
 				</div>

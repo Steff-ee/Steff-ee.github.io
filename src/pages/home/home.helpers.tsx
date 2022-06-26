@@ -13,8 +13,8 @@ import {
 import { PivotRoutes } from '../../shared/posts/post.types'
 import { makeTitleMap } from '../../shared/presentational/hooks/usePivots.helpers'
 import { IUsePivotProps } from '../../shared/presentational/hooks/usePivots.types'
+import { ConjectureLinks } from '../conjectures/conjectureLinks'
 import { AboutPage } from './about'
-import { CatsPage } from './cats'
 import { HomePivots, homePivots, homePivotTitlePhrases } from './home.types'
 import { Resume } from './resume'
 
@@ -42,12 +42,15 @@ export const showPostsNavForHome = (pivot: PivotRoutes | undefined): boolean => 
 export const getHomePageContent = (
 	selectedPivotTitle: PivotRoutes | undefined
 ): JSX.Element | undefined => {
-	if (selectedPivotTitle === HomePivots.About) {
-		return <AboutPage />
-	} else if (selectedPivotTitle === HomePivots.Resume) {
-		return <Resume />
-	} else if (selectedPivotTitle === HomePivots.Cats) {
-		return <CatsPage />
+	switch (selectedPivotTitle) {
+		case HomePivots.About:
+			return <AboutPage />
+
+		case HomePivots.Resume:
+			return <Resume />
+
+		case HomePivots.Links:
+			return <ConjectureLinks />
 	}
 
 	return undefined

@@ -6,6 +6,7 @@ import {
 	faChessKnight,
 	faFeatherAlt,
 	faGlobeAmericas,
+	faPaw,
 	faPoll,
 	faSyncAlt,
 } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +16,7 @@ import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { MediaContext, MediaSize } from '../../../components/mediaProvider'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
+import { catsPath, catsTitle } from '../../../pages/cats/cats.types'
 import { conjectureTitle } from '../../../pages/conjectures/conjectures.types'
 import { gamesTitle } from '../../../pages/games/games.types'
 import { homeTitle } from '../../../pages/home/home.types'
@@ -89,6 +91,12 @@ export const useNavigationLinks = (): INavItem[] => {
 			id: PageRoutes.Conjecture,
 			label: conjectureTitle,
 			onClick: (): void => redirectTo(conjecturePath),
+		},
+		{
+			icon: <FontAwesomeIcon icon={faPaw} {...commonIconProps} />,
+			id: PageRoutes.Cats,
+			label: catsTitle,
+			onClick: (): void => redirectTo(catsPath),
 		},
 	]
 

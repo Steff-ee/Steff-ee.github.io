@@ -13,9 +13,9 @@ export interface IPageTemplateProps extends IPageTemplateBackgroundsProps {
 	showPostsNav: boolean
 
 	/* Pivots */
-	selectedPivotTitle: string | undefined
-	setPivot: IUsePivotKeyReturns['setPivot']
-	pivotsItems: IUsePivotKeyReturns['pivotsItems']
+	selectedPivotTitle?: string | undefined
+	setPivot?: IUsePivotKeyReturns['setPivot']
+	pivotsItems?: IUsePivotKeyReturns['pivotsItems']
 
 	/* Posts Navigation */
 	firstClick?: () => void
@@ -30,12 +30,11 @@ export interface IParallaxTitleProps {
 	skipMorph: boolean
 }
 
-export type IParallaxPivotsProps = Pick<
-	IPageTemplateProps,
-	'selectedPivotTitle' | 'setPivot' | 'pivotsItems'
+export type IParallaxPivotsProps = Required<
+	Pick<IPageTemplateProps, 'selectedPivotTitle' | 'setPivot' | 'pivotsItems'>
 > & {
 	arePivotsSticky: boolean
 	pivotsPositionRef: React.MutableRefObject<null>
 }
 
-export type IMobilePivotsProps = Pick<IPageTemplateProps, 'setPivot' | 'pivotsItems'>
+export type IMobilePivotsProps = Required<Pick<IPageTemplateProps, 'setPivot' | 'pivotsItems'>>
