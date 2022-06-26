@@ -8,9 +8,12 @@ import {
 	useFirstCommand,
 	useLatestCommand,
 	useNextCommand,
+	useReturnToTopCommand,
 } from '../../shared/presentational/components/navBarCommands'
 
 export interface IClassicRightNavProps {
+	scrollRef: React.RefObject<HTMLDivElement>
+	positionRef: React.RefObject<HTMLDivElement>
 	orientation: NavOrientation
 	firstClick?: () => void
 	backClick?: () => void
@@ -19,18 +22,20 @@ export interface IClassicRightNavProps {
 }
 
 export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (props) => {
-	const { firstClick, backClick, nextClick, latestClick, orientation } = props
+	const { firstClick, backClick, nextClick, latestClick, scrollRef, positionRef, orientation } =
+		props
 	const location = useLocation()
 	const primaryRoute = getPrimaryRoute(location.pathname)
 	const backCommand = useBackCommand(backClick, primaryRoute)
 	const nextCommand = useNextCommand(nextClick, primaryRoute)
+	const returnToTopCommand = useReturnToTopCommand(scrollRef, positionRef)
 	const firstCommand = useFirstCommand(firstClick, primaryRoute)
 	const latestCommand = useLatestCommand(latestClick, primaryRoute)
 
 	return (
 		<HorizontalIconNav
 			selectedId={primaryRoute}
-			navItems={[firstCommand, backCommand, nextCommand, latestCommand]}
+			navItems={[firstCommand, backCommand, returnToTopCommand, nextCommand, latestCommand]}
 			orientation={orientation}
 		/>
 	)

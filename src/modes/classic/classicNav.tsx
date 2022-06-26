@@ -103,6 +103,8 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 							}}
 						>
 							<ClassicPostsNav
+								scrollRef={scrollRef}
+								positionRef={positionRef}
 								orientation={NavOrientation.Right}
 								firstClick={firstClick}
 								backClick={backClick}

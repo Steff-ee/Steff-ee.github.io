@@ -4,6 +4,7 @@ import {
 	faAngleLeft,
 	faAngleRight,
 	faChessKnight,
+	faChevronUp,
 	faFeatherAlt,
 	faGlobeAmericas,
 	faPaw,
@@ -11,7 +12,7 @@ import {
 	faSyncAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { MediaContext, MediaSize } from '../../../components/mediaProvider'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
@@ -29,6 +30,7 @@ import {
 } from '../../helpers/navigation'
 import { PageRoutes, redirectTo, RouteContext, usePageParams } from '../../helpers/routes'
 import { useIsTest } from '../../helpers/url'
+import { getScrollPosition } from '../../helpers/useScroll'
 import { OpenPostsContext } from '../../posts/openPosts'
 
 export const commonIconProps = { size: '2x' as const, fixedWidth: true }
@@ -169,5 +171,29 @@ export const useLatestCommand = (
 		label: `Latest ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
+	}
+}
+
+export const useReturnToTopCommand = (
+	scrollRef: React.RefObject<HTMLDivElement>,
+	positionRef: React.RefObject<HTMLDivElement>
+): INavItem => {
+	const [enabled, setEnabled] = useState(false)
+
+	useEffect(() => {
+		if (!enabled && !!positionRef.current && getScrollPosition(positionRef).y < 0) {
+			setEnabled(true)
+		}
+	})
+
+	return {
+		icon: <FontAwesomeIcon icon={faChevronUp} {...commonIconProps} />,
+		id: 'ReturnToTopCommand',
+		label: `Return to top`,
+		onClick: () => {
+			setEnabled(false)
+			scrollRef.current?.scrollTo?.(0, 0)
+		},
+		disabled: !enabled,
 	}
 }
