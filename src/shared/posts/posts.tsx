@@ -91,7 +91,7 @@ conjecturePosts.forEach((post, index) => {
 
 /* NAVIGATION */
 
-const getPageList = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost[] => {
+export const getPageList = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost[] => {
 	switch (page) {
 		case PageRoutes.Home:
 			return allPosts
@@ -106,6 +106,8 @@ const getPageList = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost[] 
 		case PageRoutes.Conjecture:
 			return conjecturePosts
 	}
+
+	return []
 }
 
 const getPageListIndexOfPost = (

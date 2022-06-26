@@ -3,53 +3,53 @@ import { MediaContext, MediaSize } from '../../components/mediaProvider'
 
 const defaultTextStyleLarge: React.CSSProperties = {
 	fontFamily: 'Open Sans, Lato, sans-serif',
-	fontSize: '19px',
+	fontSize: 19,
 	lineHeight: '32px',
 	textAlign: 'center',
 }
 
 const defaultTextStyleSmall: React.CSSProperties = {
 	fontFamily: 'Open Sans, Lato, sans-serif',
-	fontSize: '17px',
+	fontSize: 17,
 	lineHeight: '25px',
 	textAlign: 'center',
 }
 
 const lightTextStyleLarge: React.CSSProperties = {
 	fontFamily: 'Open Sans',
-	fontSize: '18px',
+	fontSize: 18,
 	lineHeight: '27px',
 }
 
 const lightTextStyleSmall: React.CSSProperties = {
 	fontFamily: 'Open Sans',
-	fontSize: '16px',
+	fontSize: 16,
 	lineHeight: '22px',
 }
 
 const titleTextStyle: React.CSSProperties = {
 	fontFamily: 'Montserrat',
-	fontSize: '56px',
+	fontSize: 56,
 	lineHeight: '78px',
 	fontWeight: 600,
 }
 
 const titleTextStyleSmall: React.CSSProperties = {
 	fontFamily: 'Montserrat',
-	fontSize: '31px',
+	fontSize: 31,
 	lineHeight: '42px',
 	fontWeight: 600,
 }
 
 const subtitleTextStyle: React.CSSProperties = {
 	fontFamily: 'Montserrat',
-	fontSize: '24px',
+	fontSize: 24,
 	lineHeight: '36px',
 }
 
 const subtitleTextStyleSmall: React.CSSProperties = {
 	fontFamily: 'Montserrat',
-	fontSize: '20px',
+	fontSize: 20,
 	lineHeight: '30px',
 }
 

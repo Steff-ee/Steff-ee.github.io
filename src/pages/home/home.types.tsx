@@ -19,8 +19,8 @@ export const homePivots: string[] = [
 export const homePivotTitlePhrases: IPivotTitlePhrases = [
 	// about the author
 	[HomePivots.About, 'the', 'author'],
-	// all posts by date
-	['all', HomePivots.Posts, 'by date'],
+	// list all posts by date
+	['list all', HomePivots.Posts, 'by date'],
 	// some interesting links
 	['some', 'interesting', HomePivots.Links],
 ]

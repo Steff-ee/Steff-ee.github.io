@@ -32,7 +32,7 @@ export const getGameUsePivotsProps = (): IUsePivotProps => {
 	}
 }
 
-export const showPostsNavForGame = (pivot: PivotRoutes | undefined): boolean => {
+export const showPostsListForGame = (pivot: PivotRoutes | undefined): boolean => {
 	return pivot === GamePivots.Posts
 }
 

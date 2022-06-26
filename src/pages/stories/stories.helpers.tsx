@@ -31,7 +31,7 @@ export const getStoriesUsePivotsProps = (): IUsePivotProps => {
 	}
 }
 
-export const showPostsNavForStories = (pivot: PivotRoutes | undefined): boolean => {
+export const showPostsListForStories = (pivot: PivotRoutes | undefined): boolean => {
 	return pivot !== StoryPivots.Links
 }
 

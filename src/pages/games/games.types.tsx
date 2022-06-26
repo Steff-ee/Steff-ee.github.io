@@ -9,10 +9,10 @@ export enum GamePivots {
 }
 
 export const gamePivotTitlePhrases: IPivotTitlePhrases = [
-	// posts about gaming
-	[GamePivots.Posts, 'about', 'gaming'],
-	// homebrew games to try
-	['homebrew', GamePivots.Games, 'to try'],
+	// games to try or homebrew
+	[GamePivots.Games, 'to try', 'or homebrew'],
+	// list of posts on gaming
+	['list of', GamePivots.Posts, 'on gaming'],
 	// some gaming links
 	['some', 'gaming', GamePivots.Links],
 ]

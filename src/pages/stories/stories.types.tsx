@@ -9,10 +9,10 @@ export enum StoryPivots {
 }
 
 export const storyPivotTitlePhrases: IPivotTitlePhrases = [
-	// posts about stories
-	[StoryPivots.Posts, 'about', storiesTitle],
-	// my stories written
-	['my', StoryPivots.Stories, 'written'],
+	// stories that I've written
+	[StoryPivots.Stories, `that I've`, 'written'],
+	// list of posts on stories
+	['list of', StoryPivots.Posts, 'on stories'],
 	// some interesting links
 	['some', 'interesting', StoryPivots.Links],
 ]

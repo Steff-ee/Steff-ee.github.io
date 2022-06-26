@@ -35,7 +35,7 @@ export const getHomeUsePivotsProps = (): IUsePivotProps => {
 	}
 }
 
-export const showPostsNavForHome = (pivot: PivotRoutes | undefined): boolean => {
+export const showPostsListForHome = (pivot: PivotRoutes | undefined): boolean => {
 	return pivot === HomePivots.Posts
 }
 

@@ -1,14 +1,9 @@
-import { showPostsNavForConjecture } from '../../pages/conjectures/conjecture.helpers'
 import { ConjecturePivots } from '../../pages/conjectures/conjectures.types'
-import { showPostsNavForGame } from '../../pages/games/game.helpers'
 import { GamePivots } from '../../pages/games/games.types'
-import { showPostsNavForHome } from '../../pages/home/home.helpers'
 import { HomePivots } from '../../pages/home/home.types'
-import { showPostsNavForStories } from '../../pages/stories/stories.helpers'
 import { StoryPivots } from '../../pages/stories/stories.types'
 import { IOpenPostsContext } from '../posts/openPosts'
 import { PivotRoutes } from '../posts/post.types'
-import { getLatestPost } from '../posts/posts'
 import { doesItemExistInIterable } from './genericHelpers'
 import { IRouteContext, PageRoutes } from './routes'
 
@@ -24,14 +19,16 @@ export const getHomePath = (
 	// (TODO) handle default pivots and posts elsewhere in a common area
 	const homePivot = pivot || (prevPivots && (prevPivots[PageRoutes.Home] as HomePivots))
 
-	if (!showPostsNavForHome(homePivot)) {
-		return `/#/${PageRoutes.Home}/${homePivot}`
-	}
+	return `/#/${PageRoutes.Home}/${homePivot}`
 
-	const currentPost =
-		getLastOpenPost(PageRoutes.Home, homePivot) || getLatestPost(PageRoutes.Home, homePivot)
+	// if (!showPostsListForHome(homePivot)) {
+	// 	return `/#/${PageRoutes.Home}/${homePivot}`
+	// }
 
-	return `/#/${PageRoutes.Home}/${homePivot}/${currentPost.id}`
+	// const currentPost =
+	// 	getLastOpenPost(PageRoutes.Home, homePivot) || getLatestPost(PageRoutes.Home, homePivot)
+
+	// return `/#/${PageRoutes.Home}/${homePivot}/${currentPost.id}`
 }
 
 export const getStoriesPath = (
@@ -45,15 +42,17 @@ export const getStoriesPath = (
 
 	const storiesPivot = pivot || (prevPivots && (prevPivots[PageRoutes.Stories] as StoryPivots))
 
-	if (!showPostsNavForStories(storiesPivot)) {
-		return `/#/${PageRoutes.Stories}/${storiesPivot}`
-	}
+	return `/#/${PageRoutes.Stories}/${storiesPivot}`
 
-	const currentPost =
-		getLastOpenPost(PageRoutes.Stories, storiesPivot) ||
-		getLatestPost(PageRoutes.Stories, storiesPivot)
+	// if (!showPostsListForStories(storiesPivot)) {
+	// 	return `/#/${PageRoutes.Stories}/${storiesPivot}`
+	// }
 
-	return `/#/${PageRoutes.Stories}/${storiesPivot}/${currentPost.id}`
+	// const currentPost =
+	// 	getLastOpenPost(PageRoutes.Stories, storiesPivot) ||
+	// 	getLatestPost(PageRoutes.Stories, storiesPivot)
+
+	// return `/#/${PageRoutes.Stories}/${storiesPivot}/${currentPost.id}`
 }
 
 export const getGamesPath = (
@@ -67,14 +66,16 @@ export const getGamesPath = (
 
 	const gamesPivot = pivot || (prevPivots && (prevPivots[PageRoutes.Games] as GamePivots))
 
-	if (!showPostsNavForGame(gamesPivot)) {
-		return `/#/${PageRoutes.Games}/${gamesPivot}`
-	}
+	return `/#/${PageRoutes.Games}/${gamesPivot}`
 
-	const currentPost =
-		getLastOpenPost(PageRoutes.Games, gamesPivot) || getLatestPost(PageRoutes.Games, gamesPivot)
+	// if (!showPostsListForGame(gamesPivot)) {
+	// 	return `/#/${PageRoutes.Games}/${gamesPivot}`
+	// }
 
-	return `/#/${PageRoutes.Games}/${gamesPivot}/${currentPost.id}`
+	// const currentPost =
+	// 	getLastOpenPost(PageRoutes.Games, gamesPivot) || getLatestPost(PageRoutes.Games, gamesPivot)
+
+	// return `/#/${PageRoutes.Games}/${gamesPivot}/${currentPost.id}`
 }
 
 export const getConjecturePath = (
@@ -89,15 +90,17 @@ export const getConjecturePath = (
 	const conjecturePivot =
 		pivot || (prevPivots && (prevPivots[PageRoutes.Conjecture] as ConjecturePivots))
 
-	if (!showPostsNavForConjecture(conjecturePivot)) {
-		return `/#/${PageRoutes.Conjecture}/${conjecturePivot}`
-	}
+	return `/#/${PageRoutes.Conjecture}/${conjecturePivot}`
 
-	const currentPost =
-		getLastOpenPost(PageRoutes.Conjecture, conjecturePivot) ||
-		getLatestPost(PageRoutes.Conjecture, conjecturePivot)
+	// if (!showPostsListForConjecture(conjecturePivot)) {
+	// 	return `/#/${PageRoutes.Conjecture}/${conjecturePivot}`
+	// }
 
-	return `/#/${PageRoutes.Conjecture}/${conjecturePivot}/${currentPost.id}`
+	// const currentPost =
+	// 	getLastOpenPost(PageRoutes.Conjecture, conjecturePivot) ||
+	// 	getLatestPost(PageRoutes.Conjecture, conjecturePivot)
+
+	// return `/#/${PageRoutes.Conjecture}/${conjecturePivot}/${currentPost.id}`
 }
 
 export const getAnyPagePath = (

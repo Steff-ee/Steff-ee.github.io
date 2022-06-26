@@ -31,7 +31,7 @@ export const getConjectureUsePivotsProps = (): IUsePivotProps => {
 	}
 }
 
-export const showPostsNavForConjecture = (pivot: PivotRoutes | undefined): boolean => {
+export const showPostsListForConjecture = (pivot: PivotRoutes | undefined): boolean => {
 	return pivot === ConjecturePivots.Posts
 }
 export const getConjecturePageContent = (

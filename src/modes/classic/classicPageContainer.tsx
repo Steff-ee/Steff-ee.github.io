@@ -2,26 +2,27 @@ import React from 'react'
 import {
 	getConjecturePageContent,
 	getConjectureUsePivotsProps,
-	showPostsNavForConjecture,
+	showPostsListForConjecture,
 } from '../../pages/conjectures/conjecture.helpers'
 import {
 	getGamePageContent,
 	getGameUsePivotsProps,
-	showPostsNavForGame,
+	showPostsListForGame,
 } from '../../pages/games/game.helpers'
 import {
 	getHomePageContent,
 	getHomeUsePivotsProps,
-	showPostsNavForHome,
+	showPostsListForHome,
 } from '../../pages/home/home.helpers'
 import {
 	getStoriesPageContent,
 	getStoriesUsePivotsProps,
-	showPostsNavForStories,
+	showPostsListForStories,
 } from '../../pages/stories/stories.helpers'
 import { PageRoutes, redirectTo, usePageParams } from '../../shared/helpers/routes'
 import { Post } from '../../shared/posts/post'
 import { PivotRoutes } from '../../shared/posts/post.types'
+import { PostList } from '../../shared/posts/postList'
 import { usePostsNav } from '../../shared/posts/usePostsNav'
 import { usePivots } from '../../shared/presentational/hooks/usePivots'
 import { IUsePivotProps } from '../../shared/presentational/hooks/usePivots.types'
@@ -44,20 +45,20 @@ const getUsePivotProps = (page: string | undefined): IUsePivotProps => {
 	}
 }
 
-const getShowPostsNav = (page: string | undefined, pivot: PivotRoutes | undefined): boolean => {
+const getShowPostsList = (page: string | undefined, pivot: PivotRoutes | undefined): boolean => {
 	switch (page) {
 		case PageRoutes.Stories:
-			return showPostsNavForStories(pivot)
+			return showPostsListForStories(pivot)
 
 		case PageRoutes.Games:
-			return showPostsNavForGame(pivot)
+			return showPostsListForGame(pivot)
 
 		case PageRoutes.Conjecture:
-			return showPostsNavForConjecture(pivot)
+			return showPostsListForConjecture(pivot)
 
 		case PageRoutes.Home:
 		default:
-			return showPostsNavForHome(pivot)
+			return showPostsListForHome(pivot)
 	}
 }
 
@@ -82,7 +83,7 @@ const getPageContent = (
 }
 
 export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => {
-	const { page } = usePageParams()
+	const { page, postId } = usePageParams()
 
 	const {
 		selectedPivotTitle,
@@ -91,7 +92,8 @@ export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => 
 		redirectPath: redirectPath1,
 	} = usePivots(getUsePivotProps(page))
 
-	const showPostsNav: boolean = getShowPostsNav(page, selectedPivotTitle)
+	const showPostsList: boolean = getShowPostsList(page, selectedPivotTitle)
+	const showPost = !!postId && (!selectedPivotTitle || showPostsList)
 
 	const {
 		currentPost,
@@ -100,7 +102,7 @@ export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => 
 		nextClick,
 		latestClick,
 		redirectPath: redirectPath2,
-	} = usePostsNav(page as PageRoutes, selectedPivotTitle, !showPostsNav)
+	} = usePostsNav(page as PageRoutes, selectedPivotTitle, !showPost)
 
 	const redirectPath = redirectPath2 || redirectPath1
 	if (redirectPath) {
@@ -110,8 +112,10 @@ export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => 
 	}
 
 	let Content = <></>
-	if (showPostsNav) {
+	if (showPost) {
 		Content = <Post post={currentPost} />
+	} else if (showPostsList) {
+		Content = <PostList page={page as PageRoutes} pivot={selectedPivotTitle} />
 	} else {
 		Content = getPageContent(page, selectedPivotTitle) as JSX.Element
 	}
@@ -122,7 +126,7 @@ export const ClassicPageContainer: React.FunctionComponent = (): JSX.Element => 
 		nextClick,
 		latestClick,
 		Content,
-		showPostsNav,
+		showPostsNav: showPost,
 		selectedPivotTitle,
 		setPivot,
 		pivotsItems,
