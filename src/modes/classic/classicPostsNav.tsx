@@ -21,14 +21,15 @@ export interface IClassicRightNavProps {
 export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (props) => {
 	const { firstClick, backClick, nextClick, latestClick, orientation } = props
 	const location = useLocation()
-	const backCommand = useBackCommand(backClick)
-	const nextCommand = useNextCommand(nextClick)
-	const firstCommand = useFirstCommand(firstClick)
-	const latestCommand = useLatestCommand(latestClick)
+	const primaryRoute = getPrimaryRoute(location.pathname)
+	const backCommand = useBackCommand(backClick, primaryRoute)
+	const nextCommand = useNextCommand(nextClick, primaryRoute)
+	const firstCommand = useFirstCommand(firstClick, primaryRoute)
+	const latestCommand = useLatestCommand(latestClick, primaryRoute)
 
 	return (
 		<HorizontalIconNav
-			selectedId={getPrimaryRoute(location.pathname)}
+			selectedId={primaryRoute}
 			navItems={[firstCommand, backCommand, nextCommand, latestCommand]}
 			orientation={orientation}
 		/>

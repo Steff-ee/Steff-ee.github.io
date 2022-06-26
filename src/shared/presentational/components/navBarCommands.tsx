@@ -112,41 +112,61 @@ export const useNavigationLinks = (): INavItem[] => {
 	return navLinks
 }
 
-export const useBackCommand = (onClick?: () => void): INavItem => {
+const postCategoryToString = (postCategory: string): string => {
+	if (postCategory === 'home') {
+		return ''
+	}
+
+	return `${postCategory} `
+}
+
+export const useBackCommand = (
+	onClick: (() => void) | undefined,
+	postCategory: string
+): INavItem => {
 	return {
 		icon: <FontAwesomeIcon icon={faAngleLeft} {...commonIconProps} />,
 		id: 'BackCommand',
-		label: 'Back',
+		label: `Previous ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
 	}
 }
 
-export const useNextCommand = (onClick?: () => void): INavItem => {
+export const useNextCommand = (
+	onClick: (() => void) | undefined,
+	postCategory: string
+): INavItem => {
 	return {
 		icon: <FontAwesomeIcon icon={faAngleRight} {...commonIconProps} />,
 		id: 'NextCommand',
-		label: 'Next',
+		label: `Next ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
 	}
 }
 
-export const useFirstCommand = (onClick?: () => void): INavItem => {
+export const useFirstCommand = (
+	onClick: (() => void) | undefined,
+	postCategory: string
+): INavItem => {
 	return {
 		icon: <FontAwesomeIcon icon={faAngleDoubleLeft} {...commonIconProps} />,
 		id: 'FirstCommand',
-		label: 'First',
+		label: `First ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
 	}
 }
 
-export const useLatestCommand = (onClick?: () => void): INavItem => {
+export const useLatestCommand = (
+	onClick: (() => void) | undefined,
+	postCategory: string
+): INavItem => {
 	return {
 		icon: <FontAwesomeIcon icon={faAngleDoubleRight} {...commonIconProps} />,
 		id: 'LatestCommand',
-		label: 'Latest',
+		label: `Latest ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
 	}
