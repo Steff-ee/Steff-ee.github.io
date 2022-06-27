@@ -22,35 +22,27 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 	const [hoverIndex, setHoverIndex] = useState<number>(-1)
 	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
-	const mediaSize = useContext(MediaContext)
+	const isSmall = useContext(MediaContext) === MediaSize.Small
+	const margin = isSmall ? '0 auto' : undefined
 
 	const onMouseLeave = (): void => {
 		setHoverIndex(-1)
 	}
 
-	let iconsOrientationStyle: React.CSSProperties
-	let labelOrientationStyle: React.CSSProperties
-	const sidePadding = mediaSize === MediaSize.Small ? '32px' : 0
+	let orientationStyle: React.CSSProperties
 	if (orientation === NavOrientation.Right) {
-		iconsOrientationStyle = { right: sidePadding }
-		labelOrientationStyle = { right: 0 }
+		orientationStyle = { right: 0 }
 	} else {
-		iconsOrientationStyle = { left: sidePadding }
-		labelOrientationStyle = { left: 0 }
+		orientationStyle = { left: 0 }
 	}
 
 	return (
-		<div
-			style={rootStyle}
-			onMouseLeave={() => {
-				onMouseLeave()
-			}}
-		>
+		<div style={{ display: 'inline-block', margin, ...rootStyle }} onMouseLeave={onMouseLeave}>
 			<div
 				style={{
 					display: 'flex',
-					position: 'absolute',
-					...iconsOrientationStyle,
+					position: 'relative',
+					...orientationStyle,
 				}}
 			>
 				{navItems.map(
@@ -76,9 +68,8 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				rootStyle={{
 					backgroundColor: borderColor,
 					color: navbarTextColor,
-					marginTop: iconHeight,
 					position: 'absolute',
-					...labelOrientationStyle,
+					...orientationStyle,
 				}}
 			/>
 		</div>

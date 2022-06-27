@@ -28,7 +28,7 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 		nextClick,
 		latestClick,
 	} = props
-	const mediaSize = useContext(MediaContext)
+	const isSmall = useContext(MediaContext) === MediaSize.Small
 	const [isScrollingDownward, setIsScrollingDownward] = useState<boolean>(true)
 
 	const onScroll = (currentPosition: IScrollPosition, prevPosition: IScrollPosition): void => {
@@ -52,7 +52,7 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 
 	let showPosts: boolean
 	let showPages: boolean
-	if (mediaSize === MediaSize.Small) {
+	if (isSmall) {
 		showPosts = showPostsProp && isScrollingDownward
 		showPages = !showPosts
 	} else {
@@ -72,48 +72,54 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 		leave: { opacity: 0 },
 	})
 
+	const width = isSmall ? '100%' : undefined
+
 	// the empty div on !showPages is to keep the space-between working
 	return (
 		<div style={rootStyle}>
-			{pagesTransition(
-				(rootTransition, item) =>
-					item && (
-						<animated.div
-							style={{
-								...rootTransition,
-								visibility: to(rootTransition.opacity, (opacity: number) =>
-									opacity === 0 ? 'hidden' : 'visible'
-								),
-							}}
-						>
-							<ClassicPageNav orientation={NavOrientation.Left} />
-						</animated.div>
-					)
-			)}
-			{!showPages && <div />}
-			{postsTransition(
-				(rootTransition, item) =>
-					item && (
-						<animated.div
-							style={{
-								...rootTransition,
-								visibility: to(rootTransition.opacity, (opacity: number) =>
-									opacity === 0 ? 'hidden' : 'visible'
-								),
-							}}
-						>
-							<ClassicPostsNav
-								scrollRef={scrollRef}
-								positionRef={positionRef}
-								orientation={NavOrientation.Right}
-								firstClick={firstClick}
-								backClick={backClick}
-								nextClick={nextClick}
-								latestClick={latestClick}
-							/>
-						</animated.div>
-					)
-			)}
+			{showPages &&
+				pagesTransition(
+					(rootTransition, item) =>
+						item && (
+							<animated.div
+								style={{
+									...rootTransition,
+									width,
+									visibility: to(rootTransition.opacity, (opacity: number) =>
+										opacity === 0 ? 'hidden' : 'visible'
+									),
+								}}
+							>
+								<ClassicPageNav orientation={NavOrientation.Left} />
+							</animated.div>
+						)
+				)}
+			{showPages && showPosts && <div style={{ flexGrow: 1 }} />}
+			{showPosts &&
+				postsTransition(
+					(rootTransition, item) =>
+						item && (
+							<animated.div
+								style={{
+									...rootTransition,
+									width,
+									visibility: to(rootTransition.opacity, (opacity: number) =>
+										opacity === 0 ? 'hidden' : 'visible'
+									),
+								}}
+							>
+								<ClassicPostsNav
+									scrollRef={scrollRef}
+									positionRef={positionRef}
+									orientation={NavOrientation.Right}
+									firstClick={firstClick}
+									backClick={backClick}
+									nextClick={nextClick}
+									latestClick={latestClick}
+								/>
+							</animated.div>
+						)
+				)}
 		</div>
 	)
 }
