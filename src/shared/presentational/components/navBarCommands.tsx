@@ -14,7 +14,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useState } from 'react'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
-import { MediaContext, MediaSize } from '../../../components/mediaProvider'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
 import { catsPath, catsTitle } from '../../../pages/cats/cats.types'
@@ -56,12 +55,9 @@ const getNextSeason = (season: Seasons, isTest: boolean): Seasons => {
 	}
 }
 
-export const useNavigationLinks = (): INavItem[] => {
+export const useCategoryNavItems = (): INavItem[] => {
 	const { prevPivots } = useContext(RouteContext)
 	const { getLastOpenPost } = useContext(OpenPostsContext)
-	const { season, setSeason } = useContext(SeasonsContext)
-	const mediaSize = useContext(MediaContext)
-	const isTest = useIsTest()
 	const { pivot: currentPivot } = usePageParams()
 
 	const homePath = getHomePath(getLastOpenPost, prevPivots, currentPivot)
@@ -94,24 +90,28 @@ export const useNavigationLinks = (): INavItem[] => {
 			label: conjectureTitle,
 			onClick: (): void => redirectTo(conjecturePath),
 		},
-		{
-			icon: <FontAwesomeIcon icon={faPaw} {...commonIconProps} />,
-			id: PageRoutes.Cats,
-			label: catsTitle,
-			onClick: (): void => redirectTo(catsPath),
-		},
 	]
 
-	if (mediaSize !== MediaSize.Small) {
-		navLinks.push({
-			icon: <FontAwesomeIcon icon={faSyncAlt} {...commonIconProps} size={'lg' as const} />,
-			id: undefined,
-			label: 'change theme',
-			onClick: (): void => setSeason(getNextSeason(season, isTest)),
-		})
-	}
-
 	return navLinks
+}
+
+export const useChangeThemeNavItem = (): INavItem => {
+	const { season, setSeason } = useContext(SeasonsContext)
+	const isTest = useIsTest()
+
+	return {
+		icon: <FontAwesomeIcon icon={faSyncAlt} {...commonIconProps} size={'lg' as const} />,
+		id: undefined,
+		label: 'change theme',
+		onClick: (): void => setSeason(getNextSeason(season, isTest)),
+	}
+}
+
+export const CatsNavItem: INavItem = {
+	icon: <FontAwesomeIcon icon={faPaw} {...commonIconProps} />,
+	id: PageRoutes.Cats,
+	label: catsTitle,
+	onClick: (): void => redirectTo(catsPath),
 }
 
 const postCategoryToString = (postCategory: string): string => {

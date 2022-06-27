@@ -20,13 +20,12 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		selectedId,
 	} = props
 	const [hoverIndex, setHoverIndex] = useState<number>(-1)
+	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
 	const mediaSize = useContext(MediaContext)
 
-	const onMouseLeave = (index: number): void => {
-		if (index === hoverIndex) {
-			setHoverIndex(-1)
-		}
+	const onMouseLeave = (): void => {
+		setHoverIndex(-1)
 	}
 
 	let iconsOrientationStyle: React.CSSProperties
@@ -41,7 +40,12 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 	}
 
 	return (
-		<div style={rootStyle}>
+		<div
+			style={rootStyle}
+			onMouseLeave={() => {
+				onMouseLeave()
+			}}
+		>
 			<div
 				style={{
 					display: 'flex',
@@ -60,14 +64,12 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 							id={itemIndex}
 							isSelected={item.id === selectedId}
 							onMouseEnter={setHoverIndex}
-							onMouseLeave={onMouseLeave}
 						/>
 					)
 				)}
 			</div>
 			<NavListLabel
-				labels={navItems.map((item: INavItem): string => item.label)}
-				currentLabelIndex={hoverIndex}
+				navItem={activeNavItem}
 				height={iconHeight}
 				width={labelWidth}
 				orientation={orientation}

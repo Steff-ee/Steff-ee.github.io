@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { animated, useSpring, useTransition } from 'react-spring'
-import { NavOrientation } from './iconNav.types'
+import { INavItem, NavOrientation } from './iconNav.types'
 
 export interface INavListLabelProps {
-	labels: string[]
-	currentLabelIndex: number
+	navItem: INavItem | undefined
 	orientation: NavOrientation
 
 	/* Styling */
@@ -12,9 +11,6 @@ export interface INavListLabelProps {
 	height: string
 	rootStyle?: React.CSSProperties
 	textStyle?: React.CSSProperties
-
-	/* Callbacks */
-	onClick?: (label: string) => void
 }
 
 /**
@@ -24,20 +20,10 @@ export interface INavListLabelProps {
  * (Even though it is not made of other atoms, we still consider this molecular because it is opinionated on styling (for animation))
  */
 export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props) => {
-	const {
-		labels,
-		currentLabelIndex,
-		width,
-		height,
-		rootStyle,
-		textStyle,
-		onClick,
-		orientation,
-	} = props
-	const [delayedIndex, setDelayedIndex] = useState<number>(currentLabelIndex)
-	const indexChanging = delayedIndex !== currentLabelIndex
-	const label = labels[delayedIndex]
-	const isNavListLabelOpen = currentLabelIndex > -1
+	const { navItem, width, height, rootStyle, textStyle, orientation } = props
+	const currentItemId = navItem?.id ?? ''
+	const [delayedId, setDelayedId] = useState<string>(currentItemId)
+	const idChanging = delayedId !== currentItemId
 	const textSpringDuration = 70
 
 	const [textSpring] = useSpring(() => ({
@@ -45,12 +31,12 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 		from: { opacity: 0 },
 		config: { duration: textSpringDuration },
 		onRest: (): void => {
-			if (delayedIndex !== currentLabelIndex) {
-				setDelayedIndex(currentLabelIndex)
+			if (delayedId !== currentItemId) {
+				setDelayedId(currentItemId)
 			}
 		},
-		reset: indexChanging,
-		reverse: indexChanging,
+		reset: idChanging,
+		reverse: idChanging,
 	}))
 
 	let transform
@@ -63,7 +49,7 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 	// 	transform = 'translate3d(0%, -100%, 0)'
 	// }
 
-	const transition = useTransition(isNavListLabelOpen, {
+	const transition = useTransition(!!navItem, {
 		from: { transform },
 		enter: { transform: 'translate3d(0%, 0%, 0)' },
 		leave: { transform },
@@ -75,7 +61,6 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 				(rootTransition, item) =>
 					item && (
 						<animated.div
-							aria-label={label}
 							// @ts-ignore
 							style={{
 								display: 'flex',
@@ -86,11 +71,7 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 								...rootStyle,
 								...rootTransition,
 							}}
-							onClick={(): void => {
-								if (onClick) {
-									onClick(label)
-								}
-							}}
+							onClick={navItem?.onClick}
 						>
 							<animated.div
 								// @ts-ignore
@@ -101,7 +82,7 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 									...textSpring,
 								}}
 							>
-								{label}
+								{navItem?.label}
 							</animated.div>
 						</animated.div>
 					)
