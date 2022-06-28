@@ -51,7 +51,7 @@ export const grandTitleStyle: React.CSSProperties = {
 const navBarStyle = {
 	width: '100%',
 	height: '64px',
-	display: 'flex',
+	display: 'block',
 	top: 0,
 	zIndex: 2,
 }

@@ -1,21 +1,23 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { NavOrientation } from '../../../components/iconNav/iconNav.types'
-import { VerticalIconNav } from '../../../components/iconNav/verticalIconNav'
+import { useVerticalIconNav } from '../../../components/iconNav/verticalIconNav'
 import { AboutNavItem, AllLinksNavItem, AllPostsNavItem, CatsNavItem } from './navBarCommands'
 
-export interface IMobileMenuProps {}
+export interface IMobileMenuProps {
+	skip?: boolean
+}
 
-export const MobileMenu: React.FunctionComponent<IMobileMenuProps> = () => {
+export const useMobileMenu = (props: IMobileMenuProps) => {
+	const { skip } = props
 	const navItems = useMemo(() => {
 		return [AboutNavItem, AllPostsNavItem, AllLinksNavItem, CatsNavItem]
 	}, [])
 
-	return (
-		<VerticalIconNav
-			navItems={navItems}
-			showIconLabels={true}
-			selectedId={''}
-			orientation={NavOrientation.Left}
-		/>
-	)
+	return useVerticalIconNav({
+		skip,
+		navItems,
+		showIconLabels: true,
+		selectedId: '',
+		orientation: NavOrientation.Left,
+	})
 }

@@ -7,20 +7,24 @@ import { NavItem } from './navItem'
 
 // (TODO) add opening/closing animation
 
+export interface IUseVerticalIconNavResult {
+	MenuButton: JSX.Element
+	MenuList: JSX.Element
+}
+
 /**
  * This is a macromolecular component:
  * I haven't decided what that means yet.
  */
-export const VerticalIconNav: React.FunctionComponent<IVerticalIconNavProps> = (props) => {
+export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIconNavResult => {
 	const {
 		navItems,
 		showIconLabels,
 		onIconsMenuIconClick,
 		onRenderBelowContent,
-		rootStyle,
 		iconWidth = '64px',
 		iconHeight = '64px',
-		labelWidth = '248px',
+		labelWidth = '200px',
 		selectedId,
 		orientation,
 	} = props
@@ -36,57 +40,50 @@ export const VerticalIconNav: React.FunctionComponent<IVerticalIconNavProps> = (
 		}
 	}
 
-	return (
-		<div
-			style={{
-				margin: '0 auto',
-				display: 'inline-block',
-
-				...rootStyle,
+	const MenuButton = (
+		<NavItem
+			label={'Open menu'}
+			width={iconWidth}
+			height={iconHeight}
+			color={navbarTextColor}
+			icon={<FontAwesomeIcon icon={faBars} size={'2x'} />}
+			onClick={() => {
+				onIconsMenuIconClick?.()
+				setIsOpen(!isOpen)
 			}}
-		>
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
-				<NavItem
-					label={'Open menu'}
-					width={iconWidth}
-					height={iconHeight}
-					color={navbarTextColor}
-					icon={<FontAwesomeIcon icon={faBars} size={'2x'} />}
-					onClick={() => {
-						onIconsMenuIconClick?.()
-						setIsOpen(!isOpen)
-					}}
-				/>
-				<div
-					style={{
-						position: 'absolute',
-						color: navbarTextColor,
-						backgroundColor: borderColor,
-						marginTop: iconHeight,
-					}}
-				>
-					{isOpen &&
-						navItems.map((item: INavItem): JSX.Element => {
-							const { label, icon, onClick } = item
+		/>
+	)
 
-							return (
-								<NavItem
-									{...labelProps}
-									icon={icon}
-									label={label}
-									onClick={onClick}
-									width={iconWidth}
-									height={iconHeight}
-									color={navbarTextColor}
-									key={item.id}
-									isSelected={item.id === selectedId}
-									labelTextStyle={{ margin: 'auto 0' }}
-								/>
-							)
-						})}
-				</div>
-				{onRenderBelowContent && showIconLabels && onRenderBelowContent()}
+	const MenuList = (
+		<div style={{ display: 'flex' }}>
+			<div
+				style={{
+					color: navbarTextColor,
+					backgroundColor: borderColor,
+				}}
+			>
+				{isOpen &&
+					navItems.map((item: INavItem): JSX.Element => {
+						const { label, icon, onClick } = item
+
+						return (
+							<NavItem
+								{...labelProps}
+								icon={icon}
+								label={label}
+								onClick={onClick}
+								width={iconWidth}
+								height={iconHeight}
+								color={navbarTextColor}
+								key={item.id}
+								isSelected={item.id === selectedId}
+							/>
+						)
+					})}
 			</div>
+			{onRenderBelowContent && showIconLabels && onRenderBelowContent()}
 		</div>
 	)
+
+	return { MenuButton, MenuList }
 }

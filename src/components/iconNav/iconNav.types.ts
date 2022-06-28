@@ -42,9 +42,12 @@ export interface ICommonIconNavProps {
 
 export type IHorizontalIconNavProps = ICommonIconNavProps
 
-export interface IVerticalIconNavProps extends ICommonIconNavProps {
+export interface IVerticalIconNavProps extends Omit<ICommonIconNavProps, 'rootStyle'> {
 	/* Whether or not to show the icon labels */
 	showIconLabels: boolean
+	
+	/* When true, returns empty components */
+	skip?: boolean
 
 	/* This triggers on the clicking the menu icon, intended to open or close the icon labels */
 	onIconsMenuIconClick?: () => void
