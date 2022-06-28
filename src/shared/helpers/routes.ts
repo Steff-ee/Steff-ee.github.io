@@ -2,6 +2,11 @@ import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { PivotRoutes } from '../posts/post.types'
 
+export const catsPath = '#/cats'
+export const aboutPath = '#/home/about'
+export const postsPath = '#/home/posts'
+export const linksPath = '#/home/links'
+
 export enum PageRoutes {
 	Home = 'home',
 	Stories = 'stories',

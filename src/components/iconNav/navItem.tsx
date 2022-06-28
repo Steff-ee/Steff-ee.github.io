@@ -82,7 +82,6 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 			height={height}
 			color={color}
 			innerStyle={isSelectedStyle}
-			onClick={onClick}
 			filter={filter}
 			applyGrow={isHovering}
 			disabled={disabled}
@@ -93,6 +92,7 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 		<div
 			aria-label={label}
 			style={{ display: 'flex', ...rootStyle }}
+			onClick={onClick}
 			onMouseEnter={(): void => {
 				if (!disabled) {
 					setIsHovering(true)

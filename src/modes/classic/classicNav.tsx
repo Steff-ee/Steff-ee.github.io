@@ -3,6 +3,7 @@ import { animated, to, useTransition } from 'react-spring'
 import { NavOrientation } from '../../components/iconNav/iconNav.types'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
+import { MobileMenu } from '../../shared/presentational/components/mobileMenu'
 import { ClassicPageNav } from './classicPageNav'
 import { ClassicPostsNav } from './classicPostsNav'
 
@@ -90,7 +91,11 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 									),
 								}}
 							>
-								<ClassicPageNav orientation={NavOrientation.Left} />
+								{isSmall ? (
+									<MobileMenu />
+								) : (
+									<ClassicPageNav orientation={NavOrientation.Left} />
+								)}
 							</animated.div>
 						)
 				)}

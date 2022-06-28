@@ -6,7 +6,10 @@ import {
 	faChessKnight,
 	faChevronUp,
 	faFeatherAlt,
+	faGlobe,
 	faGlobeAmericas,
+	faHome,
+	faList,
 	faPaw,
 	faPoll,
 	faSyncAlt,
@@ -16,7 +19,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
-import { catsPath, catsTitle } from '../../../pages/cats/cats.types'
+import { catsTitle } from '../../../pages/cats/cats.types'
 import { conjectureTitle } from '../../../pages/conjectures/conjectures.types'
 import { gamesTitle } from '../../../pages/games/games.types'
 import { homeTitle } from '../../../pages/home/home.types'
@@ -27,7 +30,16 @@ import {
 	getHomePath,
 	getStoriesPath,
 } from '../../helpers/navigation'
-import { PageRoutes, redirectTo, RouteContext, usePageParams } from '../../helpers/routes'
+import {
+	aboutPath,
+	catsPath,
+	linksPath,
+	PageRoutes,
+	postsPath,
+	redirectTo,
+	RouteContext,
+	usePageParams,
+} from '../../helpers/routes'
 import { useIsTest } from '../../helpers/url'
 import { getScrollPosition } from '../../helpers/useScroll'
 import { OpenPostsContext } from '../../posts/openPosts'
@@ -112,6 +124,27 @@ export const CatsNavItem: INavItem = {
 	id: PageRoutes.Cats,
 	label: catsTitle,
 	onClick: (): void => redirectTo(catsPath),
+}
+
+export const AboutNavItem: INavItem = {
+	icon: <FontAwesomeIcon icon={faHome} {...commonIconProps} />,
+	id: 'all-about',
+	label: 'about',
+	onClick: (): void => redirectTo(aboutPath),
+}
+
+export const AllPostsNavItem: INavItem = {
+	icon: <FontAwesomeIcon icon={faList} {...commonIconProps} />,
+	id: 'all-posts',
+	label: 'posts',
+	onClick: (): void => redirectTo(postsPath),
+}
+
+export const AllLinksNavItem: INavItem = {
+	icon: <FontAwesomeIcon icon={faGlobe} {...commonIconProps} />,
+	id: 'all-links',
+	label: 'links',
+	onClick: (): void => redirectTo(linksPath),
 }
 
 const postCategoryToString = (postCategory: string): string => {

@@ -205,9 +205,6 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					<div style={contentWrapperStyle}>
 						<div style={{ maxWidth: '100%' }}>{Content}</div>
 					</div>
-					{mediaSize === MediaSize.Small && !!setPivot && !!pivotsItems && (
-						<MobilePivots setPivot={setPivot} pivotsItems={pivotsItems} />
-					)}
 				</div>
 			</div>
 			<Footer artistName={artistName} artistLink={artistLink} />
