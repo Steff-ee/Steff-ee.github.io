@@ -20,6 +20,11 @@ export interface IColors {
 	border: string
 
 	/**
+	 * Different shade of the border color for highlighting during hovering or selection
+	 */
+	borderHighlight: string
+
+	/**
 	 * Color of title text, body text, and pivots while not in the navbar
 	 */
 	text: string

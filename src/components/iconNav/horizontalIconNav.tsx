@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { MediaContext, MediaSize } from '../mediaProvider'
 import { IHorizontalIconNavProps, INavItem, NavOrientation } from './iconNav.types'
@@ -17,7 +17,6 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		iconHeight = '64px',
 		labelWidth = '248px',
 		orientation,
-		selectedId,
 	} = props
 	const [hoverIndex, setHoverIndex] = useState<number>(-1)
 	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
@@ -45,20 +44,25 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 					...orientationStyle,
 				}}
 			>
-				{navItems.map(
-					(item: INavItem, itemIndex: number): JSX.Element => (
+				{navItems.map((item: INavItem, itemIndex: number): JSX.Element => {
+					const onAttention = useCallback((hasAttention) => {
+						if (hasAttention) {
+							setHoverIndex(itemIndex)
+						}
+					}, [])
+
+					return (
 						<NavItem
 							{...item}
 							width={iconWidth}
 							height={iconHeight}
 							color={navbarTextColor}
 							key={item.id}
-							id={itemIndex}
-							isSelected={item.id === selectedId}
-							onMouseEnter={setHoverIndex}
+							id={item.id}
+							onAttention={onAttention}
 						/>
 					)
-				)}
+				})}
 			</div>
 			<NavListLabel
 				navItem={activeNavItem}

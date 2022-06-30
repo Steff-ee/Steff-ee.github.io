@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useAttention } from '../../shared/helpers/attention'
+import { useColors } from '../../shared/presentational/hooks/useColors'
 import { IconButton } from '../iconButton'
 import { LabelPosition } from './iconNav.types'
 import { NavLabel } from './navLabel'
 
 export interface INavItemProps {
-	id?: number
+	id?: string
 	icon: JSX.Element
 	label: string
 	labelPosition?: LabelPosition
@@ -21,8 +23,7 @@ export interface INavItemProps {
 
 	/* Callbacks */
 	onClick?: () => void
-	onMouseEnter?: (id: number) => void
-	onMouseLeave?: (id: number) => void
+	onAttention?: (hasAttention: boolean) => void
 }
 
 const disabledFadeFilterValue = 'opacity(0.25)'
@@ -40,8 +41,7 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 		width,
 		height,
 		color,
-		onMouseEnter,
-		onMouseLeave,
+		onAttention,
 		labelPosition,
 		labelWidth,
 		rootStyle,
@@ -49,14 +49,16 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 		isSelected = false,
 		disabled = false,
 	} = props
-	const [isHovering, setIsHovering] = useState<boolean>(false)
+	const [hasAttention, setHasAttention] = useState<boolean>(false)
+	const { border, borderHighlight } = useColors()
+	const background = hasAttention ? borderHighlight : border
 	const filter = disabled ? disabledFadeFilterValue : ''
 	let isSelectedStyle: React.CSSProperties = {}
 
 	if (isSelected) {
 		isSelectedStyle = {
 			borderRadius: '3px',
-			borderBottom: `2px solid ${color}`,
+			borderLeft: `2px solid ${color}`,
 		}
 	}
 
@@ -83,36 +85,22 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 			color={color}
 			innerStyle={isSelectedStyle}
 			filter={filter}
-			applyGrow={isHovering}
+			applyGrow={hasAttention}
 			disabled={disabled}
 		/>
 	)
 
-	return (
+	const element = (
 		<div
 			aria-label={label}
-			style={{ display: 'flex', ...rootStyle }}
+			style={{ display: 'flex', background, ...rootStyle }}
 			onClick={onClick}
-			onMouseEnter={(): void => {
-				if (!disabled) {
-					setIsHovering(true)
-					if (onMouseEnter && id !== undefined) {
-						onMouseEnter(id)
-					}
-				}
-			}}
-			onMouseLeave={(): void => {
-				if (!disabled) {
-					setIsHovering(false)
-					if (onMouseLeave && id !== undefined) {
-						onMouseLeave(id)
-					}
-				}
-			}}
 		>
 			{labelPosition === LabelPosition.Left && labelElement}
 			{button}
 			{labelPosition === LabelPosition.Right && labelElement}
 		</div>
 	)
+
+	return useAttention(element, [onAttention, setHasAttention])
 }

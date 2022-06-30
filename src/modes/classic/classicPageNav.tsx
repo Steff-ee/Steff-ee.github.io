@@ -1,12 +1,10 @@
 import React, { useContext, useMemo } from 'react'
-import { useLocation } from 'react-router'
 import { HorizontalIconNav } from '../../components/iconNav/horizontalIconNav'
 import { NavOrientation } from '../../components/iconNav/iconNav.types'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
-import { getPrimaryRoute } from '../../shared/helpers/routes'
+import { useCategoryMenu } from '../../shared/presentational/components/categoryMenu'
 import {
 	CatsNavItem,
-	useCategoryNavItems,
 	useChangeThemeNavItem,
 } from '../../shared/presentational/components/navBarCommands'
 
@@ -16,26 +14,24 @@ export interface IClassicPageNavProps {
 
 export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (props) => {
 	const { orientation } = props
-	const location = useLocation()
-	const categoryNavItems = useCategoryNavItems()
 	const changeThemeNavItem = useChangeThemeNavItem()
 	const mediaSize = useContext(MediaContext)
+	const { categoryButtonProps, CategoryList } = useCategoryMenu({})
 
+	// todo: Why are INavItem and INavItemProps different?
 	const navItems = useMemo(() => {
-		const items = [...categoryNavItems]
-		items.push(CatsNavItem)
+		const items = [categoryButtonProps, CatsNavItem]
 		if (mediaSize !== MediaSize.Small) {
 			items.push(changeThemeNavItem)
 		}
 
 		return items
-	}, [categoryNavItems, changeThemeNavItem, mediaSize])
+	}, [categoryButtonProps, changeThemeNavItem, mediaSize])
 
 	return (
-		<HorizontalIconNav
-			selectedId={getPrimaryRoute(location.pathname)}
-			navItems={navItems}
-			orientation={orientation}
-		/>
+		<>
+			<HorizontalIconNav navItems={navItems} orientation={orientation} />
+			<div style={{ marginTop: '64px' }}>{CategoryList}</div>
+		</>
 	)
 }

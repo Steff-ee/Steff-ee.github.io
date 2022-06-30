@@ -9,6 +9,7 @@ const classicColors: IColors = {
 	navbarText: Colors.LightSand,
 	background: Colors.LightSand,
 	border: 'black',
+	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.FadedBlack,
 }
@@ -18,6 +19,7 @@ const winterColors: IColors = {
 	navbarText: Colors.IceBlue,
 	background: Colors.DarkBlue,
 	border: 'black',
+	borderHighlight: Colors.OffBlack,
 	text: Colors.IceBlue,
 	subtitle: 'white',
 }
@@ -27,6 +29,7 @@ const springColors: IColors = {
 	navbarText: Colors.DarkViolet,
 	background: Colors.ClaretWine,
 	border: Colors.IceWhite,
+	borderHighlight: Colors.CloudedIce,
 	text: Colors.IceWhite,
 	subtitle: Colors.GentleSand,
 }
@@ -36,6 +39,7 @@ const summerColors: IColors = {
 	navbarText: Colors.LightYellow,
 	background: Colors.LightYellow,
 	border: 'black',
+	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.LightYellow,
 }
@@ -45,6 +49,7 @@ const autumnColors: IColors = {
 	navbarText: '#f2afa1',
 	background: '#351811',
 	border: 'black',
+	borderHighlight: Colors.OffBlack,
 	text: '#f2afa1',
 	subtitle: '#f2afa1',
 }

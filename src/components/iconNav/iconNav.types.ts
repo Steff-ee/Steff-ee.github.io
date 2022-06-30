@@ -1,3 +1,5 @@
+import { INavItemProps } from './navItem';
+
 export enum IconLayout {
 	Horizontal,
 	Vertical,
@@ -26,7 +28,7 @@ export interface ICommonIconNavProps {
 	navItems: INavItem[]
 
 	/* Indicates the currently selected navItem, so that it can be highlighted */
-	selectedId: string
+	selectedId?: string
 
 	/* Whether the nav is on the left or right */
 	orientation: NavOrientation
@@ -45,6 +47,8 @@ export type IHorizontalIconNavProps = ICommonIconNavProps
 export interface IVerticalIconNavProps extends Omit<ICommonIconNavProps, 'rootStyle'> {
 	/* Whether or not to show the icon labels */
 	showIconLabels: boolean
+
+	menuButtonProps?: Partial<INavItemProps>
 	
 	/* When true, returns empty components */
 	skip?: boolean

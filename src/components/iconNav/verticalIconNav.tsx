@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { INavItem, IVerticalIconNavProps, LabelPosition, NavOrientation } from './iconNav.types'
-import { NavItem } from './navItem'
+import { INavItemProps, NavItem } from './navItem'
 
 // (TODO) add opening/closing animation
 
 export interface IUseVerticalIconNavResult {
-	MenuButton: JSX.Element
+	menuButtonProps: INavItemProps
 	MenuList: JSX.Element
 }
 
@@ -24,9 +24,10 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		onRenderBelowContent,
 		iconWidth = '64px',
 		iconHeight = '64px',
-		labelWidth = '200px',
+		labelWidth = '184px',
 		selectedId,
 		orientation,
+		menuButtonProps: inputMenuButtonprops,
 	} = props
 	const [isOpen, setIsOpen] = useState(false)
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
@@ -40,19 +41,18 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		}
 	}
 
-	const MenuButton = (
-		<NavItem
-			label={'Open menu'}
-			width={iconWidth}
-			height={iconHeight}
-			color={navbarTextColor}
-			icon={<FontAwesomeIcon icon={faBars} size={'2x'} />}
-			onClick={() => {
-				onIconsMenuIconClick?.()
-				setIsOpen(!isOpen)
-			}}
-		/>
-	)
+	const menuButtonProps: INavItemProps = {
+		label: 'Open menu',
+		width: iconWidth,
+		height: iconHeight,
+		color: navbarTextColor,
+		icon: <FontAwesomeIcon icon={faBars} size={'2x'} />,
+		onClick: () => {
+			onIconsMenuIconClick?.()
+			setIsOpen(!isOpen)
+		},
+		...inputMenuButtonprops,
+	}
 
 	const MenuList = (
 		<div style={{ display: 'flex' }}>
@@ -85,5 +85,5 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		</div>
 	)
 
-	return { MenuButton, MenuList }
+	return { menuButtonProps, MenuList }
 }

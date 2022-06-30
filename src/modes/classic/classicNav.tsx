@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { animated, to, useTransition } from 'react-spring'
 import { NavOrientation } from '../../components/iconNav/iconNav.types'
+import { NavItem } from '../../components/iconNav/navItem'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useMobileMenu } from '../../shared/presentational/components/mobileMenu'
@@ -31,7 +32,8 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 	} = props
 	const isSmall = useContext(MediaContext) === MediaSize.Small
 	const [isScrollingDownward, setIsScrollingDownward] = useState<boolean>(true)
-	const { MenuButton, MenuList } = useMobileMenu({ skip: !isSmall })
+	const { menuButtonProps, MenuList } = useMobileMenu({ skip: !isSmall })
+	const MenuButton = <NavItem {...menuButtonProps} />
 
 	const onScroll = (currentPosition: IScrollPosition, prevPosition: IScrollPosition): void => {
 		if (showPostsProp) {
@@ -98,7 +100,7 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 								</animated.div>
 							)
 					)}
-				{showPages && showPosts && <div style={{ flexGrow: 1 }} />}
+				{!isSmall && <div style={{ flexGrow: 1 }} />}
 				{showPosts &&
 					postsTransition(
 						(rootTransition, item) =>
