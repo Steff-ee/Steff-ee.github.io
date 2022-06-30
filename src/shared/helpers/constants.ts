@@ -6,7 +6,7 @@ export enum Colors {
 	DarkBlue = '#1C304A',
 	IceBlue = '#e1f8ff',
 	IceWhite = '#f0f9ff',
-	CloudedIce = '#f0f9ff',
+	CloudedIce = '#daebf7',
 	SeaFoam = '#6ec9d4',
 	WarmSand = '#d4ad6e',
 	LightSand = '#fffae8',
