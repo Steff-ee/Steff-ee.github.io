@@ -35,7 +35,7 @@ export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (pr
 				orientation={orientation}
 				defaultActiveItemIndex={isOpen ? 0 : undefined}
 			/>
-			<div style={{ marginTop: '64px' }}>{CategoryList}</div>
+			<div style={{ marginTop: '64px', position: 'absolute' }}>{CategoryList}</div>
 		</>
 	)
 }
