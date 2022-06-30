@@ -28,10 +28,6 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 	const isSmall = useContext(MediaContext) === MediaSize.Small
 	const margin = isSmall ? '0 auto' : undefined
 
-	const onMouseLeave = (): void => {
-		setHoverIndex(-1)
-	}
-
 	let orientationStyle: React.CSSProperties
 	if (orientation === NavOrientation.Right) {
 		orientationStyle = { right: 0 }
@@ -40,7 +36,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 	}
 
 	return (
-		<div style={{ display: 'inline-block', margin, ...rootStyle }} onMouseLeave={onMouseLeave}>
+		<div style={{ display: 'inline-block', margin, ...rootStyle }}>
 			<div
 				style={{
 					display: 'flex',
@@ -50,9 +46,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 			>
 				{navItems.map((item: INavItem, itemIndex: number): JSX.Element => {
 					const onAttention = useCallback((hasAttention) => {
-						if (hasAttention) {
-							setHoverIndex(itemIndex)
-						}
+						setHoverIndex(hasAttention ? itemIndex : -1)
 					}, [])
 
 					return (

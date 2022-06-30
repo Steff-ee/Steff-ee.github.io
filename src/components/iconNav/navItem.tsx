@@ -12,6 +12,7 @@ export interface INavItemProps {
 	labelPosition?: LabelPosition
 	isSelected?: boolean
 	disabled?: boolean
+	tabIndex?: number
 
 	/* Styling */
 	width: string
@@ -34,7 +35,6 @@ const disabledFadeFilterValue = 'opacity(0.25)'
  */
 export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 	const {
-		id,
 		icon,
 		onClick,
 		label = '',
@@ -48,6 +48,7 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 		labelTextStyle,
 		isSelected = false,
 		disabled = false,
+		tabIndex = 0,
 	} = props
 	const [hasAttention, setHasAttention] = useState<boolean>(false)
 	const { border, borderHighlight } = useColors()
@@ -93,8 +94,10 @@ export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
 	const element = (
 		<div
 			aria-label={label}
+			tabIndex={tabIndex}
 			style={{ display: 'flex', background, ...rootStyle }}
 			onClick={onClick}
+			onKeyPress={onClick}
 		>
 			{labelPosition === LabelPosition.Left && labelElement}
 			{button}

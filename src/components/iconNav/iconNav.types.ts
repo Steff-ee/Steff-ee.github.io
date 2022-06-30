@@ -56,6 +56,8 @@ export interface IVerticalIconNavProps extends Omit<ICommonIconNavProps, 'rootSt
 	/* When true, returns empty components */
 	skip?: boolean
 
+	tabIndex?: number
+
 	/* This triggers on the clicking the menu icon, intended to open or close the icon labels */
 	onIconsMenuIconClick?: () => void
 

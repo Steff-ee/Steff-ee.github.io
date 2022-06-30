@@ -15,7 +15,11 @@ export const useCategoryMenu = (props: ICategoryMenuProps) => {
 	const selectedId = getPrimaryRoute(location.pathname)
 	const selectedNavItem = navItems.find((item) => item.id === selectedId) ?? navItems[0]
 	const { onClick, ...selectedNavItemProps } = selectedNavItem
-	selectedNavItemProps.label = 'choose category'
+	const inputMenuButtonProps = {
+		...selectedNavItemProps,
+		label: 'choose category',
+		tabIndex: 1,
+	}
 
 	const { menuButtonProps, MenuList, isOpen } = useVerticalIconNav({
 		skip,
@@ -23,7 +27,8 @@ export const useCategoryMenu = (props: ICategoryMenuProps) => {
 		showIconLabels: true,
 		selectedId,
 		orientation: NavOrientation.Left,
-		menuButtonProps: selectedNavItemProps,
+		menuButtonProps: inputMenuButtonProps,
+		tabIndex: 2,
 	})
 
 	return { categoryButtonProps: menuButtonProps, CategoryList: MenuList, isOpen }

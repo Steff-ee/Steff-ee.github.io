@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement, useCallback } from 'react'
+import React, { ReactElement, useCallback } from 'react'
 
 /**
  * If a component "has attention", that means it either has focus or is being hovered.
@@ -7,26 +7,43 @@ export const useAttention = (
 	inputElement: ReactElement,
 	onAttention: Array<((hasAttention: boolean) => void) | undefined>
 ): ReactElement => {
-	const getAttention = useCallback(
-		(originalFn?: MouseEventHandler) => (event: any) => {
-			originalFn?.(event)
-			onAttention.map((fn) => fn?.(true))
+	const getAttention = useCallback(() => onAttention.map((fn) => fn?.(true)), onAttention)
+	const loseAttention = useCallback(() => onAttention.map((fn) => fn?.(false)), onAttention)
+
+	const onFocus = useCallback(
+		(event: any) => {
+			inputElement.props.onFocus?.(event)
+			getAttention()
 		},
-		[]
+		[getAttention]
 	)
-	const loseAttention = useCallback(
-		(originalFn?: MouseEventHandler) => (event: any) => {
-			originalFn?.(event)
-			onAttention.map((fn) => fn?.(false))
+	const onBlur = useCallback(
+		(event: any) => {
+			inputElement.props.onBlur?.(event)
+			loseAttention()
 		},
-		[]
+		[loseAttention]
+	)
+	const onMouseEnter = useCallback(
+		(event: any) => {
+			inputElement.props.onMouseEnter?.(event)
+			getAttention()
+		},
+		[getAttention]
+	)
+	const onMouseLeave = useCallback(
+		(event: any) => {
+			inputElement.props.onMouseLeave?.(event)
+			loseAttention()
+		},
+		[loseAttention]
 	)
 
 	const element = React.cloneElement(inputElement, {
-		onMouseEnter: getAttention(inputElement.props.onMouseEnter),
-		onMouseLeave: loseAttention(inputElement.props.onMouseLeave),
-		onFocus: getAttention(inputElement.props.onMouseEnter),
-		onBlur: loseAttention(inputElement.props.onMouseLeave),
+		onMouseEnter,
+		onMouseLeave,
+		onFocus,
+		onBlur,
 	})
 
 	return element

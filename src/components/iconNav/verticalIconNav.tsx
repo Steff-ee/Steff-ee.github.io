@@ -29,6 +29,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		selectedId,
 		orientation,
 		menuButtonProps: inputMenuButtonprops,
+		tabIndex = 0,
 	} = props
 	const [isOpen, setIsOpen] = useState(false)
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
@@ -49,6 +50,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		color: navbarTextColor,
 		icon: <FontAwesomeIcon icon={faBars} size={'2x'} />,
 		onClick: () => {
+			console.log('clicked!')
 			onIconsMenuIconClick?.()
 			setIsOpen(!isOpen)
 		},
@@ -67,17 +69,23 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 					navItems.map((item: INavItem): JSX.Element => {
 						const { label, icon, onClick } = item
 
+						const closeOnClick = () => {
+							onClick?.()
+							setIsOpen(false)
+						}
+
 						return (
 							<NavItem
 								{...labelProps}
 								icon={icon}
 								label={label}
-								onClick={onClick}
+								onClick={closeOnClick}
 								width={iconWidth}
 								height={iconHeight}
 								color={navbarTextColor}
 								key={item.id}
 								isSelected={item.id === selectedId}
+								tabIndex={tabIndex}
 							/>
 						)
 					})}

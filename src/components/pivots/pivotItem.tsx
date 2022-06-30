@@ -20,8 +20,10 @@ export const PivotItem: React.FunctionComponent<IPivotItemProps> = (props) => {
 
 	return (
 		<div
+			tabIndex={0}
 			style={style}
 			onClick={onClick}
+			onKeyPress={onClick}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 		>
