@@ -15,7 +15,7 @@ export const useCategoryMenu = (props: ICategoryMenuProps) => {
 	const selectedId = getPrimaryRoute(location.pathname)
 	const selectedNavItem = navItems.find((item) => item.id === selectedId) ?? navItems[0]
 	const { onClick, ...selectedNavItemProps } = selectedNavItem
-	selectedNavItemProps.label = 'Choose category'
+	selectedNavItemProps.label = 'choose category'
 
 	const { menuButtonProps, MenuList, isOpen } = useVerticalIconNav({
 		skip,
