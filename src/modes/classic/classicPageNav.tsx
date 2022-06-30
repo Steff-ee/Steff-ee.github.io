@@ -16,7 +16,7 @@ export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (pr
 	const { orientation } = props
 	const changeThemeNavItem = useChangeThemeNavItem()
 	const mediaSize = useContext(MediaContext)
-	const { categoryButtonProps, CategoryList } = useCategoryMenu({})
+	const { categoryButtonProps, CategoryList, isOpen } = useCategoryMenu({})
 
 	// todo: Why are INavItem and INavItemProps different?
 	const navItems = useMemo(() => {
@@ -30,7 +30,11 @@ export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (pr
 
 	return (
 		<>
-			<HorizontalIconNav navItems={navItems} orientation={orientation} />
+			<HorizontalIconNav
+				navItems={navItems}
+				orientation={orientation}
+				defaultActiveItemIndex={isOpen ? 0 : undefined}
+			/>
 			<div style={{ marginTop: '64px' }}>{CategoryList}</div>
 		</>
 	)

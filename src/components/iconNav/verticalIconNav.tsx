@@ -10,6 +10,7 @@ import { INavItemProps, NavItem } from './navItem'
 export interface IUseVerticalIconNavResult {
 	menuButtonProps: INavItemProps
 	MenuList: JSX.Element
+	isOpen: boolean
 }
 
 /**
@@ -85,5 +86,5 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		</div>
 	)
 
-	return { menuButtonProps, MenuList }
+	return { menuButtonProps, MenuList, isOpen }
 }

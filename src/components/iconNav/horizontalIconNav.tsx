@@ -17,8 +17,12 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		iconHeight = '64px',
 		labelWidth = '248px',
 		orientation,
+		defaultActiveItemIndex = -1,
 	} = props
-	const [hoverIndex, setHoverIndex] = useState<number>(-1)
+	let [hoverIndex, setHoverIndex] = useState<number>(-1)
+	if (hoverIndex === -1 && defaultActiveItemIndex > -1) {
+		hoverIndex = defaultActiveItemIndex
+	}
 	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
 	const isSmall = useContext(MediaContext) === MediaSize.Small

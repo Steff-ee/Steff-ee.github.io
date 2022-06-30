@@ -30,6 +30,9 @@ export interface ICommonIconNavProps {
 	/* Indicates the currently selected navItem, so that it can be highlighted */
 	selectedId?: string
 
+	/* If no item is active, make this one active */
+	defaultActiveItemIndex?: number
+
 	/* Whether the nav is on the left or right */
 	orientation: NavOrientation
 

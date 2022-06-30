@@ -17,7 +17,7 @@ export const useCategoryMenu = (props: ICategoryMenuProps) => {
 	const { onClick, ...selectedNavItemProps } = selectedNavItem
 	selectedNavItemProps.label = 'Choose category'
 
-	const { menuButtonProps, MenuList } = useVerticalIconNav({
+	const { menuButtonProps, MenuList, isOpen } = useVerticalIconNav({
 		skip,
 		navItems,
 		showIconLabels: true,
@@ -26,5 +26,5 @@ export const useCategoryMenu = (props: ICategoryMenuProps) => {
 		menuButtonProps: selectedNavItemProps,
 	})
 
-	return { categoryButtonProps: menuButtonProps, CategoryList: MenuList }
+	return { categoryButtonProps: menuButtonProps, CategoryList: MenuList, isOpen }
 }
