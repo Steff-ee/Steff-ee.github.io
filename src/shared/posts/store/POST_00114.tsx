@@ -5,6 +5,9 @@ import { PageRoutes } from '../../helpers/routes'
 import { useLightTextStyle, useListStyle } from '../../helpers/useStyles'
 import { IPost } from '../post.types'
 
+const ClutterImage =
+	'https://images.unsplash.com/photo-1609041958269-fc44467d925d?fit=crop&w=1169&q=80'
+
 const PostContent: React.FunctionComponent = (): JSX.Element => {
 	const lightTextStyle = useLightTextStyle()
 	const listStyle = useListStyle()
@@ -208,4 +211,5 @@ export const POST_00114: IPost = {
 	route: PageRoutes.Home,
 	pivot: HomePivots.Posts,
 	content: <PostContent />,
+	imageSrc: ClutterImage,
 }

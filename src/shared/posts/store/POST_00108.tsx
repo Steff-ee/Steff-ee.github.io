@@ -4,6 +4,9 @@ import { ConjecturePivots } from '../../../pages/conjectures/conjectures.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const MatrixImage =
+	'https://ramblingafter.files.wordpress.com/2018/01/matrix-3109795_1280.jpg?w=960'
+
 export const POST_00108: IPost = {
 	id: 108,
 	title: 'Writing code is like...',
@@ -11,6 +14,7 @@ export const POST_00108: IPost = {
 	createdTime: 1517054400000,
 	route: PageRoutes.Conjecture,
 	pivot: ConjecturePivots.Posts,
+	imageSrc: MatrixImage,
 	content: (
 		<>
 			<p>
@@ -33,7 +37,7 @@ export const POST_00108: IPost = {
 			</p>
 			<p>It’s more like editing.</p>
 			<ContentImage
-				src="https://ramblingafter.files.wordpress.com/2018/01/matrix-3109795_1280.jpg?w=960"
+				src={MatrixImage}
 				caption="This might look cool, but it has nothing to do with coding."
 				style={{ maxHeight: '384px' }}
 			/>

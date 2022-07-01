@@ -5,6 +5,9 @@ import { ConjecturePivots } from '../../../pages/conjectures/conjectures.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const VotingBallotImage =
+	'https://ramblingafter.files.wordpress.com/2018/03/range-voting-ballot.png?w=960'
+
 export const POST_00110: IPost = {
 	id: 110,
 	title: 'Which is the best voting scheme?',
@@ -12,6 +15,7 @@ export const POST_00110: IPost = {
 	createdTime: 1519905600000,
 	route: PageRoutes.Conjecture,
 	pivot: ConjecturePivots.Posts,
+	imageSrc: VotingBallotImage,
 	content: (
 		<>
 			<p>
@@ -156,7 +160,7 @@ export const POST_00110: IPost = {
 				(also known as Score voting), and that’s where problem number two comes in: People
 				lie.
 			</p>
-			<ContentImage src="https://ramblingafter.files.wordpress.com/2018/03/range-voting-ballot.png?w=960" />
+			<ContentImage src={VotingBallotImage} />
 			<p>
 				I could give Iron Man a 9 and Spidey a 7 to reflect my true preferences. Or I could
 				give both of them a 10 to boost their chances of winning relative to Captain

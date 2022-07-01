@@ -4,6 +4,8 @@ import { GamePivots } from '../../../pages/games/games.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const bigBangTheoryDnDImage = 'https://i.imgur.com/OLZUBFH.jpg'
+
 export const POST_00100: IPost = {
 	id: 100,
 	title: 'What is Dungeons & Dragons?',
@@ -11,6 +13,7 @@ export const POST_00100: IPost = {
 	createdTime: 1508760000000,
 	route: PageRoutes.Games,
 	pivot: GamePivots.Posts,
+	imageSrc: bigBangTheoryDnDImage,
 	content: (
 		<>
 			<p>
@@ -48,7 +51,7 @@ export const POST_00100: IPost = {
 				who play it.
 			</p>
 			<ContentImage
-				src="https://s-i.huffpost.com/gen/1262734/images/h-BIG-BANG-THEORY-628x314.jpg"
+				src={bigBangTheoryDnDImage}
 				caption="The socially awkward characters of The Big Bang playing the game infamous for being
 				played by the socially awkward."
 			/>

@@ -4,6 +4,8 @@ import { GamePivots } from '../../../pages/games/games.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const hogwartsHousesImage = 'https://i.imgur.com/O6Zsnll.jpg'
+
 export const POST_00102: IPost = {
 	id: 102,
 	title: 'Which attributes best describe player characters?',
@@ -11,6 +13,7 @@ export const POST_00102: IPost = {
 	createdTime: 1509019200000,
 	route: PageRoutes.Games,
 	pivot: GamePivots.Posts,
+	imageSrc: hogwartsHousesImage,
 	content: (
 		<>
 			<p>
@@ -26,7 +29,7 @@ export const POST_00102: IPost = {
 				skills. Which qualities would you choose to make your job of ranking humans easier?
 			</p>
 			<ContentImage
-				src="https://i.pinimg.com/736x/1c/7f/f2/1c7ff25c4aa1b6aa10b117a7a8f4f8ac--wedding-rehearsal-four-.jpg"
+				src={hogwartsHousesImage}
 				caption="Perhaps you choose wisdom, kindness, courage, and cunning, because you're the
 				headmaster of a school of wizardry and you want to segregate and stereotype students
 				by personality... for some reason."

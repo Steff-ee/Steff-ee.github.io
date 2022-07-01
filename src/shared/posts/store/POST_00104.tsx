@@ -3,6 +3,8 @@ import { StoryPivots } from '../../../pages/stories/stories.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const JinMaoDaShaImage = 'https://images.unsplash.com/photo-1465446751832-9f11e125aaa7'
+
 export const POST_00104: IPost = {
 	id: 104,
 	title: 'The Atrium',
@@ -10,6 +12,7 @@ export const POST_00104: IPost = {
 	createdTime: 1512043200000,
 	route: PageRoutes.Stories,
 	pivot: StoryPivots.Stories,
+	imageSrc: JinMaoDaShaImage,
 	content: (
 		<>
 			<p>I feel warm.</p>

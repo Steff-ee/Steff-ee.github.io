@@ -5,6 +5,8 @@ import { StoryPivots } from '../../../pages/stories/stories.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const WitcherImage = 'https://i.imgur.com/oA3ByDR.png'
+
 export const POST_00120: IPost = {
 	id: 120,
 	title: 'The Witcher, The Boys, & the Call to Adventure',
@@ -12,6 +14,7 @@ export const POST_00120: IPost = {
 	createdTime: 1583044394000,
 	route: PageRoutes.Stories,
 	pivot: StoryPivots.Posts,
+	imageSrc: WitcherImage,
 	content: (
 		<>
 			<p>
@@ -66,7 +69,7 @@ export const POST_00120: IPost = {
 			<p>So why does the song sound so epic?</p>
 
 			<ContentImage
-				src={'https://i.imgur.com/oA3ByDR.png'}
+				src={WitcherImage}
 				caption={
 					'And where does all the other instrumentation come from, if Jaskier only has the one lute?'
 				}

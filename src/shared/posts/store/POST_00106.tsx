@@ -4,6 +4,8 @@ import { StoryPivots } from '../../../pages/stories/stories.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const SnobbyCatImage = 'https://ramblingafter.files.wordpress.com/2017/12/snobby-cat.jpg?w=640'
+
 export const POST_00106: IPost = {
 	id: 106,
 	title: 'There Are No “Best” Films',
@@ -11,6 +13,7 @@ export const POST_00106: IPost = {
 	createdTime: 1514116800000,
 	route: PageRoutes.Stories,
 	pivot: StoryPivots.Posts,
+	imageSrc: SnobbyCatImage,
 	content: (
 		<>
 			<p>
@@ -24,10 +27,7 @@ export const POST_00106: IPost = {
 				And while this might cause perennial bickering in between the hoi polloi and the
 				snobs, it’s not the pattern I think should change.
 			</p>
-			<ContentImage
-				src="https://ramblingafter.files.wordpress.com/2017/12/snobby-cat.jpg?w=640"
-				caption="This cat is a snob. Don't be a snob."
-			/>
+			<ContentImage src={SnobbyCatImage} caption="This cat is a snob. Don't be a snob." />
 			<p>
 				{' '}
 				I want people to stop discussing “best movies” altogether. Specifically, I want the

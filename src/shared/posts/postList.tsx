@@ -18,7 +18,7 @@ export const PostList: React.FunctionComponent<IPostProps> = (props) => {
 	return (
 		<div>
 			{reversedPosts.map((post) => (
-				<div key={`postSummary-${post.id}`} style={{ paddingBottom: 40 }}>
+				<div key={`postSummary-${post.id}`} style={{ paddingBottom: 60 }}>
 					<PostSummary post={post} page={page} pivot={pivot} />
 				</div>
 			))}

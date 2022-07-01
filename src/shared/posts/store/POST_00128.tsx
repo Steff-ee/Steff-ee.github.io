@@ -4,6 +4,8 @@ import { ConjecturePivots } from '../../../pages/conjectures/conjectures.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const TrolleyProblemImage = 'https://i.imgur.com/yS34XqY.png'
+
 const PostContent: React.FunctionComponent = (): JSX.Element => {
 	return (
 		<>
@@ -22,7 +24,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 				the lever is obviously a monster. It’s the variants that are interesting.
 			</p>
 			<ContentImage
-				src={'https://i.imgur.com/yS34XqY.png'}
+				src={TrolleyProblemImage}
 				caption={
 					'Well. Watching souls get demonically tortured by involuntary trolley problems can also be interesting.'
 				}
@@ -137,4 +139,5 @@ export const POST_00128: IPost = {
 	route: PageRoutes.Conjecture,
 	pivot: ConjecturePivots.Posts,
 	content: <PostContent />,
+	imageSrc: TrolleyProblemImage,
 }

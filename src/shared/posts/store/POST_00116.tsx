@@ -3,6 +3,8 @@ import { ConjecturePivots } from '../../../pages/conjectures/conjectures.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const SeveranceImage = 'https://i.imgur.com/9ZyUVdV.jpg'
+
 export const POST_00116: IPost = {
 	id: 116,
 	title: 'Free Will is Compatible with Determinism',
@@ -10,6 +12,7 @@ export const POST_00116: IPost = {
 	createdTime: 1580664312000,
 	route: PageRoutes.Conjecture,
 	pivot: ConjecturePivots.Posts,
+	imageSrc: SeveranceImage,
 	content: (
 		<>
 			<p>

@@ -5,6 +5,9 @@ import { PageRoutes } from '../../helpers/routes'
 import { useLightTextStyle, useTitleTextStyle } from '../../helpers/useStyles'
 import { IPost } from '../post.types'
 
+const VotingRightsImage =
+	'https://images.unsplash.com/photo-1619059617660-d42ec4abe29a?fit=crop&w=880&q=80'
+
 const PostContent: React.FunctionComponent = (): JSX.Element => {
 	const lightTextStyle = useLightTextStyle()
 	const titleTextStyle = useTitleTextStyle()
@@ -275,4 +278,5 @@ export const POST_00126: IPost = {
 	route: PageRoutes.Conjecture,
 	pivot: ConjecturePivots.Posts,
 	content: <PostContent />,
+	imageSrc: VotingRightsImage,
 }

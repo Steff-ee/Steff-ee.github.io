@@ -3,6 +3,8 @@ import { StoryPivots } from '../../../pages/stories/stories.types'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
+const TwelfthDoctorImage = 'https://i.imgur.com/XyeDQ5P.jpg'
+
 export const POST_00103: IPost = {
 	id: 103,
 	title: 'The TimeLord',
@@ -10,6 +12,7 @@ export const POST_00103: IPost = {
 	createdTime: 1510142400000,
 	route: PageRoutes.Stories,
 	pivot: StoryPivots.Stories,
+	imageSrc: TwelfthDoctorImage,
 	content: (
 		<>
 			This is a Doctor Who fanfic, a headcanon I developed a while back to explain some of the
@@ -64,7 +67,7 @@ export const POST_00103: IPost = {
 			<p>“Um.”</p>
 			<p>
 				“What did you call me for? You still haven’t said. I’d love to stay and chit-chat, I
-				really would, but”—the TimeLord gestures to his now wizardly visage—”I’ve changed.
+				really would, but”—the TimeLord gestures to his now wizardly visage—“I’ve changed.
 				Times have changed. Spit it out, Rory.”
 			</p>
 			<p>“I’m going to tell you. But you have to promise. Okay?”</p>

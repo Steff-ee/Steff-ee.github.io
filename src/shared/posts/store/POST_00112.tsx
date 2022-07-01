@@ -6,6 +6,8 @@ import { PageRoutes } from '../../helpers/routes'
 import { SpoilerWarning } from '../../presentational/components/spoilerWarning'
 import { IPost } from '../post.types'
 
+const ThanosPlanetPullImage = 'https://sm.ign.com/ign_de/screenshot/default/g_epax.jpg'
+
 export const POST_00112: IPost = {
 	id: 112,
 	title: 'The Thanos Avatar & The Sorcerer Supreme',
@@ -13,10 +15,10 @@ export const POST_00112: IPost = {
 	createdTime: 1558267200000,
 	route: PageRoutes.Stories,
 	pivot: StoryPivots.Posts,
+	imageSrc: ThanosPlanetPullImage,
 	content: (
 		<>
-			<SpoilerWarning title={'Avengers: Infinity War & Endgame'} />
-			 
+			<SpoilerWarning title={'Avengers: Infinity War & Endgame'} /> 
 			<p>
 				Avengers: Infinity War left audiences with the greatest cliffhanger of cinematic
 				history, more shocking and far more interesting to speculate about than even any of
@@ -30,8 +32,7 @@ export const POST_00112: IPost = {
 				lines={[
 					{
 						by: 'STRANGE',
-						says:
-							'I went forward in time... to view alternate futures. To see all the possible outcomes of the coming conflict.',
+						says: 'I went forward in time... to view alternate futures. To see all the possible outcomes of the coming conflict.',
 					},
 					{ by: 'QUILL', says: 'How many did you see?' },
 					{ by: 'STRANGE', says: 'Fourteen million six hundred and five.' },
@@ -86,7 +87,7 @@ export const POST_00112: IPost = {
 				</span>
 			</p>
 			<ContentImage
-				src="https://sm.ign.com/ign_de/screenshot/default/g_epax.jpg"
+				src={ThanosPlanetPullImage}
 				caption="Thanos likes long walks on the beach, bubbles, gazing at moons, and sometimes throwing
 				them."
 			/>{' '}

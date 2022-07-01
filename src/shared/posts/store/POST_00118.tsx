@@ -7,6 +7,8 @@ import { PageRoutes } from '../../helpers/routes'
 import { useLightTextStyle, useListStyle } from '../../helpers/useStyles'
 import { IPost } from '../post.types'
 
+const StanleyParableChartsImage = 'https://i.imgur.com/7sZo7CF.jpg'
+
 const PostContent: React.FunctionComponent = (): JSX.Element => {
 	const lightTextStyle = useLightTextStyle()
 	const listStyle = useListStyle()
@@ -85,7 +87,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 				worry so much about all this.
 			</p>
 			<ContentImage
-				src={'https://i.imgur.com/7sZo7CF.jpg'}
+				src={StanleyParableChartsImage}
 				caption={'Ratings are to me what charts are to the Stanley Parable.'}
 			/>
 
@@ -156,4 +158,5 @@ export const POST_00118: IPost = {
 	route: PageRoutes.Home,
 	pivot: HomePivots.Posts,
 	content: <PostContent />,
+	imageSrc: StanleyParableChartsImage,
 }

@@ -5,8 +5,11 @@ import { Maskman626 } from '../../helpers/artists'
 import { PageRoutes } from '../../helpers/routes'
 import { IPost } from '../post.types'
 
-const tearsInRainSrc =
+const TearsInRainSrc =
 	'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/769a8335-123e-4b2b-ab0f-839dac92c16b/dbnozxb-5110a27b-f28e-48ae-9e82-9a832a2f8ba8.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNzY5YTgzMzUtMTIzZS00YjJiLWFiMGYtODM5ZGFjOTJjMTZiXC9kYm5venhiLTUxMTBhMjdiLWYyOGUtNDhhZS05ZTgyLTlhODMyYTJmOGJhOC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.b90GPDWEoZ8aGI5-xY9aI_Msml-JJZauD82NIBHRUtU'
+
+const MarblesImage =
+	'https://steamcdn-a.akamaihd.net/steam/apps/1170970/ss_d23e15f420483a1177c5fb1c4e18b34cf15d3daa.1920x1080.jpg?t=1587489220'
 
 const PostContent: React.FunctionComponent = (): JSX.Element => {
 	return (
@@ -34,7 +37,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 			</p>
 
 			<ContentImage
-				src={tearsInRainSrc}
+				src={TearsInRainSrc}
 				caption={
 					<>
 						{`It was either this, or a Dust in the Wind reference. Credit: `}
@@ -97,12 +100,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 				to get invested in the senseless, vacuous, and sometimes hilarious trajectories of
 				these artificially simulated, random marbles.
 			</p>
-			<ContentImage
-				src={
-					'https://steamcdn-a.akamaihd.net/steam/apps/1170970/ss_d23e15f420483a1177c5fb1c4e18b34cf15d3daa.1920x1080.jpg?t=1587489220'
-				}
-				caption={'Marbles.'}
-			/>
+			<ContentImage src={MarblesImage} caption={'Marbles.'} />
 			<p>
 				More important than the marbles themselves, and whether one’s marble wins or loses,
 				is whether one’s marble leads a viewer to interaction with the streamer. Every
@@ -166,4 +164,5 @@ export const POST_00124: IPost = {
 	route: PageRoutes.Games,
 	pivot: GamePivots.Posts,
 	content: <PostContent />,
+	imageSrc: MarblesImage,
 }
