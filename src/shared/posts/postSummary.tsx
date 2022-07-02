@@ -10,14 +10,15 @@ export interface IPostSummaryProps {
 	post: IPost
 	page: PageRoutes
 	pivot: PivotRoutes | undefined
+	displayLarge?: boolean
 }
 
-const titleTextStyleLarge: React.CSSProperties = {
+const titleTextStyleLarge = (displayLarge?: boolean): React.CSSProperties => ({
 	fontFamily: 'Montserrat',
-	fontSize: 32,
-	lineHeight: '40px',
+	fontSize: displayLarge ? 32 : 28,
+	lineHeight: '35px',
 	fontWeight: 600,
-}
+})
 
 const titleTextStyleSmall: React.CSSProperties = {
 	fontFamily: 'Montserrat',
@@ -39,12 +40,13 @@ const subtitleTextStyleSmall: React.CSSProperties = {
 }
 
 export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) => {
-	const { post, page, pivot } = props
+	let { post, page, pivot, displayLarge } = props
 	const { title, subtitle, createdTime, route, imageSrc } = post
 	const mediaSize = useContext(MediaContext)
 	const isSmall = mediaSize === MediaSize.Small
+	displayLarge = isSmall ? false : displayLarge
 	const { subtitle: subtitleColor } = useColors()
-	let titleTextStyle = titleTextStyleLarge
+	let titleTextStyle = titleTextStyleLarge(displayLarge)
 	let subtitleTextStyle = subtitleTextStyleLarge
 	if (mediaSize === MediaSize.Small) {
 		titleTextStyle = titleTextStyleSmall
@@ -54,29 +56,38 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const dateStr = createdDate.toLocaleDateString('en-US', dateTimeFormatOptions)
 	const label = route === PageRoutes.Home ? dateStr : `${dateStr} / ${capitalize(route)}`
 
+	let rootStyle: React.CSSProperties = {
+		maxWidth: '800px',
+		display: 'flex',
+		borderTop: `1px solid gray`,
+		marginTop: -1,
+	}
+
+	if (displayLarge) {
+		rootStyle = {
+			maxWidth: '800px',
+			display: 'block',
+			marginTop: -1,
+			textAlign: 'center',
+		}
+	}
+
 	return (
-		<div
-			style={{
-				maxWidth: '800px',
-				display: 'flex',
-				borderTop: `1px solid gray`,
-				paddingTop: 20,
-			}}
-		>
+		<div style={rootStyle}>
 			{!isSmall && (
 				<img
-					width={260}
-					height={180}
+					width={displayLarge ? 600 : 260}
+					height={displayLarge ? 340 : 200}
 					style={{
 						objectFit: 'cover',
 						objectPosition: '50% top',
-						marginRight: 40,
-						opacity: 0.9,
+						marginRight: displayLarge ? undefined : 40,
+						opacity: displayLarge ? undefined : 0.9,
 					}}
 					src={imageSrc}
 				/>
 			)}
-			<div style={{ maxWidth: 500 }}>
+			<div style={{ maxWidth: displayLarge ? undefined : 500, paddingTop: 24 }}>
 				<a style={titleTextStyle} href={getPath(page, pivot, post.id)} target="_self">
 					{title}
 				</a>
