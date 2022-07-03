@@ -1,5 +1,3 @@
-import { INavItemProps } from './navItem';
-
 export enum IconLayout {
 	Horizontal,
 	Vertical,
@@ -16,11 +14,25 @@ export enum NavOrientation {
 }
 
 export interface INavItem {
-	id: string | undefined
+	id?: string
 	icon: JSX.Element
 	label: string
-	onClick?: () => void
+	labelPosition?: LabelPosition
+	isSelected?: boolean
 	disabled?: boolean
+	tabIndex?: number
+
+	/* Styling */
+	width: string
+	height: string
+	color: string
+	labelWidth?: string
+	rootStyle?: React.CSSProperties
+	labelTextStyle?: React.CSSProperties
+
+	/* Callbacks */
+	onClick?: () => void
+	onAttention?: (hasAttention: boolean) => void
 }
 
 export interface ICommonIconNavProps {
@@ -51,7 +63,7 @@ export interface IVerticalIconNavProps extends Omit<ICommonIconNavProps, 'rootSt
 	/* Whether or not to show the icon labels */
 	showIconLabels: boolean
 
-	menuButtonProps?: Partial<INavItemProps>
+	menuButtonProps?: Partial<INavItem>
 	
 	/* When true, returns empty components */
 	skip?: boolean

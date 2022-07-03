@@ -18,7 +18,6 @@ export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (pr
 	const mediaSize = useContext(MediaContext)
 	const { categoryButtonProps, CategoryList, isOpen } = useCategoryMenu({})
 
-	// todo: Why are INavItem and INavItemProps different?
 	const navItems = useMemo(() => {
 		const items = [categoryButtonProps, CatsNavItem]
 		if (mediaSize !== MediaSize.Small) {

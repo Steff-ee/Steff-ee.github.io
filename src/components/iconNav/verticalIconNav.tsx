@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { INavItem, IVerticalIconNavProps, LabelPosition, NavOrientation } from './iconNav.types'
-import { INavItemProps, NavItem } from './navItem'
+import { NavItem } from './navItem'
 
 // (TODO) add opening/closing animation
 
 export interface IUseVerticalIconNavResult {
-	menuButtonProps: INavItemProps
+	menuButtonProps: INavItem
 	MenuList: JSX.Element
 	isOpen: boolean
 }
@@ -43,7 +43,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		}
 	}
 
-	const menuButtonProps: INavItemProps = {
+	const menuButtonProps: INavItem = {
 		label: 'Open menu',
 		width: iconWidth,
 		height: iconHeight,

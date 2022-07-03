@@ -2,30 +2,8 @@ import React, { useState } from 'react'
 import { useAttention } from '../../shared/helpers/attention'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { IconButton } from '../iconButton'
-import { LabelPosition } from './iconNav.types'
+import { INavItem, LabelPosition } from './iconNav.types'
 import { NavLabel } from './navLabel'
-
-export interface INavItemProps {
-	id?: string
-	icon: JSX.Element
-	label: string
-	labelPosition?: LabelPosition
-	isSelected?: boolean
-	disabled?: boolean
-	tabIndex?: number
-
-	/* Styling */
-	width: string
-	height: string
-	color: string
-	labelWidth?: string
-	rootStyle?: React.CSSProperties
-	labelTextStyle?: React.CSSProperties
-
-	/* Callbacks */
-	onClick?: () => void
-	onAttention?: (hasAttention: boolean) => void
-}
 
 const disabledFadeFilterValue = 'opacity(0.25)'
 
@@ -33,7 +11,7 @@ const disabledFadeFilterValue = 'opacity(0.25)'
  * This is a molecular component:
  * It should avoid using Context but it can have behavior-specific props.
  */
-export const NavItem: React.FunctionComponent<INavItemProps> = (props) => {
+export const NavItem: React.FunctionComponent<INavItem> = (props) => {
 	const {
 		icon,
 		onClick,
