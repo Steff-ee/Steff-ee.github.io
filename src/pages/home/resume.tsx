@@ -107,11 +107,11 @@ const ResumeSection: React.FunctionComponent<IResumeSectionProps> = (props) => {
 }
 
 // replaces use of <li> to get around the univeral li styling in root.css
-const ListItem: React.FunctionComponent = (props) => {
+const ListItem: React.FunctionComponent<React.PropsWithChildren> = (props) => {
 	return <li style={{ margin: '0px 0px 2px 11px' }}>{props.children}</li>
 }
 
-const ListHeader: React.FunctionComponent = (props) => {
+const ListHeader: React.FunctionComponent<React.PropsWithChildren> = (props) => {
 	return (
 		<div style={{ marginTop: '8px', fontWeight: 600, lineHeight: '25px' }}>
 			{props.children}
@@ -155,7 +155,7 @@ const ExperienceSubSection: React.FunctionComponent<IExperienceSubSectionProps> 
 	)
 }
 
-export const ResumePage: React.FunctionComponent = (props) => {
+export const ResumePage: React.FunctionComponent<React.PropsWithChildren> = (props) => {
 	const mediaSize = useContext(MediaContext)
 	const isMobile = mediaSize === MediaSize.Small
 	let padding = '10px'

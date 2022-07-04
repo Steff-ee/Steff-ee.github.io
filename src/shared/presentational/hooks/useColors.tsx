@@ -60,7 +60,7 @@ export const useColors = (): IColors => {
 	return useContext(ColorsContext)
 }
 
-export const ColorsProvider: React.FunctionComponent = (props) => {
+export const ColorsProvider: React.FunctionComponent<React.PropsWithChildren> = (props) => {
 	const { children } = props
 	const { season } = useContext(SeasonsContext)
 	let colors: IColors

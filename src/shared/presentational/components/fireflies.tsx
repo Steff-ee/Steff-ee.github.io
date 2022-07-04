@@ -15,7 +15,6 @@ interface IHighlightProps {
 	minSize: number
 	maxOpacity: number
 	minOpacity: number
-	interactionEnabled: boolean
 }
 
 export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
@@ -25,7 +24,7 @@ export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
 	const animSpeed = 3
 	const moveSpeed = 2
 	const interactionDistance = 200
-	const bubbleSize = 7
+	const bubbleSize = 6
 
 	let count
 	if (mood === CircadianMood.Night || isNavBarOpen) {
@@ -43,7 +42,6 @@ export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
 			minSize: 2,
 			maxOpacity: 1,
 			minOpacity: 0.8,
-			interactionEnabled: true,
 		}
 	} else {
 		options = {
@@ -51,7 +49,6 @@ export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
 			minSize: 1,
 			maxOpacity: 0.8,
 			minOpacity: 0.2,
-			interactionEnabled: false,
 		}
 	}
 
@@ -107,21 +104,11 @@ export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
 				interactivity: {
 					events: {
 						onhover: {
-							enable: options.interactionEnabled,
-							mode: 'grab',
-						},
-						onclick: {
-							enable: options.interactionEnabled,
+							enable: true,
 							mode: 'bubble',
 						},
 					},
 					modes: {
-						grab: {
-							distance: interactionDistance,
-							line_linked: {
-								opacity: 1,
-							},
-						},
 						bubble: {
 							size: bubbleSize,
 							distance: interactionDistance,

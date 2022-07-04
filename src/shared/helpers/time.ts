@@ -1,4 +1,4 @@
-const { getSunrise, getSunset } = require('sunrise-sunset-js')
+import { getSunrise, getSunset } from 'sunrise-sunset-js';
 
 export const latitude = 47.6696481
 export const longitude = -122.1995027
@@ -30,6 +30,8 @@ export const getMinutesToNight = (): number => {
 export const getMinutesFromNight = (): number => {
 	const currentTime = minutesOfDay(new Date())
 	const sunriseTime = minutesOfDay(getSunrise(latitude, longitude))
+	console.log('getSunrise(latitude, longitude)', getSunrise(latitude, longitude))
+	console.log('getSunset(latitude, longitude)', getSunset(latitude, longitude))
 
 	const distance = currentTime - sunriseTime
 	if (distance < 0) {

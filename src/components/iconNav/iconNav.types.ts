@@ -23,9 +23,9 @@ export interface INavItem {
 	tabIndex?: number
 
 	/* Styling */
-	width: string
-	height: string
-	color: string
+	width?: string
+	height?: string
+	color?: string
 	labelWidth?: string
 	rootStyle?: React.CSSProperties
 	labelTextStyle?: React.CSSProperties

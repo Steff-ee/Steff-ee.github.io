@@ -22,7 +22,6 @@ import { Seasons } from '../../../modes/seasons/seasonsHelpers'
 import { catsTitle } from '../../../pages/cats/cats.types'
 import { conjectureTitle } from '../../../pages/conjectures/conjectures.types'
 import { gamesTitle } from '../../../pages/games/games.types'
-import { homeTitle } from '../../../pages/home/home.types'
 import { storiesTitle } from '../../../pages/stories/stories.types'
 import {
 	getConjecturePath,
@@ -81,7 +80,7 @@ export const useCategoryNavItems = (): INavItem[] => {
 		{
 			icon: <FontAwesomeIcon icon={faGlobeAmericas} {...commonIconProps} />,
 			id: PageRoutes.Home,
-			label: homeTitle,
+			label: 'all',
 			onClick: (): void => redirectTo(homePath),
 		},
 		{
@@ -108,14 +107,14 @@ export const useCategoryNavItems = (): INavItem[] => {
 }
 
 export const useChangeThemeNavItem = (): INavItem => {
-	const { season, setSeason } = useContext(SeasonsContext)
+	const { setSeason } = useContext(SeasonsContext)
 	const isTest = useIsTest()
 
 	return {
 		icon: <FontAwesomeIcon icon={faSyncAlt} {...commonIconProps} size={'lg' as const} />,
 		id: undefined,
 		label: 'change theme',
-		onClick: (): void => setSeason(getNextSeason(season, isTest)),
+		onClick: (): void => setSeason((season) => getNextSeason(season, isTest)),
 	}
 }
 

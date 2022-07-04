@@ -4,9 +4,9 @@ export interface INavLabelProps {
 	label: string
 
 	/* Styling */
-	width: string
-	height: string
-	rootStyle: React.CSSProperties
+	width?: string
+	height?: string
+	rootStyle?: React.CSSProperties
 	textStyle?: React.CSSProperties
 
 	/* Callbacks */
