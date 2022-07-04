@@ -73,10 +73,10 @@ export const classicBackgrounds = {
 
 // to find the original link, grab XXXX from "wallhaven-XXXX.jpg" and insert into https://wallhaven.cc/w/XXXX
 export const springBackgrounds = {
-	home: { src: 'https://w.wallhaven.cc/full/qd/wallhaven-qdpx2r.jpg', ...Rapt },
+	home: { src: 'https://i.imgur.com/oiGVtVv.jpg', ...Rapt },
 	stories: { src: 'https://w.wallhaven.cc/full/p8/wallhaven-p8yr1j.jpg', ...Liu },
 	games: { src: 'https://w.wallhaven.cc/full/p8/wallhaven-p8j3g3.jpg', ...JoeyJazz },
-	conjecture: { src: 'https://w.wallhaven.cc/full/4o/wallhaven-4opl79.jpg', ...Gercken },
+	conjecture: { src: 'https://i.imgur.com/PlHzPGy.jpg', ...Gercken },
 }
 
 export const summerBackgrounds = {
@@ -106,7 +106,7 @@ export const autumnBackgrounds = {
 }
 
 export const winterBackgrounds = {
-	home: { src: 'https://w.wallhaven.cc/full/g8/wallhaven-g8ml1q.jpg', ...Riebe },
+	home: { src: 'https://i.imgur.com/D9pNKJB.jpg', ...Riebe },
 	stories: { src: 'https://i.imgur.com/41J50g7.jpg', ...Fadeev },
 	games: { src: 'https://w.wallhaven.cc/full/96/wallhaven-96zxjw.jpg', ...Mertun },
 	conjecture: { src: 'https://w.wallhaven.cc/full/76/wallhaven-7671ey.png', ...wallpaperFlare },
