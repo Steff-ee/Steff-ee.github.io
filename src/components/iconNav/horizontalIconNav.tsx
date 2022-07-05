@@ -45,7 +45,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				}}
 			>
 				{navItems.map((item: INavItem, itemIndex: number): JSX.Element => {
-					const onAttention = useCallback((hasAttention) => {
+					const onAttention = useCallback((hasAttention: boolean) => {
 						setHoverIndex(hasAttention ? itemIndex : -1)
 					}, [])
 
@@ -55,7 +55,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 							width={iconWidth}
 							height={iconHeight}
 							color={navbarTextColor}
-							key={item.id}
+							key={`nav-${itemIndex}`}
 							id={item.id}
 							onAttention={onAttention}
 						/>

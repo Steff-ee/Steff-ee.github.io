@@ -17,7 +17,7 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 	const { headerTitleText: headerTitleTextColor, border: borderColor } = useColors()
 	const { season } = useContext(SeasonsContext)
 
-	const [zoomSpringProps, setZoomSpring, stopZoomSpring] = useSpring(() => ({
+	const [zoomSpringProps, zoomSpringControl] = useSpring(() => ({
 		from: { scale: 1 },
 		config: {
 			duration: zoomSpringDuration,
@@ -109,8 +109,8 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 			</div>
 			<div
 				onClick={doNextMorph}
-				onMouseEnter={() => setZoomSpring({ scale: zoomScale })}
-				onMouseLeave={(event) => stopZoomSpring()}
+				onMouseEnter={() => zoomSpringControl.start({ scale: zoomScale })}
+				onMouseLeave={(event) => zoomSpringControl.stop()}
 				style={{
 					...parallaxGroupStyle,
 					position: 'absolute',

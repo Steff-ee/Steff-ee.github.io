@@ -5,7 +5,6 @@ export const useGlobalStyling = (): void => {
     const colors = useContext(ColorsContext)
     
     useEffect(() => {
-        console.log('setting properties!')
         document.documentElement.style.setProperty('--link', colors.link)
         document.documentElement.style.setProperty('--link-hover', colors.linkHover)
         document.documentElement.style.setProperty('--visited-link', colors.visitedLink)

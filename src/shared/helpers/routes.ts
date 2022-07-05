@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouteMatch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { PivotRoutes } from '../posts/post.types'
 
 export const catsPath = '#/cats'
@@ -32,13 +32,7 @@ export const getPrimaryRoute = (pathName: string): string => {
 }
 
 export const usePageParams = (): IRouteParams => {
-	const match = useRouteMatch<IRouteParams>(`/:page/:pivot?/:postId?`)
-
-	if (match) {
-		return match.params
-	}
-
-	return { page: PageRoutes.Home }
+	return useParams()
 }
 
 export interface IRouteContext {

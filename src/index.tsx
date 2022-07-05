@@ -1,4 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Root } from './pages/root'
-ReactDOM.render(<Root />, document.getElementById('app'))
+
+const container = document.getElementById('app')
+if (container) {
+	const root = createRoot(container)
+	root.render(<Root />)
+} else {
+	console.log('ERROR: Could not get app element by ID')
+}

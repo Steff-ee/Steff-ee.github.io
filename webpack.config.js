@@ -28,16 +28,18 @@ const indexPath = path.join(__dirname, settings.input.entry)
 
 module.exports = {
 	devServer: {
-		contentBase: path.join(__dirname, settings.output.directory),
+		static: {
+			directory: path.join(__dirname, settings.output.directory),
+		},
 		host: settings.devServer.host,
 		port: settings.devServer.port,
-		hot: true,
+		hot: "only",
 		headers: {
 			'Access-Control-Allow-Origin': '*',
 		},
 		historyApiFallback: true,
 	},
-	entry: dev ? ['react-hot-loader/patch', indexPath] : [indexPath],
+	entry: [indexPath],
 	module: {
 		rules: [
 			{
@@ -51,7 +53,7 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				loader: 'style-loader!css-loader!sass-loader',
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
