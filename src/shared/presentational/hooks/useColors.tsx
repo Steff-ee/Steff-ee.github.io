@@ -12,6 +12,10 @@ const classicColors: IColors = {
 	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.FadedBlack,
+	link: Colors.CeruleanDark,
+	linkHover: Colors.Cerulean,
+	visitedLink: Colors.ClaretWine,
+	visitedLinkHover: Colors.SoftMagenta,
 }
 
 const winterColors: IColors = {
@@ -22,6 +26,10 @@ const winterColors: IColors = {
 	borderHighlight: Colors.OffBlack,
 	text: Colors.IceBlue,
 	subtitle: 'white',
+	link: Colors.SeaFoam,
+	linkHover: Colors.SeaFoam,
+	visitedLink: Colors.SeaFoam,
+	visitedLinkHover: Colors.SeaFoam,
 }
 
 const springColors: IColors = {
@@ -32,6 +40,10 @@ const springColors: IColors = {
 	borderHighlight: Colors.CloudedIce,
 	text: Colors.IceWhite,
 	subtitle: Colors.GentleSand,
+	link: Colors.CloudedIce,
+	linkHover: Colors.IceWhite,
+	visitedLink: Colors.CloudedIce,
+	visitedLinkHover: Colors.IceWhite,
 }
 
 const summerColors: IColors = {
@@ -42,6 +54,10 @@ const summerColors: IColors = {
 	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.LightYellow,
+	link: Colors.CeruleanDark,
+	linkHover: Colors.Cerulean,
+	visitedLink: Colors.ClaretWine,
+	visitedLinkHover: Colors.SoftMagenta,
 }
 
 const autumnColors: IColors = {
@@ -52,6 +68,10 @@ const autumnColors: IColors = {
 	borderHighlight: Colors.OffBlack,
 	text: '#f2afa1',
 	subtitle: '#f2afa1',
+	link: Colors.CeruleanDark,
+	linkHover: Colors.Cerulean,
+	visitedLink: Colors.ClaretWine,
+	visitedLinkHover: Colors.SoftMagenta,
 }
 
 export const ColorsContext = createContext<IColors>(classicColors)

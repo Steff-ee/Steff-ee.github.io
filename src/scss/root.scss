@@ -1,3 +1,10 @@
+#root {
+	$link: rgb(0, 92, 120);
+	$link-hover: rgb(15, 128, 163);
+	$visited-link: rgb(113, 25, 62);
+	$visited-link-hover: rgb(160, 59, 101);
+}
+
 p {
 	margin: 0 0 22px 0;
 }
@@ -8,33 +15,33 @@ li {
 
 a:link {
 	display: inline-block;
-	color: rgb(0, 92, 120);
+	color: var(--link);
 }
 
 a:link:after {
 	display: block;
 	content: '';
-	border-bottom: 1.75px solid rgb(15, 128, 163);
+	border-bottom: 1.75px solid var(--link-hover);
 	transform: scaleX(0);
 	transition: transform 250ms ease-in-out;
 }
 
 a:visited {
 	display: inline-block;
-	color: rgb(113, 25, 62);
+	color: var(--visited-link);
 }
 
 a:visited:after {
 	display: block;
 	content: '';
-	border-bottom: 1.75px solid rgb(160, 59, 101);
+	border-bottom: 1.75px solid var(--visited-link-hover);
 	transform: scaleX(0);
 	transition: transform 250ms ease-in-out;
 }
 
 a:link:hover,
 .linkHover a:link {
-	color: rgb(15, 128, 163);
+	color: var(--link-hover);
 }
 
 a:link:hover:after,
@@ -44,7 +51,7 @@ a:link:hover:after,
 
 a:visited:hover,
 .linkHover a:visited {
-	color: rgb(160, 59, 101);
+	color: var(--visited-link-hover);
 }
 
 a:visited:hover,

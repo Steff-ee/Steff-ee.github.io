@@ -33,4 +33,9 @@ export interface IColors {
 	 * Color of the subtitle text
 	 */
 	subtitle: string
+
+	link: string
+	visitedLink: string
+	linkHover: string
+	visitedLinkHover: string
 }
