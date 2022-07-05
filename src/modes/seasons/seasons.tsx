@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CircadianMood, getCircadianMood } from '../../shared/helpers/time'
+import { isDarkModeOn } from '../../shared/helpers/time'
 import { Seasons } from './seasonsHelpers'
 
 interface ISeasonsContext {
@@ -16,10 +16,7 @@ export const SeasonsContext = React.createContext<ISeasonsContext>({
 
 export const SeasonsProvider: React.FunctionComponent<React.PropsWithChildren> = (props) => {
 	const { children } = props
-	const mood = getCircadianMood()
-	const [season, setSeason] = useState<Seasons>(
-		mood === CircadianMood.Night ? Seasons.Winter : Seasons.None
-	)
+	const [season, setSeason] = useState<Seasons>(isDarkModeOn() ? Seasons.Winter : Seasons.None)
 
 	return (
 		<SeasonsContext.Provider value={{ season, setSeason }}>{children}</SeasonsContext.Provider>

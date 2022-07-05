@@ -30,8 +30,6 @@ export const getMinutesToNight = (): number => {
 export const getMinutesFromNight = (): number => {
 	const currentTime = minutesOfDay(new Date())
 	const sunriseTime = minutesOfDay(getSunrise(latitude, longitude))
-	console.log('getSunrise(latitude, longitude)', getSunrise(latitude, longitude))
-	console.log('getSunset(latitude, longitude)', getSunset(latitude, longitude))
 
 	const distance = currentTime - sunriseTime
 	if (distance < 0) {
@@ -61,4 +59,16 @@ export const getCircadianMood = (): CircadianMood => {
 	}
 
 	return CircadianMood.Day
+}
+
+export const isDarkModeOn = (): boolean => {
+	if (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches) {
+		return true
+	}
+
+	if (window.matchMedia?.('(prefers-color-scheme: light)')?.matches) {
+		return false
+	}
+
+	return getCircadianMood() === CircadianMood.Night
 }

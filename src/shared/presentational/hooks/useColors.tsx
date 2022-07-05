@@ -17,7 +17,7 @@ const classicColors: IColors = {
 const winterColors: IColors = {
 	headerTitleText: Colors.IceBlue,
 	navbarText: Colors.IceBlue,
-	background: Colors.DarkBlue,
+	background: Colors.DarkerBlue,
 	border: 'black',
 	borderHighlight: Colors.OffBlack,
 	text: Colors.IceBlue,
