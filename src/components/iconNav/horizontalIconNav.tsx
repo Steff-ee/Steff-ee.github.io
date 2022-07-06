@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react'
+import { useAttention } from '../../shared/helpers/attention'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { MediaContext, MediaSize } from '../mediaProvider'
 import { IHorizontalIconNavProps, INavItem, NavOrientation } from './iconNav.types'
@@ -35,7 +36,13 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		orientationStyle = { left: 0 }
 	}
 
-	return (
+	const onAttention = useCallback((hasAttention: boolean) => {
+		if (!hasAttention) {
+			setHoverIndex(-1)
+		}
+	}, [])
+
+	const element = (
 		<div style={{ display: 'inline-block', margin, ...rootStyle }}>
 			<div
 				style={{
@@ -45,8 +52,10 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				}}
 			>
 				{navItems.map((item: INavItem, itemIndex: number): JSX.Element => {
-					const onAttention = useCallback((hasAttention: boolean) => {
-						setHoverIndex(hasAttention ? itemIndex : -1)
+					const onIconAttention = useCallback((hasAttention: boolean) => {
+						if (hasAttention) {
+							setHoverIndex(itemIndex)
+						}
 					}, [])
 
 					return (
@@ -57,7 +66,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 							color={navbarTextColor}
 							key={`nav-${itemIndex}`}
 							id={item.id}
-							onAttention={onAttention}
+							onAttention={onIconAttention}
 						/>
 					)
 				})}
@@ -76,4 +85,6 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 			/>
 		</div>
 	)
+
+	return useAttention(element, [onAttention])
 }
