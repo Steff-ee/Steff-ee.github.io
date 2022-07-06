@@ -13,6 +13,7 @@ import {
 } from '../../shared/helpers/styles'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useDefaultTextStyle } from '../../shared/helpers/useStyles'
+import { Fireflies } from '../../shared/presentational/components/fireflies'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { ClassicNav } from './classicNav'
 import { Footer } from './footer'
@@ -201,6 +202,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					ref={contentPositionRef}
 				>
 					{mediaSize !== MediaSize.Small && classicNav}
+					<Fireflies />
 					{pivots}
 					<div style={contentWrapperStyle}>
 						<div style={{ maxWidth: '100%' }}>{Content}</div>

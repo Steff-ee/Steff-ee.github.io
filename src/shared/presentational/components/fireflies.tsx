@@ -1,116 +1,105 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Particles from 'react-tsparticles'
+import { loadFull } from 'tsparticles'
+import { SeasonsContext } from '../../../modes/seasons/seasons'
+import { Seasons } from '../../../modes/seasons/seasonsHelpers'
 import { Colors } from '../../helpers/constants'
 import { CircadianMood, getCircadianMood } from '../../helpers/time'
 
-export interface IFirefliesProps {
-	style?: React.CSSProperties
-	width?: string
-	height?: string
-}
+const moveSpeed = 2
+const maxSize = 6
+const minSize = 3
+const maxOpacity = 1
+const minOpacity = 0.6
+const interactionDistance = 450
 
-interface IHighlightProps {
-	maxSize: number
-	minSize: number
-	maxOpacity: number
-	minOpacity: number
-}
-
-export const Fireflies: React.FunctionComponent<IFirefliesProps> = (props) => {
-	const { style, width, height } = props
+export const Fireflies: React.FunctionComponent = React.memo(() => {
 	const mood = getCircadianMood()
-	const animSpeed = 3
-	const moveSpeed = 2
-	const interactionDistance = 200
-	const bubbleSize = 6
+	const { season } = useContext(SeasonsContext)
+	const enableFireflies = season === Seasons.Winter && mood !== CircadianMood.Day
 
-	let count
+	let count = 30
 	if (mood === CircadianMood.Night) {
 		count = 60
-	} else if (mood === CircadianMood.Day) {
-		count = 0
-	} else {
-		count = 20
-	}
-
-	const options: IHighlightProps = {
-		maxSize: 5,
-		minSize: 2,
-		maxOpacity: 1,
-		minOpacity: 0.8,
-	}
-	// options = {
-	// 	maxSize: 3,
-	// 	minSize: 1,
-	// 	maxOpacity: 0.8,
-	// 	minOpacity: 0.2,
-	// }
-	const particlesLoaded = async () => {
-		console.log('loaded!')
 	}
 
 	return (
-		<Particles
-			params={{
-				fullScreen: { enable: true },
-				particles: {
-					number: {
-						value: count,
-					},
-					color: {
-						value: Colors.Firefly,
-					},
-					shape: {
-						type: 'circle' as const,
-					},
-					opacity: {
-						value: options.maxOpacity,
-						random: true,
-						anim: {
-							enable: true,
-							speed: animSpeed,
-							opacity_min: options.minOpacity,
-							sync: false,
+		<>
+			{enableFireflies && (
+				<Particles
+					id="tsparticles"
+					init={loadFull}
+					style={{ position: 'absolute', left: 0 }}
+					width={'100%'}
+					height={'100%'}
+					options={{
+						fullScreen: { enable: false },
+						particles: {
+							number: {
+								value: count,
+							},
+							color: {
+								value: Colors.Firefly,
+							},
+							shape: {
+								type: 'circle',
+							},
+							opacity: {
+								value: maxOpacity,
+								animation: {
+									enable: true,
+									speed: 3,
+									minimumValue: minOpacity,
+									sync: false,
+								},
+							},
+							size: {
+								value: maxSize,
+								animation: {
+									enable: true,
+									speed: 4,
+									minimumValue: minSize,
+									sync: false,
+								},
+							},
+							move: {
+								enable: true,
+								speed: moveSpeed,
+								random: true,
+								direction: 'none',
+								outModes: {
+									default: 'out',
+								},
+								bounce: false,
+								straight: false,
+							},
 						},
-					},
-					size: {
-						value: options.maxSize,
-						random: true,
-						anim: {
-							enable: true,
-							speed: animSpeed,
-							size_min: options.minSize,
-							sync: false,
+						interactivity: {
+							events: {
+								onhover: {
+									enable: true,
+									mode: ['bubble', 'repulse', 'slow'],
+								},
+							},
+							modes: {
+								bubble: {
+									size: 4,
+									opacity: 0.2,
+									distance: interactionDistance,
+								},
+								repulse: {
+									distance: interactionDistance,
+									maxSpeed: 0.2,
+								},
+								slow: {
+									radius: interactionDistance,
+									factor: 0.7,
+								},
+							},
 						},
-					},
-					line_linked: {
-						enable: false,
-						color: Colors.Firefly,
-						width: 2,
-					},
-					move: {
-						enable: true,
-						speed: moveSpeed,
-						random: true,
-						out_mode: 'out' as const,
-						bounce: false,
-					},
-				},
-				interactivity: {
-					events: {
-						onhover: {
-							enable: true,
-							mode: 'bubble',
-						},
-					},
-					modes: {
-						bubble: {
-							size: bubbleSize,
-							distance: interactionDistance,
-						},
-					},
-				},
-			}}
-		/>
+					}}
+				/>
+			)}
+		</>
 	)
-}
+})
