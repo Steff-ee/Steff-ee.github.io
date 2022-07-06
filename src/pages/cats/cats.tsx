@@ -14,13 +14,18 @@ export const CatsGallery: React.FunctionComponent = () => {
 		cols = 2
 	}
 
+	const height = Math.ceil(catPhotos.length / cols)
+
 	return (
 		<ImageList variant="masonry" cols={cols} gap={8}>
-			{catPhotos.map((url, idx) => (
-				<ImageListItem key={`catPhoto-${idx}`}>
-					<img src={url} loading="lazy" />
-				</ImageListItem>
-			))}
+			{catPhotos.map((url, idx) => {
+				const loading = idx % height <= 3 ? 'eager' : 'lazy'
+				return (
+					<ImageListItem key={`catPhoto-${idx}`}>
+						<img src={url} loading={loading} />
+					</ImageListItem>
+				)
+			})}
 		</ImageList>
 	)
 }

@@ -18,6 +18,7 @@ export const pixelPhotos: string[] = [
     'https://i.imgur.com/PPo4bha.jpg',
     'https://i.imgur.com/ecmVJQA.jpg',
     'https://i.imgur.com/SShTLUw.jpg',
+    'https://i.imgur.com/dxovXzd.jpg',
 ]
 
 export const hexelPhotos: string[] = [
@@ -34,6 +35,10 @@ export const hexelPhotos: string[] = [
     'https://i.imgur.com/BNmUAlN.jpg',
     'https://i.imgur.com/iJHnd2f.jpg',
     'https://i.imgur.com/L1wUWqD.jpg',
+    'https://i.imgur.com/GeRfqKX.jpg',
+    'https://i.imgur.com/hMK7LyD.jpg',
+    'https://i.imgur.com/fkTeD5s.jpg',
+    'https://i.imgur.com/oybsySR.jpg',
 ]
 
 export const bothCatsPhotos: string[] = [

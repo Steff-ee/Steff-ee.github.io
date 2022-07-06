@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
-import { getPath, PageRoutes } from '../helpers/routes'
+import { getPath, PageRoutes, redirectTo } from '../helpers/routes'
 import { capitalize } from '../helpers/strings'
 import { dateTimeFormatOptions } from '../helpers/time'
 import { useColors } from '../presentational/hooks/useColors'
@@ -72,6 +72,8 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 		}
 	}
 
+	const path = getPath(page, pivot, post.id)
+
 	return (
 		<div style={rootStyle}>
 			{!isSmall && (
@@ -83,12 +85,14 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 						objectPosition: '50% top',
 						marginRight: displayLarge ? undefined : 40,
 						opacity: displayLarge ? undefined : 0.9,
+						cursor: 'pointer',
 					}}
 					src={imageSrc}
+					onClick={() => redirectTo(path)}
 				/>
 			)}
 			<div style={{ maxWidth: displayLarge ? undefined : 500, paddingTop: 24 }}>
-				<a style={titleTextStyle} href={getPath(page, pivot, post.id)} target="_self">
+				<a style={titleTextStyle} href={path} target="_self">
 					{title}
 				</a>
 				{subtitle && (
