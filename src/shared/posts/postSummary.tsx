@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
+import { ZoomImage } from '../helpers/imageZoom'
 import { getPath, PageRoutes, redirectTo } from '../helpers/routes'
 import { capitalize } from '../helpers/strings'
 import { dateTimeFormatOptions } from '../helpers/time'
@@ -39,6 +40,12 @@ const subtitleTextStyleSmall: React.CSSProperties = {
 	lineHeight: '22px',
 }
 
+const imageStyle: React.CSSProperties = {
+	objectFit: 'cover',
+	objectPosition: '50% top',
+	cursor: 'pointer',
+}
+
 export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) => {
 	let { post, page, pivot, displayLarge } = props
 	const { title, subtitle, createdTime, route, imageSrc } = post
@@ -73,24 +80,40 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	}
 
 	const path = getPath(page, pivot, post.id)
+	const onImageClick = useCallback(() => redirectTo(path), [path])
+
+	let img: JSX.Element = <></>
+	if (!isSmall) {
+		if (displayLarge) {
+			img = (
+				<ZoomImage
+					width={600}
+					height={340}
+					style={imageStyle}
+					src={imageSrc}
+					onClick={onImageClick}
+				/>
+			)
+		} else {
+			img = (
+				<img
+					width={260}
+					height={200}
+					style={{
+						...imageStyle,
+						marginRight: 40,
+						opacity: 0.9,
+					}}
+					src={imageSrc}
+					onClick={onImageClick}
+				/>
+			)
+		}
+	}
 
 	return (
 		<div style={rootStyle}>
-			{!isSmall && (
-				<img
-					width={displayLarge ? 600 : 260}
-					height={displayLarge ? 340 : 200}
-					style={{
-						objectFit: 'cover',
-						objectPosition: '50% top',
-						marginRight: displayLarge ? undefined : 40,
-						opacity: displayLarge ? undefined : 0.9,
-						cursor: 'pointer',
-					}}
-					src={imageSrc}
-					onClick={() => redirectTo(path)}
-				/>
-			)}
+			{img}
 			<div style={{ maxWidth: displayLarge ? undefined : 500, paddingTop: 24 }}>
 				<a style={titleTextStyle} href={path} target="_self">
 					{title}

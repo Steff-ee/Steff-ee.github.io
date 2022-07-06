@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { animated, useSpring } from 'react-spring'
+import { animated } from 'react-spring'
 import { FadeLoadImage } from '../../components/fadeLoadImage'
 import { MediaSize } from '../../components/mediaProvider'
+import { useZoom } from '../../shared/helpers/imageZoom'
 import { grandTitleStyle, parallaxGroupStyle } from '../../shared/helpers/styles'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { useTextMorphClickSequence } from '../../shared/presentational/hooks/useTextMorphClickSequence'
@@ -9,20 +10,12 @@ import { SeasonsContext } from '../seasons/seasons'
 import { Seasons } from '../seasons/seasonsHelpers'
 import { IParallaxTitleProps } from './pageTemplate.types'
 
-const zoomSpringDuration = 27000
-const zoomScale = 1.35
-
 export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 	const { headerBackgroundImage, mediaSize, skipMorph } = props
 	const { headerTitleText: headerTitleTextColor, border: borderColor } = useColors()
 	const { season } = useContext(SeasonsContext)
 
-	const [zoomSpringProps, zoomSpringControl] = useSpring(() => ({
-		from: { scale: 1 },
-		config: {
-			duration: zoomSpringDuration,
-		},
-	}))
+	const { zoomStyles, onStartZoom, onStopZoom } = useZoom(1.35, 35000)
 
 	let backgroundOpacity = 0.68
 	let showTopBar = false
@@ -93,7 +86,7 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 			>
 				<animated.div
 					// @ts-ignore
-					style={{ ...zoomSpringProps, height: '100%', width: '100vw' }}
+					style={{ ...zoomStyles, height: '100%', width: '100vw' }}
 				>
 					<FadeLoadImage
 						src={headerBackgroundImage}
@@ -109,8 +102,8 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 			</div>
 			<div
 				onClick={doNextMorph}
-				onMouseEnter={() => zoomSpringControl.start({ scale: zoomScale })}
-				onMouseLeave={(event) => zoomSpringControl.stop()}
+				onMouseEnter={onStartZoom}
+				onMouseLeave={onStopZoom}
 				style={{
 					...parallaxGroupStyle,
 					position: 'absolute',
