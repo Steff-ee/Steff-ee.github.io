@@ -61,6 +61,6 @@ export const getPath = (
 
 export const redirectTo = (path: string): void => {
 	if (window.location.href !== path) {
-		window.location.replace(path)
+		window.location.href = path
 	}
 }
