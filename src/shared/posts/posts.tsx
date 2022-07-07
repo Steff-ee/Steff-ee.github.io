@@ -17,6 +17,7 @@ import { POST_00122 } from './store/POST_00122'
 import { POST_00124 } from './store/POST_00124'
 import { POST_00126 } from './store/POST_00126'
 import { POST_00128 } from './store/POST_00128'
+import { POST_00130 } from './store/POST_00130'
 
 /* ALL POSTS */
 
@@ -38,6 +39,7 @@ export const allPosts: IPost[] = [
 	POST_00124,
 	POST_00126,
 	POST_00128,
+	POST_00130,
 ]
 
 export const allPostsByPage: { [page: string]: IPost[] } = {}
@@ -171,8 +173,6 @@ export const getPrevPost = (
 
 export const getFirstPost = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost => {
 	switch (page) {
-		case PageRoutes.Home:
-			return allPosts[0]
 		case PageRoutes.Stories:
 			if (pivot === StoryPivots.Stories) {
 				return stories[0]
@@ -183,13 +183,14 @@ export const getFirstPost = (page: PageRoutes, pivot: PivotRoutes | undefined): 
 			return gamesPosts[0]
 		case PageRoutes.Conjecture:
 			return conjecturePosts[0]
+		case PageRoutes.Home:
+		default:
+			return allPosts[0]
 	}
 }
 
 export const getLatestPost = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost => {
 	switch (page) {
-		case PageRoutes.Home:
-			return allPosts[allPosts.length - 1]
 		case PageRoutes.Stories:
 			if (pivot === StoryPivots.Stories) {
 				return stories[stories.length - 1]
@@ -200,5 +201,8 @@ export const getLatestPost = (page: PageRoutes, pivot: PivotRoutes | undefined):
 			return gamesPosts[gamesPosts.length - 1]
 		case PageRoutes.Conjecture:
 			return conjecturePosts[conjecturePosts.length - 1]
+		case PageRoutes.Home:
+		default:
+			return allPosts[allPosts.length - 1]
 	}
 }
