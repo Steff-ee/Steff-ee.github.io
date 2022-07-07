@@ -5,6 +5,7 @@ import {
 	faAngleRight,
 	faChessKnight,
 	faChevronUp,
+	faEnvelope,
 	faFeatherAlt,
 	faGlobe,
 	faGlobeAmericas,
@@ -144,6 +145,13 @@ export const AllLinksNavItem: INavItem = {
 	id: 'all-links',
 	label: 'links',
 	onClick: (): void => redirectTo(linksPath),
+}
+
+export const SubscribeNavItem: INavItem = {
+	icon: <FontAwesomeIcon icon={faEnvelope} {...commonIconProps} />,
+	id: 'subscribe',
+	label: 'subscribe',
+	onClick: () => window.open('https://ramblingafter.substack.com/', '_blank'),
 }
 
 const postCategoryToString = (postCategory: string): string => {

@@ -6,6 +6,7 @@ import {
 	AllLinksNavItem,
 	AllPostsNavItem,
 	CatsNavItem,
+	SubscribeNavItem,
 	useChangeThemeNavItem,
 } from './navBarCommands'
 
@@ -17,7 +18,14 @@ export const useMobileMenu = (props: IMobileMenuProps) => {
 	const { skip } = props
 	const ChangeThemeNavItem = useChangeThemeNavItem()
 	const navItems = useMemo(() => {
-		return [AboutNavItem, AllPostsNavItem, AllLinksNavItem, CatsNavItem, ChangeThemeNavItem]
+		return [
+			AboutNavItem,
+			AllPostsNavItem,
+			AllLinksNavItem,
+			CatsNavItem,
+			SubscribeNavItem,
+			ChangeThemeNavItem,
+		]
 	}, [])
 
 	return useVerticalIconNav({
