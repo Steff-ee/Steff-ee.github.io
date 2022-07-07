@@ -1,3 +1,5 @@
+import React from "react"
+
 export enum IconLayout {
 	Horizontal,
 	Vertical,
@@ -21,6 +23,7 @@ export interface INavItem {
 	isSelected?: boolean
 	disabled?: boolean
 	tabIndex?: number
+	ref?: React.RefObject<HTMLDivElement>
 
 	/* Styling */
 	width?: string

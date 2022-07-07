@@ -11,7 +11,7 @@ const disabledFadeFilterValue = 'opacity(0.25)'
  * This is a molecular component:
  * It should avoid using Context but it can have behavior-specific props.
  */
-export const NavItem: React.FunctionComponent<INavItem> = (props) => {
+export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) => {
 	const {
 		icon,
 		onClick,
@@ -76,6 +76,7 @@ export const NavItem: React.FunctionComponent<INavItem> = (props) => {
 			style={{ display: 'flex', background, ...rootStyle }}
 			onClick={onClick}
 			onKeyPress={onClick}
+			ref={ref}
 		>
 			{labelPosition === LabelPosition.Left && labelElement}
 			{button}
@@ -84,4 +85,4 @@ export const NavItem: React.FunctionComponent<INavItem> = (props) => {
 	)
 
 	return useAttention(element, [onAttention, setHasAttention])
-}
+})

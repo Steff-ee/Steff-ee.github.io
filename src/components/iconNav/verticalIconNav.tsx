@@ -1,7 +1,7 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useCallback, useRef, useState } from 'react'
-import { useClickAway } from 'react-use'
+import { useClickAway } from '../../shared/helpers/clickAway'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { INavItem, IVerticalIconNavProps, LabelPosition, NavOrientation } from './iconNav.types'
 import { NavItem } from './navItem'
@@ -35,8 +35,9 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 	const [isOpen, setIsOpen] = useState(false)
 	const { navbarText: navbarTextColor, border: borderColor } = useColors()
 	const menuListRef = useRef<HTMLDivElement>(null)
+	const menuButtonRef = useRef<HTMLDivElement>(null)
 	const onClickAway = useCallback(() => setIsOpen(false), [])
-	useClickAway(menuListRef, onClickAway)
+	useClickAway([menuButtonRef, menuListRef], onClickAway)
 
 	let labelProps = {}
 	if (showIconLabels) {
@@ -57,11 +58,12 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 			onIconsMenuIconClick?.()
 			setIsOpen(!isOpen)
 		},
+		ref: menuButtonRef,
 		...inputMenuButtonprops,
 	}
 
 	const MenuList = (
-		<div style={{ display: 'flex' }} ref={menuListRef}>
+		<div style={{ display: 'table' }} ref={menuListRef}>
 			<div
 				style={{
 					color: navbarTextColor,
