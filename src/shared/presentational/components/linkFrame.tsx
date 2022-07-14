@@ -5,13 +5,14 @@ export interface ILinkFrameProps {
 	title: JSX.Element | string
 	description: JSX.Element | string
 	link: string
+	displayLarger?: boolean
 	// put the shadow on bottom and right, instead of the default bottom and left
 	rightShadow?: boolean
 }
 
 // (TODO) Styling
 export const LinkFrame: React.FunctionComponent<ILinkFrameProps> = (props) => {
-	const { title, description, link, rightShadow } = props
+	const { title, description, link, displayLarger, rightShadow } = props
 	const [isHovering, setIsHovering] = useState<boolean>(false)
 	const lightTextStyle = useLightTextStyle()
 
@@ -44,7 +45,7 @@ export const LinkFrame: React.FunctionComponent<ILinkFrameProps> = (props) => {
 				window.open(link, '_blank')
 			}}
 		>
-			<a href={link} target="_blank" style={{ fontSize: '24px' }}>
+			<a href={link} target="_blank" style={{ fontSize: displayLarger ? 24 : 21 }}>
 				{title}
 			</a>
 			<div style={{ ...lightTextStyle, padding: '6px 0px 0px 6px' }}>{description}</div>

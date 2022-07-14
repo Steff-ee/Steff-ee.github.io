@@ -8,32 +8,27 @@ export const GameLinks: React.FunctionComponent = (): JSX.Element => {
 				title={'Noclip'}
 				link={'https://www.youtube.com/c/NoclipVideo/videos'}
 				description={'Wonderful documentary videos about videogame development'}
-			/>
-			<LinkFrame
-				title={'Jason Schreier'}
-				link={'https://jasonschreier.com/features-2/'}
-				description={'Articles about troubled videogame development'}
-				rightShadow={true}
+				displayLarger={true}
 			/>
 			<LinkFrame
 				title={'Errant Signal'}
 				link={'https://www.youtube.com/c/ErrantSignal/videos'}
 				description={`My favorite videogame reviewer who isn't Noah Caldwell-Gervais`}
+				rightShadow={true}
+				displayLarger={true}
 			/>
 			<LinkFrame
 				title={'Noah Caldwell-Gervais'}
 				link={'https://www.youtube.com/user/broadcaststsatic/videos'}
 				description={`My favorite videogame reviewer who isn't Errant Signal`}
-				rightShadow={true}
+				displayLarger={true}
 			/>
 			<LinkFrame
-				title={'Top of the Table'}
-				link={'https://www.gameinformer.com/topofthetable'}
-				description={
-					<>
-						Matt Miller of GameInformer informs on the <i>other</i> kind of game
-					</>
-				}
+				title={'GDC'}
+				link={'https://www.youtube.com/channel/UC0JB7TSe49lg56u6qH8y_MQ/videos'}
+				description={'Game Developer Conference presentations'}
+				rightShadow={true}
+				displayLarger={true}
 			/>
 		</div>
 	)
