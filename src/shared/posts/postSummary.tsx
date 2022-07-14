@@ -1,5 +1,6 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
+import { useAttention } from '../helpers/attention'
 import { ZoomImage } from '../helpers/imageZoom'
 import { getPath, PageRoutes, redirectTo } from '../helpers/routes'
 import { capitalize } from '../helpers/strings'
@@ -12,6 +13,7 @@ export interface IPostSummaryProps {
 	page: PageRoutes
 	pivot: PivotRoutes | undefined
 	displayLarge?: boolean
+	rootStyle?: React.CSSProperties
 }
 
 const titleTextStyleLarge = (displayLarge?: boolean): React.CSSProperties => ({
@@ -43,13 +45,45 @@ const subtitleTextStyleSmall: React.CSSProperties = {
 const imageStyle: React.CSSProperties = {
 	objectFit: 'cover',
 	objectPosition: '50% top',
-	cursor: 'pointer',
+}
+
+const getRootStyle = (
+	rootStyle: React.CSSProperties | undefined,
+	displayLarge: boolean | undefined,
+	opacity: number
+): React.CSSProperties => {
+	if (displayLarge) {
+		return {
+			...rootStyle,
+			maxWidth: '800px',
+			cursor: 'pointer',
+			backgroundColor: `rgba(0, 0, 0, ${opacity})`,
+			display: 'block',
+			marginTop: -1,
+			textAlign: 'center',
+		}
+	} else {
+		return {
+			...rootStyle,
+			maxWidth: '800px',
+			cursor: 'pointer',
+			backgroundColor: `rgba(0, 0, 0, ${opacity})`,
+			display: 'flex',
+			borderTop: `1px solid gray`,
+			marginTop: -1,
+		}
+	}
 }
 
 export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) => {
-	let { post, page, pivot, displayLarge } = props
+	let { rootStyle, post, page, pivot, displayLarge } = props
 	const { title, subtitle, createdTime, route, imageSrc } = post
 	const mediaSize = useContext(MediaContext)
+	const [opacity, setOpacity] = useState(0)
+	const onAttention = useCallback(
+		(hasAttention: boolean) => setOpacity(hasAttention ? 0.05 : 0),
+		[]
+	)
 	const isSmall = mediaSize === MediaSize.Small
 	displayLarge = isSmall ? false : displayLarge
 	const { subtitle: subtitleColor } = useColors()
@@ -62,38 +96,15 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const createdDate = new Date(createdTime)
 	const dateStr = createdDate.toLocaleDateString('en-US', dateTimeFormatOptions)
 	const label = route === PageRoutes.Home ? dateStr : `${dateStr} / ${capitalize(route)}`
-
-	let rootStyle: React.CSSProperties = {
-		maxWidth: '800px',
-		display: 'flex',
-		borderTop: `1px solid gray`,
-		marginTop: -1,
-	}
-
-	if (displayLarge) {
-		rootStyle = {
-			maxWidth: '800px',
-			display: 'block',
-			marginTop: -1,
-			textAlign: 'center',
-		}
-	}
+	rootStyle = getRootStyle(rootStyle, displayLarge, opacity)
 
 	const path = getPath(page, pivot, post.id)
-	const onImageClick = useCallback(() => redirectTo(path), [path])
+	const onClick = useCallback(() => redirectTo(path), [path])
 
 	let img: JSX.Element = <></>
 	if (!isSmall) {
 		if (displayLarge) {
-			img = (
-				<ZoomImage
-					width={600}
-					height={340}
-					style={imageStyle}
-					src={imageSrc}
-					onClick={onImageClick}
-				/>
-			)
+			img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
 		} else {
 			img = (
 				<img
@@ -101,20 +112,26 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 					height={200}
 					style={{
 						...imageStyle,
-						marginRight: 40,
+						marginRight: 28,
 						opacity: 0.9,
 					}}
 					src={imageSrc}
-					onClick={onImageClick}
 				/>
 			)
 		}
 	}
 
-	return (
-		<div style={rootStyle}>
+	const innerPadding = displayLarge ? 8 : 0
+
+	const element = (
+		<div style={rootStyle} onClick={onClick}>
 			{img}
-			<div style={{ maxWidth: displayLarge ? undefined : 500, paddingTop: 24 }}>
+			<div
+				style={{
+					maxWidth: displayLarge ? undefined : 488,
+					padding: `24px 12px 12px 12px`,
+				}}
+			>
 				<a style={titleTextStyle} href={path} target="_self">
 					{title}
 				</a>
@@ -143,4 +160,6 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 			</div>
 		</div>
 	)
+
+	return useAttention(element, [onAttention])
 }
