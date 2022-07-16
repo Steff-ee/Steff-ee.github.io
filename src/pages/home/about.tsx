@@ -29,7 +29,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 	}
 
 	return (
-		<div style={{ display: 'block', padding: '0px 8px' }}>
+		<div style={{ display: 'block', padding: '0px 30px' }}>
 			<div
 				style={{
 					display: 'flex',

@@ -50,29 +50,26 @@ const imageStyle: React.CSSProperties = {
 const getRootStyle = (
 	rootStyle: React.CSSProperties | undefined,
 	displayLarge: boolean | undefined,
+	isMediaSmall: boolean,
 	opacity: number
 ): React.CSSProperties => {
-	if (displayLarge) {
-		return {
-			...rootStyle,
-			maxWidth: '800px',
-			cursor: 'pointer',
-			backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-			display: 'block',
-			marginTop: -1,
-			textAlign: 'center',
-		}
-	} else {
-		return {
-			...rootStyle,
-			maxWidth: '800px',
-			cursor: 'pointer',
-			backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-			display: 'flex',
-			borderTop: `1px solid gray`,
-			marginTop: -1,
-		}
+	const style: React.CSSProperties = {
+		...rootStyle,
+		maxWidth: '800px',
+		cursor: 'pointer',
+		backgroundColor: `rgba(0, 0, 0, ${opacity})`,
+		marginTop: -1,
 	}
+
+	if (displayLarge || isMediaSmall) {
+		style.display = 'block'
+		style.textAlign = 'center'
+	} else {
+		style.display = 'flex'
+		style.borderTop = `1px solid gray`
+	}
+
+	return style
 }
 
 export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) => {
@@ -96,32 +93,41 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const createdDate = new Date(createdTime)
 	const dateStr = createdDate.toLocaleDateString('en-US', dateTimeFormatOptions)
 	const label = route === PageRoutes.Home ? dateStr : `${dateStr} / ${capitalize(route)}`
-	rootStyle = getRootStyle(rootStyle, displayLarge, opacity)
+	rootStyle = getRootStyle(rootStyle, displayLarge, isSmall, opacity)
 
 	const path = getPath(page, pivot, post.id)
 	const onClick = useCallback(() => redirectTo(path), [path])
 
 	let img: JSX.Element = <></>
-	if (!isSmall) {
-		if (displayLarge) {
-			img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
-		} else {
-			img = (
-				<img
-					width={260}
-					height={200}
-					style={{
-						...imageStyle,
-						marginRight: 28,
-						opacity: 0.9,
-					}}
-					src={imageSrc}
-				/>
-			)
-		}
+	if (isSmall) {
+		img = (
+			<img
+				width={'100%'}
+				height={200}
+				style={{
+					...imageStyle,
+					marginRight: 28,
+					opacity: 0.9,
+				}}
+				src={imageSrc}
+			/>
+		)
+	} else if (displayLarge) {
+		img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
+	} else {
+		img = (
+			<img
+				width={260}
+				height={200}
+				style={{
+					...imageStyle,
+					marginRight: 28,
+					opacity: 0.9,
+				}}
+				src={imageSrc}
+			/>
+		)
 	}
-
-	const innerPadding = displayLarge ? 8 : 0
 
 	const element = (
 		<div style={rootStyle} onClick={onClick}>

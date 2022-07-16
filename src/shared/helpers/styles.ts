@@ -37,7 +37,7 @@ export const parallaxGroupStyle: React.CSSProperties = {
 
 export const contentWrapperStyle: React.CSSProperties = {
 	margin: 'auto',
-	padding: '0 5% 5% 5%',
+	paddingBottom: '5%',
 	textAlign: 'left',
 	display: 'flex',
 	justifyContent: 'center',

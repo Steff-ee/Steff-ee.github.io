@@ -16,14 +16,18 @@ export const PostList: React.FunctionComponent<IPostProps> = (props) => {
 	const reversedPosts = [...posts]
 	reversedPosts.reverse()
 	const isSmall = useContext(MediaContext) === MediaSize.Small
-	const paddingBottom = isSmall ? 30 : 40
+
+	let padding = '0px 5% 5% 40px'
+	if (isSmall) {
+		padding = '0px 0px 30px 0px'
+	}
 
 	return (
 		<div>
 			{reversedPosts.map((post, idx) => (
 				<div key={`postSummary-${post.id}`}>
 					<PostSummary
-						rootStyle={{ paddingBottom }}
+						rootStyle={{ padding }}
 						post={post}
 						page={page}
 						pivot={pivot}

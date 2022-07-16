@@ -51,7 +51,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 			/>
 			<LinkFrame
 				title={`Couple bought home in Seattle; learned Internet would cost $27,000`}
-				description={<>Something to watch out for the next you buy a home.</>}
+				description={<>Something to watch out for the next time you buy a home.</>}
 				link={
 					'https://arstechnica.com/tech-policy/2022/06/couple-bought-home-in-seattle-then-learned-comcast-internet-would-cost-27000/'
 				}
