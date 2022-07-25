@@ -14,8 +14,8 @@ export const PivotItem: React.FunctionComponent<IPivotItemProps> = (props) => {
 
 	const style: React.CSSProperties = {
 		cursor: 'pointer',
-		...(isActive ? isActiveStyle : {}),
 		...inputStyle,
+		...(isActive ? isActiveStyle : {}),
 	}
 
 	return (

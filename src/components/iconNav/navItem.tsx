@@ -29,8 +29,8 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 		tabIndex = 0,
 	} = props
 	const [hasAttention, setHasAttention] = useState<boolean>(false)
-	const { border, borderHighlight } = useColors()
-	const background = hasAttention ? borderHighlight : border
+	const { borderHighlight } = useColors()
+	const background = hasAttention ? borderHighlight : undefined
 	const filter = disabled ? disabledFadeFilterValue : ''
 	let isSelectedStyle: React.CSSProperties = {}
 

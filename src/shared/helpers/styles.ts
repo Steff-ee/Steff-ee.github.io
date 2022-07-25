@@ -49,6 +49,7 @@ export const grandTitleStyle: React.CSSProperties = {
 }
 
 const navBarStyle = {
+	backgroundFilter: 'blur(20px)',
 	width: '100%',
 	height: '64px',
 	display: 'block',

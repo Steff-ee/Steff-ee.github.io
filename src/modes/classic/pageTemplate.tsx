@@ -36,7 +36,7 @@ const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) =>
 	return (
 		<div
 			style={{
-				margin: '75px 20% 100px 20%',
+				margin: '75px 20% 75px 20%',
 				position: arePivotsSticky ? 'sticky' : 'relative',
 				top: 0,
 				zIndex: arePivotsSticky ? 3 : 1,
@@ -53,6 +53,8 @@ const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) =>
 				}}
 				commonIsActiveStyle={{
 					borderBottom: `2px solid ${color}`,
+					paddingTop: '6px',
+					height: '44px',
 				}}
 				pivotItems={pivotsItems}
 			/>
@@ -112,7 +114,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	const contentPositionRef = useRef(null)
 	const pivotsPositionRef = useRef(null)
 	const scrollRef = useRef(null)
-	const { border: borderColor, text: textColor } = useColors()
+	const { border: borderColor, text: textColor, borderOpaque } = useColors()
 
 	const skipMorph = mediaSize === MediaSize.Small
 	const allowStickyPivots = mediaSize !== MediaSize.Medium
@@ -167,16 +169,26 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	}
 
 	const classicNav = (
-		<ClassicNav
-			rootStyle={{ ...navBarStyle, backgroundColor: borderColor }}
-			firstClick={firstClick}
-			backClick={backClick}
-			nextClick={nextClick}
-			latestClick={latestClick}
-			showPosts={showPostsNav}
-			scrollRef={scrollRef}
-			positionRef={contentPositionRef}
-		/>
+		<>
+			<ClassicNav
+				rootStyle={{ ...navBarStyle, backgroundColor: borderOpaque }}
+				firstClick={firstClick}
+				backClick={backClick}
+				nextClick={nextClick}
+				latestClick={latestClick}
+				showPosts={showPostsNav}
+				scrollRef={scrollRef}
+				positionRef={contentPositionRef}
+			/>
+			<div
+				style={{
+					width: '100%',
+					height: '64px',
+					backgroundColor: borderColor,
+					marginTop: '-64px',
+				}}
+			/>
+		</>
 	)
 
 	return (
