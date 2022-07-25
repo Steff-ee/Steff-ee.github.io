@@ -1,4 +1,5 @@
 import { backgroundTextureImg } from './assets'
+import { frostedBackdropFilter } from './constants'
 
 export const subscriptStyle: React.CSSProperties = {
 	fontFamily: 'Source Code Pro',
@@ -48,8 +49,8 @@ export const grandTitleStyle: React.CSSProperties = {
 	fontFamily: 'Montserrat',
 }
 
-const navBarStyle = {
-	backgroundFilter: 'blur(20px)',
+const navBarStyle: React.CSSProperties = {
+	backdropFilter: frostedBackdropFilter,
 	width: '100%',
 	height: '64px',
 	display: 'block',

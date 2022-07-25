@@ -30,11 +30,13 @@ export enum Colors {
 }
 
 export enum OpaqueColors {
-	Black = 'rgb(0, 0, 0, 0.88)',
-	IceWhite = 'rgb(240, 249, 255, 0.88)',
+	Black = 'rgb(0, 0, 0, 0.8)',
+	IceWhite = 'rgb(240, 249, 255, 0.8)',
 }
 
 export const websiteTitle = 'RAMBLING AFTER'
 
 export const websiteSlogan =
 	'Rambling thoughts pulse like lanterns, ambling after the yet unanswered'
+
+export const frostedBackdropFilter = 'blur(20px) saturate(180%)'

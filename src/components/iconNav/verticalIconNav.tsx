@@ -2,6 +2,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useCallback, useRef, useState } from 'react'
 import { useClickAway } from '../../shared/helpers/clickAway'
+import { frostedBackdropFilter } from '../../shared/helpers/constants'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { INavItem, IVerticalIconNavProps, LabelPosition, NavOrientation } from './iconNav.types'
 import { NavItem } from './navItem'
@@ -33,7 +34,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		tabIndex = 0,
 	} = props
 	const [isOpen, setIsOpen] = useState(false)
-	const { navbarText: navbarTextColor, border: borderColor } = useColors()
+	const { navbarText: navbarTextColor, borderOpaque } = useColors()
 	const menuListRef = useRef<HTMLDivElement>(null)
 	const menuButtonRef = useRef<HTMLDivElement>(null)
 	const onClickAway = useCallback(() => setIsOpen(false), [])
@@ -67,7 +68,8 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 			<div
 				style={{
 					color: navbarTextColor,
-					backgroundColor: borderColor,
+					backgroundColor: borderOpaque,
+					backdropFilter: frostedBackdropFilter,
 				}}
 			>
 				{isOpen &&
