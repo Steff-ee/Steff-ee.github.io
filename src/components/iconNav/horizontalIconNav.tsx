@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react'
 import { useAttention } from '../../shared/helpers/attention'
-import { frostedBackdropFilter } from '../../shared/helpers/constants'
+import { useFrostedGlass } from '../../shared/helpers/styles'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { MediaContext, MediaSize } from '../mediaProvider'
 import { IHorizontalIconNavProps, INavItem, NavOrientation } from './iconNav.types'
@@ -26,7 +26,8 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		hoverIndex = defaultActiveItemIndex
 	}
 	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
-	const { navbarText: navbarTextColor, borderOpaque } = useColors()
+	const { navbarText: navbarTextColor } = useColors()
+	const frostedStyle = useFrostedGlass()
 	const isSmall = useContext(MediaContext) === MediaSize.Small
 	const margin = isSmall ? '0 auto' : undefined
 
@@ -78,8 +79,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				width={labelWidth}
 				orientation={orientation}
 				rootStyle={{
-					backgroundColor: borderOpaque,
-					...frostedBackdropFilter,
+					...frostedStyle,
 					color: navbarTextColor,
 					position: 'absolute',
 					...orientationStyle,

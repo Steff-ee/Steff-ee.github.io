@@ -38,8 +38,3 @@ export const websiteTitle = 'RAMBLING AFTER'
 
 export const websiteSlogan =
 	'Rambling thoughts pulse like lanterns, ambling after the yet unanswered'
-
-export const frostedBackdropFilter = {
-	backdropFilter: 'blur(20px) saturate(180%)',
-	webkitBackdropFilter: 'blur(20px) saturate(180%)',
-}
