@@ -171,7 +171,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	const classicNav = (
 		<>
 			<ClassicNav
-				rootStyle={{ ...navBarStyle, backgroundColor: borderOpaque }}
+				rootStyle={navBarStyle}
 				firstClick={firstClick}
 				backClick={backClick}
 				nextClick={nextClick}

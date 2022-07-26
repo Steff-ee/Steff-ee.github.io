@@ -30,7 +30,7 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 	} = props
 	const [hasAttention, setHasAttention] = useState<boolean>(false)
 	const { borderHighlight } = useColors()
-	const background = hasAttention ? borderHighlight : undefined
+	const backgroundColor = hasAttention ? borderHighlight : undefined
 	const filter = disabled ? disabledFadeFilterValue : ''
 	let isSelectedStyle: React.CSSProperties = {}
 
@@ -73,7 +73,7 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 		<div
 			aria-label={label}
 			tabIndex={tabIndex}
-			style={{ display: 'flex', background, ...rootStyle }}
+			style={{ display: 'flex', backgroundColor, ...rootStyle }}
 			onClick={onClick}
 			onKeyPress={onClick}
 			ref={ref}

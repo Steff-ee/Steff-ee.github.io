@@ -3,8 +3,10 @@ import { animated, to, useTransition } from 'react-spring'
 import { NavOrientation } from '../../components/iconNav/iconNav.types'
 import { NavItem } from '../../components/iconNav/navItem'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
+import { frostedBackdropFilter } from '../../shared/helpers/constants'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useMobileMenu } from '../../shared/presentational/components/mobileMenu'
+import { useColors } from '../../shared/presentational/hooks/useColors'
 import { ClassicPageNav } from './classicPageNav'
 import { ClassicPostsNav } from './classicPostsNav'
 
@@ -34,6 +36,7 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 	const [isScrollingDownward, setIsScrollingDownward] = useState<boolean>(true)
 	const { menuButtonProps, MenuList } = useMobileMenu({ skip: !isSmall })
 	const MenuButton = <NavItem {...menuButtonProps} />
+	const { borderOpaque } = useColors()
 
 	const onScroll = (currentPosition: IScrollPosition, prevPosition: IScrollPosition): void => {
 		if (showPostsProp) {
@@ -126,6 +129,15 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 							)
 					)}
 			</div>
+			<div
+				style={{
+					...rootStyle,
+					...frostedBackdropFilter,
+					marginTop: isSmall ? undefined : '-64px',
+					zIndex: -1,
+					backgroundColor: borderOpaque,
+				}}
+			/>
 			{MenuList}
 		</div>
 	)
