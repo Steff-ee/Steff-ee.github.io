@@ -1,5 +1,5 @@
 import { backgroundTextureImg } from './assets'
-import { frostedBackdropFilter } from './constants'
+import { Colors, frostedBackdropFilter } from './constants'
 
 export const subscriptStyle: React.CSSProperties = {
 	fontFamily: 'Source Code Pro',
@@ -50,7 +50,7 @@ export const grandTitleStyle: React.CSSProperties = {
 }
 
 const navBarStyle: React.CSSProperties = {
-	backdropFilter: frostedBackdropFilter,
+	...frostedBackdropFilter,
 	width: '100%',
 	height: '64px',
 	display: 'block',
@@ -79,6 +79,7 @@ export const pivotItemStyle: React.CSSProperties = {
 }
 
 export const classicBackgroundTextureStyle: React.CSSProperties = {
+	backgroundColor: Colors.LightSand,
 	backgroundImage: `url(${backgroundTextureImg})`,
 	backgroundRepeat: 'repeat',
 	backgroundPosition: 'right top',

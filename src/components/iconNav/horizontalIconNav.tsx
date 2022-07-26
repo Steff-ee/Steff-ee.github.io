@@ -79,7 +79,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				orientation={orientation}
 				rootStyle={{
 					backgroundColor: borderOpaque,
-					backdropFilter: frostedBackdropFilter,
+					...frostedBackdropFilter,
 					color: navbarTextColor,
 					position: 'absolute',
 					...orientationStyle,

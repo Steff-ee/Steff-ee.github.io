@@ -116,16 +116,17 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 		img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
 	} else {
 		img = (
-			<img
-				width={260}
-				height={200}
-				style={{
-					...imageStyle,
-					marginRight: 28,
-					opacity: 0.9,
-				}}
-				src={imageSrc}
-			/>
+			<div style={{ width: 260, marginRight: 28 }}>
+				<img
+					width={260}
+					height={200}
+					style={{
+						...imageStyle,
+						opacity: 0.9,
+					}}
+					src={imageSrc}
+				/>
+			</div>
 		)
 	}
 

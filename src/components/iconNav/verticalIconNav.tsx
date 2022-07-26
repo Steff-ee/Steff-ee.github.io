@@ -69,7 +69,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 				style={{
 					color: navbarTextColor,
 					backgroundColor: borderOpaque,
-					backdropFilter: frostedBackdropFilter,
+					...frostedBackdropFilter,
 				}}
 			>
 				{isOpen &&
