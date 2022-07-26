@@ -53,9 +53,9 @@ export const grandTitleStyle: React.CSSProperties = {
 
 const navBarStyle: React.CSSProperties = {
 	width: '100%',
-	height: '64px',
+	height: '65px',
 	display: 'block',
-	top: 0,
+	top: -1,
 	zIndex: 2,
 }
 
@@ -67,7 +67,6 @@ export const navBarStyleMobile: React.CSSProperties = {
 export const navBarStyleBigScreen: React.CSSProperties = {
 	...navBarStyle,
 	position: 'sticky',
-	marginTop: '-1px',
 }
 
 export const pivotItemStyle: React.CSSProperties = {
