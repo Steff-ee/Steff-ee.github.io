@@ -66,7 +66,6 @@ const getRootStyle = (
 		style.textAlign = 'center'
 	} else {
 		style.display = 'flex'
-		style.borderTop = `1px solid gray`
 	}
 
 	return style
@@ -98,6 +97,7 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const path = getPath(page, pivot, post.id)
 	const onClick = useCallback(() => redirectTo(path), [path])
 
+	let useBorderTop = false
 	let img: JSX.Element = <></>
 	if (isSmall) {
 		img = (
@@ -106,7 +106,6 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 				height={200}
 				style={{
 					...imageStyle,
-					marginRight: 28,
 					opacity: 0.9,
 				}}
 				src={imageSrc}
@@ -115,8 +114,9 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	} else if (displayLarge) {
 		img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
 	} else {
+		useBorderTop = true
 		img = (
-			<div style={{ width: 260, marginRight: 28 }}>
+			<div style={{ width: 260 }}>
 				<img
 					width={260}
 					height={200}
@@ -135,34 +135,37 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 			{img}
 			<div
 				style={{
-					maxWidth: displayLarge ? undefined : 488,
-					padding: `24px 12px 12px 12px`,
+					width: '100%',
+					maxWidth: displayLarge ? undefined : 528,
+					borderTop: useBorderTop ? '1px solid gray' : undefined,
 				}}
 			>
-				<a style={titleTextStyle} href={path} target="_self">
-					{title}
-				</a>
-				{subtitle && (
+				<div style={{ padding: `24px 12px 12px ${useBorderTop ? 40 : 12}px` }}>
+					<a style={titleTextStyle} href={path} target="_self">
+						{title}
+					</a>
+					{subtitle && (
+						<div
+							style={{
+								...subtitleTextStyle,
+								margin: '10px 0px',
+								color: subtitleColor,
+							}}
+						>
+							{subtitle}
+						</div>
+					)}
 					<div
 						style={{
-							...subtitleTextStyle,
-							margin: '10px 0px',
+							fontFamily: 'Source Code Pro',
+							fontSize: '16px',
+							lineHeight: '22px',
 							color: subtitleColor,
+							fontWeight: 300,
 						}}
 					>
-						{subtitle}
+						{label}
 					</div>
-				)}
-				<div
-					style={{
-						fontFamily: 'Source Code Pro',
-						fontSize: '16px',
-						lineHeight: '22px',
-						color: subtitleColor,
-						fontWeight: 300,
-					}}
-				>
-					{label}
 				</div>
 			</div>
 		</div>

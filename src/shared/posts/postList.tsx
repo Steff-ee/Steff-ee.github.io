@@ -17,7 +17,7 @@ export const PostList: React.FunctionComponent<IPostProps> = (props) => {
 	reversedPosts.reverse()
 	const isSmall = useContext(MediaContext) === MediaSize.Small
 
-	let padding = '0px 5% 5% 40px'
+	let padding = '0px 0px 44px 0px'
 	if (isSmall) {
 		padding = '0px 0px 30px 0px'
 	}
