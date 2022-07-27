@@ -26,16 +26,16 @@ const h1Style: React.CSSProperties = {
 
 const h2Style: React.CSSProperties = {
 	fontFamily: 'Montserrat',
-	fontSize: '23px',
+	fontSize: '29px',
 	fontWeight: 600,
-	lineHeight: '33px',
+	lineHeight: '44px',
 }
 
 const h3Style: React.CSSProperties = {
 	fontFamily: 'Montserrat',
 	fontSize: '18px',
 	fontWeight: 600,
-	lineHeight: '25px',
+	lineHeight: '26px',
 }
 
 const dividerStar = <div>✧</div>
@@ -93,9 +93,9 @@ const ResumeSection: React.FunctionComponent<IResumeSectionProps> = (props) => {
 			<div
 				style={{
 					...h2Style,
-					fontSize: '24px',
+					fontSize: '26px',
 					textAlign: 'center',
-					margin: isMobile ? '25px 0px 25px 0px' : '0px 0px 15px 0px',
+					margin: isMobile ? '25px 0px 25px 0px' : '0px 0px 18px 0px',
 					letterSpacing: '1px',
 				}}
 			>
@@ -124,7 +124,7 @@ interface IExperienceSubSectionProps {
 	subtitle?: string
 	timeRange?: string
 	subtext?: string
-	body: JSX.Element
+	body?: JSX.Element
 	isMobile: boolean
 }
 
@@ -139,18 +139,20 @@ const ExperienceSubSection: React.FunctionComponent<IExperienceSubSectionProps> 
 						display: 'flex',
 						justifyContent: 'space-between',
 						flexDirection: isMobile ? 'column' : 'row',
-						lineHeight: '25px',
+						lineHeight: h2Style.lineHeight,
 					}}
 				>
 					<div style={h2Style}>{title}</div>
-					<div style={{ margin: '0px 6px' }}>{timeRange}</div>
+					<div style={{ margin: '0px 6px', fontSize: '17px' }}>{timeRange}</div>
 				</div>
 			)}
-			{subtitle && <div style={h3Style}>{subtitle}</div>}
-			{subtext && <div style={{ marginTop: 2 }}>{subtext}</div>}
-			<div style={{ margin: isMobile ? '10px 0px 0px 5px' : '4px 40px 0px 15px' }}>
-				{body}
-			</div>
+			{subtitle && <div style={{ ...h3Style, marginLeft: 8 }}>{subtitle}</div>}
+			{subtext && <div style={{ margin: '2px 40px 0px 8px' }}>{subtext}</div>}
+			{body && (
+				<div style={{ margin: isMobile ? '10px 0px 0px 5px' : '4px 48px 0px 16px' }}>
+					{body}
+				</div>
+			)}
 		</div>
 	)
 }
@@ -196,58 +198,43 @@ export const Resume: React.FunctionComponent = () => {
 					body={
 						<>
 							<ExperienceSubSection
-								title={'Microsoft'}
-								subtitle={'Supply Chain Insights (SCI)'}
-								timeRange={'Jan 2022 - Present'}
-								subtext={`SCI empowers businesses to mitigate supply chain risks via prescriptive insights powered by AI.`}
+								title={'Remitly'}
+								subtitle={'Remitly for Developers'}
+								timeRange={'Current'}
+								subtext={`Remitly provides financial services to immigrants and underserved communities around the world; Remitly for Developers expands this mission to enterprise customers.`}
 								isMobile={isMobile}
-								body={
-									<>
-										<ListHeader>Full stack development</ListHeader>
-										<ListItem>
-											Assisting with the transition of our back-end store to
-											Dataverse, which will enable tenant isolation of data
-											and integration with other Power Platform services.
-										</ListItem>
-										<ListItem>
-											Designed and created an asyncronous, agnostic event
-											system for managing alerts, notifications, or other
-											events, building both the back and front ends.
-										</ListItem>
-									</>
-								}
 							/>
+							<div style={{ paddingTop: 20 }} />
 							<ExperienceSubSection
 								title={'Microsoft'}
-								subtitle={'PowerApps Lifecycle Management (ALM)'}
-								timeRange={'Sept 2020 - Dec 2021'}
-								subtext={`PowerApps enables organizations to create apps easily inside of Dataverse solutions. ALM supports the layering, lifecycle, and deployment of solutions, settings, and apps.`}
+								subtitle={'PowerApps App Lifecycle Management (ALM)'}
+								timeRange={'2018 - 2022'}
+								subtext={`PowerApps enables organizations to create apps easily inside of Dataverse solutions. ALM supported the layering, lifecycle, and deployment of solutions, settings, and apps.`}
 								isMobile={isMobile}
 								body={
 									<>
 										<ListHeader>Complex challenges</ListHeader>
+										<div style={{ paddingTop: 4 }} />
 										<ListItem>
 											Built the entire UX for PowerPlatform Settings while
-											assisting with the APIs, collaborating with project
-											managers and designers, and guiding junior engineers.
-											13,000+ production apps now use 900+ settings created by
-											first/third party teams.
+											assisting with back end APIs, leading discussions with
+											PMs and designers, and guiding junior engineers. Over
+											13,000 production apps now use 900+ settings created by
+											first & third party teams.
 										</ListItem>
+										<div style={{ paddingTop: 4 }} />
 										<ListItem>
-											Refashioned the intricate solution app-component
-											layering logic to eliminate inconsistencies and drive
-											down our customer incidents by ~25%, with no
-											regressions.
+											Refashioned the intricate app-component layering logic
+											to eliminate inconsistencies and drive down customer
+											incidents by ~25%, with no regressions.
 										</ListItem>
 									</>
 								}
 							/>
 							<ExperienceSubSection
-								title={'Microsoft'}
 								subtitle={'PowerApps Portal'}
-								timeRange={'July 2018 - Sept 2020'}
 								subtext={
-									'Portal develops the front-end Home page, Apps list page, and Solutions list page for PowerApps.'
+									'Portal developed the UX for the Home, Apps, and Solutions pages and experiences.'
 								}
 								isMobile={isMobile}
 								body={
@@ -298,7 +285,7 @@ export const Resume: React.FunctionComponent = () => {
 				/>
 				<ExperienceSubSection
 					title={'TreeRing'}
-					timeRange={'Feb 2015 - July 2018'}
+					timeRange={'2015 - 2018'}
 					subtext={
 						'TreeRing provides flexible software for designing yearbooks, customizing them per student, and benefits the environment by planting a tree for every book printed.'
 					}
@@ -330,8 +317,8 @@ export const Resume: React.FunctionComponent = () => {
 					isMobile={isMobile}
 					body={
 						<ExperienceSubSection
-							title={'Stanford University'}
-							timeRange={'Sept 2010 - June 2015'}
+							title={'Stanford'}
+							timeRange={'2010 - 2015'}
 							isMobile={isMobile}
 							body={
 								<>
