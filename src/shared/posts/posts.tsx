@@ -19,6 +19,7 @@ import { POST_00126 } from './store/POST_00126'
 import { POST_00128 } from './store/POST_00128'
 import { POST_00130 } from './store/POST_00130'
 import { POST_00132 } from './store/POST_00132'
+import { POST_00134 } from './store/POST_00134'
 
 /* ALL POSTS */
 
@@ -42,6 +43,7 @@ export const allPosts: IPost[] = [
 	POST_00128,
 	POST_00130,
 	POST_00132,
+	POST_00134,
 ]
 
 export const allPostsByPage: { [page: string]: IPost[] } = {}

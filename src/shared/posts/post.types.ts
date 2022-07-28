@@ -14,5 +14,5 @@ export interface IPost {
 	route: PageRoutes
 	pivot: PivotRoutes
 	imageSrc: string
-	subtitle?: string
+	subtitle?: string | JSX.Element
 }
