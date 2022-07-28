@@ -114,7 +114,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	const contentPositionRef = useRef(null)
 	const pivotsPositionRef = useRef(null)
 	const scrollRef = useRef(null)
-	const { border: borderColor, text: textColor, borderOpaque } = useColors()
+	const { border: borderColor, text: textColor } = useColors()
 
 	const skipMorph = mediaSize === MediaSize.Small
 	const allowStickyPivots = mediaSize !== MediaSize.Medium

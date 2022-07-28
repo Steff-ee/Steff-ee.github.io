@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-import { useColors } from '../presentational/hooks/useColors'
 import { backgroundTextureImg } from './assets'
 import { Colors } from './constants'
 
@@ -7,7 +5,6 @@ export const subscriptStyle: React.CSSProperties = {
 	fontFamily: 'Source Code Pro',
 	fontSize: '16px',
 	lineHeight: '19px',
-	fontWeight: 300,
 }
 
 export const entirePageStyle: React.CSSProperties = {
@@ -90,23 +87,3 @@ export const smallestDeviceWidth = '320px'
 export const bottomContentMargin = '34px'
 
 export const transparentBackground = 'rgb(255, 255, 255, 0.24)'
-
-const frostedBackdropFilter = {
-	backdropFilter: 'blur(20px) saturate(180%)',
-	webkitBackdropFilter: 'blur(20px) saturate(180%)',
-}
-
-export const useFrostedGlass = (): React.CSSProperties => {
-	const { border, borderOpaque } = useColors()
-	
-	return useMemo(() => {
-		if (!CSS.supports('backdrop-filter', frostedBackdropFilter.backdropFilter)) {
-			return { backgroundColor: border }
-		}
-	
-		return {
-			...frostedBackdropFilter,
-			backgroundColor: borderOpaque
-		}
-	}, [])
-}

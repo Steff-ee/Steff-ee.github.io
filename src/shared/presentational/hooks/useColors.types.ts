@@ -18,7 +18,6 @@ export interface IColors {
 	 * Color of the navbar and the frame around the website header
 	 */
 	border: string
-	borderOpaque: string
 
 	/**
 	 * Different shade of the border color for highlighting during hovering or selection

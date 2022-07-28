@@ -136,7 +136,7 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 }
 
 export const MobileTitle: React.FunctionComponent = (): JSX.Element => {
-	const { headerTitleText: titleColor, border: borderColor } = useColors()
+	const { navbarText: titleColor, border: borderColor } = useColors()
 
 	return (
 		<div

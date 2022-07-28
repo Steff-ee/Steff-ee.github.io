@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react'
 import { useAttention } from '../../shared/helpers/attention'
-import { useFrostedGlass } from '../../shared/helpers/styles'
+import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { MediaContext, MediaSize } from '../mediaProvider'
 import { IHorizontalIconNavProps, INavItem, NavOrientation } from './iconNav.types'

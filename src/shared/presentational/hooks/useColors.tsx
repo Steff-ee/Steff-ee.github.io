@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
-import { Colors, OpaqueColors } from '../../helpers/constants'
+import { Colors } from '../../helpers/constants'
 import { IColors } from './useColors.types'
 
 const classicColors: IColors = {
@@ -9,7 +9,6 @@ const classicColors: IColors = {
 	navbarText: Colors.LightSand,
 	background: Colors.LightSand,
 	border: 'black',
-	borderOpaque: OpaqueColors.Black,
 	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.FadedBlack,
@@ -24,7 +23,6 @@ const winterColors: IColors = {
 	navbarText: Colors.IceBlue,
 	background: Colors.DarkerBlue,
 	border: 'black',
-	borderOpaque: OpaqueColors.Black,
 	borderHighlight: Colors.OffBlack,
 	text: Colors.IceBlue,
 	subtitle: 'white',
@@ -39,7 +37,6 @@ const springColors: IColors = {
 	navbarText: Colors.DarkViolet,
 	background: Colors.ClaretWine,
 	border: Colors.IceWhite,
-	borderOpaque: OpaqueColors.IceWhite,
 	borderHighlight: Colors.CloudedIce,
 	text: Colors.IceWhite,
 	subtitle: Colors.GentleSand,
@@ -54,7 +51,6 @@ const summerColors: IColors = {
 	navbarText: Colors.LightYellow,
 	background: Colors.LightYellow,
 	border: 'black',
-	borderOpaque: OpaqueColors.Black,
 	borderHighlight: Colors.OffBlack,
 	text: 'black',
 	subtitle: Colors.LightYellow,
@@ -69,7 +65,6 @@ const autumnColors: IColors = {
 	navbarText: '#f2afa1',
 	background: '#351811',
 	border: 'black',
-	borderOpaque: OpaqueColors.Black,
 	borderHighlight: Colors.OffBlack,
 	text: '#f2afa1',
 	subtitle: '#f2afa1',

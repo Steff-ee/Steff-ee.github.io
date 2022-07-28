@@ -1,4 +1,5 @@
 import React from 'react'
+import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { subscriptStyle } from '../../shared/helpers/styles'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 
@@ -9,14 +10,15 @@ export interface IFooterProps {
 
 export const Footer: React.FunctionComponent<IFooterProps> = (props) => {
 	const { artistName, artistLink } = props
-	const { navbarText: navbarTextColor, border: borderColor } = useColors()
+	const { navbarText: navbarTextColor } = useColors()
+	const frostedStyle = useFrostedGlass()
 
 	return (
 		<div
 			style={{
 				...subscriptStyle,
+				...frostedStyle,
 				color: navbarTextColor,
-				backgroundColor: borderColor,
 				width: '100%',
 				height: '64px',
 				paddingTop: '22px',

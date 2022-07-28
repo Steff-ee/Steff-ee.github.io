@@ -31,7 +31,7 @@ export enum Colors {
 
 export enum OpaqueColors {
 	Black = 'rgb(0, 0, 0, 0.8)',
-	IceWhite = 'rgb(240, 249, 255, 0.8)',
+	IceWhite = 'rgb(240, 249, 255, 0.9)',
 }
 
 export const websiteTitle = 'RAMBLING AFTER'
