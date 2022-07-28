@@ -23,15 +23,23 @@ export const StoryLinks: React.FunctionComponent = (): JSX.Element => {
 			/>
 			<LinkFrame
 				title={'Folding Ideas'}
-				link={'https://www.youtube.com/channel/UCyNtlmLB73-7gtlBz00XOQQ/videos'}
+				link={'https://www.youtube.com/c/FoldingIdeas/featured'}
 				description={'YouTube essays about pop culture'}
+				displayLarger={true}
+			/>
+			<LinkFrame
+				title={'Corridor Crew'}
+				link={'https://www.youtube.com/c/corridorcrew/featured'}
+				description={
+					'Videos breaking down the craft and storytelling that goes into visual effects, and more'
+				}
+				rightShadow={true}
 				displayLarger={true}
 			/>
 			<LinkFrame
 				title={'Rambling After'}
 				link={'http://ramblingafter.thecomicseries.com/'}
 				description={'Comics written by me when I was in college'}
-				rightShadow={true}
 				displayLarger={true}
 			/>
 		</div>

@@ -86,7 +86,6 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	displayLarge = isSmall ? false : displayLarge
 	const { subtitle: subtitleColor } = useColors()
 	const { season } = useContext(SeasonsContext)
-	const isWinter = season === Seasons.Winter
 	let titleTextStyle = titleTextStyleLarge(displayLarge)
 	let subtitleTextStyle = subtitleTextStyleLarge
 	if (mediaSize === MediaSize.Small) {
@@ -106,9 +105,12 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	if (displayLarge) {
 		img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
 	} else {
-		const modifiedImageStyle = {
-			...imageStyle,
-			filter: isWinter ? 'brightness(0.8)' : 'sepia(0.2)',
+		const modifiedImageStyle = { ...imageStyle }
+
+		if (season === Seasons.Winter) {
+			modifiedImageStyle.filter = 'brightness(0.8)'
+		} else if (season === Seasons.None) {
+			modifiedImageStyle.filter = 'sepia(0.25)'
 		}
 
 		if (isSmall) {
