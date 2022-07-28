@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
+import { SeasonsContext } from '../../modes/seasons/seasons'
+import { Seasons } from '../../modes/seasons/seasonsHelpers'
 import { useAttention } from '../helpers/attention'
 import { ZoomImage } from '../helpers/imageZoom'
 import { getPath, PageRoutes, redirectTo } from '../helpers/routes'
@@ -83,6 +85,8 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const isSmall = mediaSize === MediaSize.Small
 	displayLarge = isSmall ? false : displayLarge
 	const { subtitle: subtitleColor } = useColors()
+	const { season } = useContext(SeasonsContext)
+	const isWinter = season === Seasons.Winter
 	let titleTextStyle = titleTextStyleLarge(displayLarge)
 	let subtitleTextStyle = subtitleTextStyleLarge
 	if (mediaSize === MediaSize.Small) {
@@ -99,35 +103,24 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 
 	let useBorderTop = false
 	let img: JSX.Element = <></>
-	if (isSmall) {
-		img = (
-			<img
-				width={'100%'}
-				height={200}
-				style={{
-					...imageStyle,
-					opacity: 0.9,
-				}}
-				src={imageSrc}
-			/>
-		)
-	} else if (displayLarge) {
+	if (displayLarge) {
 		img = <ZoomImage width={600} height={340} style={imageStyle} src={imageSrc} />
 	} else {
-		useBorderTop = true
-		img = (
-			<div style={{ width: 260 }}>
-				<img
-					width={260}
-					height={200}
-					style={{
-						...imageStyle,
-						opacity: 0.9,
-					}}
-					src={imageSrc}
-				/>
-			</div>
-		)
+		const modifiedImageStyle = {
+			...imageStyle,
+			filter: isWinter ? 'brightness(0.8)' : 'sepia(0.2)',
+		}
+
+		if (isSmall) {
+			img = <img width={'100%'} height={200} style={modifiedImageStyle} src={imageSrc} />
+		} else {
+			useBorderTop = true
+			img = (
+				<div style={{ width: 260 }}>
+					<img width={260} height={200} style={modifiedImageStyle} src={imageSrc} />
+				</div>
+			)
+		}
 	}
 
 	const element = (
