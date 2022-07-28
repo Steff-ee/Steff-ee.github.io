@@ -13,14 +13,17 @@ const maxOpacity = 1
 const minOpacity = 0.6
 const interactionDistance = 450
 
-export const Fireflies: React.FunctionComponent = React.memo(() => {
+export interface IFirefliesProps {
+	count?: number
+}
+
+export const Fireflies: React.FunctionComponent<IFirefliesProps> = React.memo(({ count = 24 }) => {
 	const mood = getCircadianMood()
 	const { season } = useContext(SeasonsContext)
 	const enableFireflies = season === Seasons.Winter && mood !== CircadianMood.Day
 
-	let count = 30
 	if (mood === CircadianMood.Night) {
-		count = 60
+		count *= 2
 	}
 
 	return (

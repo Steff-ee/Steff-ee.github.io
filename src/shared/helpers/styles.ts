@@ -53,7 +53,7 @@ const navBarStyle: React.CSSProperties = {
 	height: '65px',
 	display: 'block',
 	top: -1,
-	zIndex: 2,
+	zIndex: 3,
 }
 
 export const navBarStyleMobile: React.CSSProperties = {

@@ -39,7 +39,7 @@ const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) =>
 				margin: '75px 20% 75px 20%',
 				position: arePivotsSticky ? 'sticky' : 'relative',
 				top: 0,
-				zIndex: arePivotsSticky ? 3 : 1,
+				zIndex: arePivotsSticky ? 4 : 2,
 			}}
 			ref={pivotsPositionRef}
 		>
@@ -217,7 +217,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					<Fireflies />
 					{pivots}
 					<div style={contentWrapperStyle}>
-						<div style={{ maxWidth: '100%' }}>{Content}</div>
+						<div style={{ maxWidth: '100%', zIndex: 1 }}>{Content}</div>
 					</div>
 				</div>
 			</div>
