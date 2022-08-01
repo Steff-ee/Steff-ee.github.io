@@ -69,7 +69,7 @@ module.exports = {
 		alias: {
 			Assets: path.resolve(__dirname, 'assets/'),
 		},
-		extensions: ['.ts', '.tsx', '.js'],
+		extensions: ['.ts', '.tsx', '.js', '.mjs'],
 	},
 	output: {
 		filename: settings.output.file,

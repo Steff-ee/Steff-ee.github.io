@@ -1,6 +1,5 @@
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useCallback, useRef, useState } from 'react'
+import { FaBars } from 'react-icons/fa'
 import { useClickAway } from '../../shared/helpers/clickAway'
 import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { useColors } from '../../shared/presentational/hooks/useColors'
@@ -55,7 +54,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		width: iconWidth,
 		height: iconHeight,
 		color: navbarTextColor,
-		icon: <FontAwesomeIcon icon={faBars} size={'2x'} />,
+		icon: <FaBars size={'2x'} />,
 		onClick: () => {
 			onIconsMenuIconClick?.()
 			setIsOpen(!isOpen)

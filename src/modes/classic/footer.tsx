@@ -24,7 +24,7 @@ export const Footer: React.FunctionComponent<IFooterProps> = (props) => {
 				paddingTop: '22px',
 			}}
 		>
-			All icons courtesy of Font Awesome. Background art or photo courtesy of{' '}
+			All icons courtesy of React Icons. Background art or photo courtesy of{' '}
 			<a style={{ fontWeight: 400 }} href={artistLink} target="_blank">
 				{artistName}
 			</a>

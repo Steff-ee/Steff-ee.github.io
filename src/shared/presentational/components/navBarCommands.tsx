@@ -1,22 +1,21 @@
-import {
-	faAngleDoubleLeft,
-	faAngleDoubleRight,
-	faAngleLeft,
-	faAngleRight,
-	faChessKnight,
-	faChevronUp,
-	faEnvelope,
-	faFeatherAlt,
-	faGlobe,
-	faGlobeAmericas,
-	faHome,
-	faList,
-	faPaw,
-	faPoll,
-	faSyncAlt,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useState } from 'react'
+import {
+	FaAngleDoubleLeft,
+	FaAngleDoubleRight,
+	FaAngleLeft,
+	FaAngleRight,
+	FaChessKnight,
+	FaChevronUp,
+	FaEnvelope,
+	FaFeatherAlt,
+	FaGlobe,
+	FaGlobeAmericas,
+	FaHome,
+	FaList,
+	FaPaw,
+	FaPoll,
+	FaSyncAlt,
+} from 'react-icons/fa'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
@@ -43,8 +42,6 @@ import {
 import { useIsTest } from '../../helpers/url'
 import { getScrollPosition } from '../../helpers/useScroll'
 import { OpenPostsContext } from '../../posts/openPosts'
-
-export const commonIconProps = { size: '2x' as const, fixedWidth: true }
 
 const getNextSeason = (season: Seasons, isTest: boolean): Seasons => {
 	switch (season) {
@@ -79,25 +76,25 @@ export const useCategoryNavItems = (): INavItem[] => {
 
 	const navLinks: INavItem[] = [
 		{
-			icon: <FontAwesomeIcon icon={faGlobeAmericas} {...commonIconProps} />,
+			icon: <FaGlobeAmericas />,
 			id: PageRoutes.Home,
 			label: 'all',
 			onClick: (): void => redirectTo(homePath),
 		},
 		{
-			icon: <FontAwesomeIcon icon={faFeatherAlt} {...commonIconProps} />,
+			icon: <FaFeatherAlt />,
 			id: PageRoutes.Stories,
 			label: storiesTitle,
 			onClick: (): void => redirectTo(storiesPath),
 		},
 		{
-			icon: <FontAwesomeIcon icon={faChessKnight} {...commonIconProps} />,
+			icon: <FaChessKnight />,
 			id: PageRoutes.Games,
 			label: gamesTitle,
 			onClick: (): void => redirectTo(gamesPath),
 		},
 		{
-			icon: <FontAwesomeIcon icon={faPoll} {...commonIconProps} />,
+			icon: <FaPoll />,
 			id: PageRoutes.Conjecture,
 			label: conjectureTitle,
 			onClick: (): void => redirectTo(conjecturePath),
@@ -112,7 +109,7 @@ export const useChangeThemeNavItem = (): INavItem => {
 	const isTest = useIsTest()
 
 	return {
-		icon: <FontAwesomeIcon icon={faSyncAlt} {...commonIconProps} size={'lg' as const} />,
+		icon: <FaSyncAlt size={'28px'} />,
 		id: undefined,
 		label: 'change theme',
 		onClick: (): void => setSeason((season) => getNextSeason(season, isTest)),
@@ -120,35 +117,35 @@ export const useChangeThemeNavItem = (): INavItem => {
 }
 
 export const CatsNavItem: INavItem = {
-	icon: <FontAwesomeIcon icon={faPaw} {...commonIconProps} />,
+	icon: <FaPaw />,
 	id: PageRoutes.Cats,
 	label: catsTitle,
 	onClick: (): void => redirectTo(catsPath),
 }
 
 export const AboutNavItem: INavItem = {
-	icon: <FontAwesomeIcon icon={faHome} {...commonIconProps} />,
+	icon: <FaHome />,
 	id: 'all-about',
 	label: 'about',
 	onClick: (): void => redirectTo(aboutPath),
 }
 
 export const AllPostsNavItem: INavItem = {
-	icon: <FontAwesomeIcon icon={faList} {...commonIconProps} />,
+	icon: <FaList />,
 	id: 'all-posts',
 	label: 'posts',
 	onClick: (): void => redirectTo(postsPath),
 }
 
 export const AllLinksNavItem: INavItem = {
-	icon: <FontAwesomeIcon icon={faGlobe} {...commonIconProps} />,
+	icon: <FaGlobe />,
 	id: 'all-links',
 	label: 'links',
 	onClick: (): void => redirectTo(linksPath),
 }
 
 export const SubscribeNavItem: INavItem = {
-	icon: <FontAwesomeIcon icon={faEnvelope} {...commonIconProps} />,
+	icon: <FaEnvelope />,
 	id: 'subscribe',
 	label: 'subscribe',
 	onClick: () => window.open('https://ramblingafter.substack.com/', '_blank'),
@@ -167,7 +164,7 @@ export const useBackCommand = (
 	postCategory: string
 ): INavItem => {
 	return {
-		icon: <FontAwesomeIcon icon={faAngleLeft} {...commonIconProps} />,
+		icon: <FaAngleLeft />,
 		id: 'BackCommand',
 		label: `Previous ${postCategoryToString(postCategory)} post`,
 		onClick,
@@ -180,7 +177,7 @@ export const useNextCommand = (
 	postCategory: string
 ): INavItem => {
 	return {
-		icon: <FontAwesomeIcon icon={faAngleRight} {...commonIconProps} />,
+		icon: <FaAngleRight />,
 		id: 'NextCommand',
 		label: `Next ${postCategoryToString(postCategory)} post`,
 		onClick,
@@ -193,7 +190,7 @@ export const useFirstCommand = (
 	postCategory: string
 ): INavItem => {
 	return {
-		icon: <FontAwesomeIcon icon={faAngleDoubleLeft} {...commonIconProps} />,
+		icon: <FaAngleDoubleLeft />,
 		id: 'FirstCommand',
 		label: `First ${postCategoryToString(postCategory)} post`,
 		onClick,
@@ -206,7 +203,7 @@ export const useLatestCommand = (
 	postCategory: string
 ): INavItem => {
 	return {
-		icon: <FontAwesomeIcon icon={faAngleDoubleRight} {...commonIconProps} />,
+		icon: <FaAngleDoubleRight />,
 		id: 'LatestCommand',
 		label: `Latest ${postCategoryToString(postCategory)} post`,
 		onClick,
@@ -227,7 +224,7 @@ export const useReturnToTopCommand = (
 	})
 
 	return {
-		icon: <FontAwesomeIcon icon={faChevronUp} {...commonIconProps} />,
+		icon: <FaChevronUp />,
 		id: 'ReturnToTopCommand',
 		label: `Return to top`,
 		onClick: () => {

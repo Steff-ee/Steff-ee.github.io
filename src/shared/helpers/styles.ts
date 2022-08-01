@@ -87,3 +87,8 @@ export const smallestDeviceWidth = '320px'
 export const bottomContentMargin = '34px'
 
 export const transparentBackground = 'rgb(255, 255, 255, 0.24)'
+
+export const commonIconProps = {
+	size: '38px',
+	style: { display: 'flex', alignItems: 'center', padding: '0px 6px' }
+}
