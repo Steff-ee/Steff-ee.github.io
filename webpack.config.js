@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const settings = require('./webpack.settings.json')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // determine if we are in development or production mode
 const dev = process.env.NODE_ENV !== 'production'
@@ -76,6 +77,8 @@ module.exports = {
 	},
 	mode: dev ? 'development' : 'production',
 	plugins: dev
-		? [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin()]
-		: [HTMLWebpackPluginConfig, DefinePluginConfig],
+		? [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin(),
+			new BundleAnalyzerPlugin()]
+		: [HTMLWebpackPluginConfig, DefinePluginConfig,
+			new BundleAnalyzerPlugin()],
 }

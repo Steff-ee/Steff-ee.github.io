@@ -1,4 +1,4 @@
-import { debounce, random } from 'lodash'
+import { debounce, random } from 'lodash-es'
 import { useState } from 'react'
 
 const morphDelay = 96
