@@ -1,17 +1,7 @@
 import React, { useState } from 'react'
 import { animated, useSpring, useTransition } from 'react-spring'
-import { INavItem, NavOrientation } from './iconNav.types'
-
-export interface INavListLabelProps {
-	navItem: INavItem | undefined
-	orientation: NavOrientation
-
-	/* Styling */
-	width: string
-	height: string
-	rootStyle?: React.CSSProperties
-	textStyle?: React.CSSProperties
-}
+import { NavOrientation } from './iconNav.types'
+import { INavListLabelProps } from './navListLabel.types'
 
 /**
  * This is a molecular component:
@@ -19,7 +9,7 @@ export interface INavListLabelProps {
  *
  * (Even though it is not made of other atoms, we still consider this molecular because it is opinionated on styling (for animation))
  */
-export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props) => {
+const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props) => {
 	const { navItem, width, height, rootStyle, textStyle, orientation } = props
 	const currentItemId = navItem?.id ?? ''
 	const [delayedId, setDelayedId] = useState<string>(currentItemId)
@@ -90,3 +80,5 @@ export const NavListLabel: React.FunctionComponent<INavListLabelProps> = (props)
 		</>
 	)
 }
+
+export default NavListLabel

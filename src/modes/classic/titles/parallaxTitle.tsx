@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import { animated } from 'react-spring'
-import { FadeLoadImage } from '../../components/fadeLoadImage'
-import { MediaSize } from '../../components/mediaProvider'
-import { useZoom } from '../../shared/helpers/imageZoom'
-import { grandTitleStyle, parallaxGroupStyle } from '../../shared/helpers/styles'
-import { useColors } from '../../shared/presentational/hooks/useColors'
-import { useTextMorphClickSequence } from '../../shared/presentational/hooks/useTextMorphClickSequence'
-import { SeasonsContext } from '../seasons/seasons'
-import { Seasons } from '../seasons/seasonsHelpers'
-import { IParallaxTitleProps } from './pageTemplate.types'
+import { FadeLoadImage } from '../../../components/fadeLoadImage'
+import { MediaSize } from '../../../components/mediaProvider'
+import { grandTitleStyle, parallaxGroupStyle } from '../../../shared/helpers/styles'
+import { useZoom } from '../../../shared/presentational/components/imageZoom/ZoomImage.helpers'
+import { useColors } from '../../../shared/presentational/hooks/useColors'
+import { useTextMorphClickSequence } from '../../../shared/presentational/hooks/useTextMorphClickSequence'
+import { SeasonsContext } from '../../seasons/seasons'
+import { Seasons } from '../../seasons/seasonsHelpers'
+import { IParallaxTitleProps } from '../pageTemplate.types'
 
-export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
+const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 	const { headerBackgroundImage, mediaSize, skipMorph } = props
 	const { headerTitleText: headerTitleTextColor, border: borderColor } = useColors()
 	const { season } = useContext(SeasonsContext)
@@ -135,26 +135,4 @@ export const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (prop
 	)
 }
 
-export const MobileTitle: React.FunctionComponent = (): JSX.Element => {
-	const { navbarText: titleColor, border: borderColor } = useColors()
-
-	return (
-		<div
-			style={{
-				fontWeight: 500,
-				fontFamily: 'Montserrat',
-				color: titleColor,
-				fontSize: '36px',
-				lineHeight: '52px',
-				letterSpacing: '2px',
-				padding: '68px 0px',
-				backgroundColor: borderColor,
-				position: 'relative',
-				width: '100vw',
-				zIndex: 6,
-			}}
-		>
-			RAMBLING AFTER
-		</div>
-	)
-}
+export default ParallaxTitle

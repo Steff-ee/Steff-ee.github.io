@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-// (TODO) Add fade
-// import { animated, useSpring, useTransition } from 'react-spring'
 
 export interface IFadeLoadImageProps {
 	src: string
@@ -8,6 +6,7 @@ export interface IFadeLoadImageProps {
 	style?: React.CSSProperties
 }
 
+// (TODO) Improve
 export const FadeLoadImage: React.FunctionComponent<IFadeLoadImageProps> = (props) => {
 	const { src, style, opacity = 1 } = props
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)

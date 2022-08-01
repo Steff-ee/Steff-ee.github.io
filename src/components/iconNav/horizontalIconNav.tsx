@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, useState } from 'react'
+import React, { Suspense, useCallback, useContext, useState } from 'react'
 import { useAttention } from '../../shared/helpers/attention'
 import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { MediaContext, MediaSize } from '../mediaProvider'
 import { IHorizontalIconNavProps, INavItem, NavOrientation } from './iconNav.types'
 import { NavItem } from './navItem'
-import { NavListLabel } from './navListLabel'
+const NavListLabel = React.lazy(() => import('./navListLabel'))
 
 /**
  * This is a macromolecular component:
@@ -73,18 +73,20 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 					)
 				})}
 			</div>
-			<NavListLabel
-				navItem={activeNavItem}
-				height={iconHeight}
-				width={labelWidth}
-				orientation={orientation}
-				rootStyle={{
-					...frostedStyle,
-					color: navbarTextColor,
-					position: 'absolute',
-					...orientationStyle,
-				}}
-			/>
+			<Suspense>
+				<NavListLabel
+					navItem={activeNavItem}
+					height={iconHeight}
+					width={labelWidth}
+					orientation={orientation}
+					rootStyle={{
+						...frostedStyle,
+						color: navbarTextColor,
+						position: 'absolute',
+						...orientationStyle,
+					}}
+				/>
+			</Suspense>
 		</div>
 	)
 

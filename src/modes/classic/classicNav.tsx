@@ -6,21 +6,11 @@ import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useMobileMenu } from '../../shared/presentational/components/mobileMenu'
+import { IClassicNavProps } from './classicNav.types'
 import { ClassicPageNav } from './classicPageNav'
 import { ClassicPostsNav } from './classicPostsNav'
 
-export interface IClassicNavProps {
-	showPosts: boolean
-	scrollRef: React.RefObject<HTMLDivElement>
-	positionRef: React.RefObject<HTMLDivElement>
-	rootStyle?: React.CSSProperties
-	firstClick?: () => void
-	backClick?: () => void
-	nextClick?: () => void
-	latestClick?: () => void
-}
-
-export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => {
+const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => {
 	const {
 		showPosts: showPostsProp,
 		scrollRef,
@@ -140,3 +130,5 @@ export const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => 
 		</div>
 	)
 }
+
+export default ClassicNav

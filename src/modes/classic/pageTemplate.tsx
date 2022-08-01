@@ -14,10 +14,10 @@ import {
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useDefaultTextStyle } from '../../shared/helpers/useStyles'
 import { useColors } from '../../shared/presentational/hooks/useColors'
-import { ClassicNav } from './classicNav'
 import { Footer } from './footer'
 import { IMobilePivotsProps, IPageTemplateProps, IParallaxPivotsProps } from './pageTemplate.types'
-import { MobileTitle, ParallaxTitle } from './titles'
+import { Title } from './titles/titles'
+const ClassicNav = React.lazy(() => import('./classicNav'))
 const Fireflies = React.lazy(() => import('../../shared/presentational/components/fireflies'))
 
 const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) => {
@@ -132,11 +132,9 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	useScroll(scrollRef, pivotsPositionRef, onPivotsScroll)
 
 	let pivots: JSX.Element = <></>
-	let titleElement: JSX.Element
 	let scrollRefStyle: React.CSSProperties
 	let navBarStyle: React.CSSProperties
 	if (mediaSize === MediaSize.Small) {
-		titleElement = <MobileTitle />
 		scrollRefStyle = {
 			...entirePageStyle,
 			overflowX: 'hidden',
@@ -157,19 +155,12 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 			)
 		}
 
-		titleElement = (
-			<ParallaxTitle
-				headerBackgroundImage={headerBackgroundImage}
-				mediaSize={mediaSize}
-				skipMorph={skipMorph}
-			/>
-		)
 		scrollRefStyle = parallaxRootStyle
 		navBarStyle = navBarStyleBigScreen
 	}
 
 	const classicNav = (
-		<>
+		<Suspense>
 			<ClassicNav
 				rootStyle={navBarStyle}
 				firstClick={firstClick}
@@ -188,7 +179,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					marginTop: '-64px',
 				}}
 			/>
-		</>
+		</Suspense>
 	)
 
 	return (
@@ -204,7 +195,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 			ref={scrollRef}
 		>
 			{mediaSize === MediaSize.Small && arePivotsSticky && classicNav}
-			{titleElement}
+			<Title headerBackgroundImage={headerBackgroundImage} skipMorph={skipMorph} />
 			<div>
 				<div
 					style={{

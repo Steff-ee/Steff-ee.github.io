@@ -28,9 +28,3 @@ export const useImageZoomOnHover = (inputElement: ReactElement): ReactElement =>
 
 	return <animated.div style={zoomStyles}>{element}</animated.div>
 }
-
-export const ZoomImage = (
-	props: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
-) => {
-	return useImageZoomOnHover(<img {...props} />)
-}

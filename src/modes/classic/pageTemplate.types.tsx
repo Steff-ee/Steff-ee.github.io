@@ -24,10 +24,13 @@ export interface IPageTemplateProps extends IPageTemplateBackgroundsProps {
 	latestClick?: () => void
 }
 
-export interface IParallaxTitleProps {
+export interface ITitleProps {
 	headerBackgroundImage: string
-	mediaSize: MediaSize
 	skipMorph: boolean
+}
+
+export interface IParallaxTitleProps extends ITitleProps {
+	mediaSize: MediaSize
 }
 
 export type IParallaxPivotsProps = Required<
