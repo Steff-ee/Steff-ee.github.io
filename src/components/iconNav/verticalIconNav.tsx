@@ -1,5 +1,5 @@
+import { FaBars } from '@react-icons/all-files/fa/FaBars'
 import React, { useCallback, useRef, useState } from 'react'
-import { FaBars } from 'react-icons/fa'
 import { useClickAway } from '../../shared/helpers/clickAway'
 import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { useColors } from '../../shared/presentational/hooks/useColors'

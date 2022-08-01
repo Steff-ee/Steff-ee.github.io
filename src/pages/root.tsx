@@ -1,5 +1,5 @@
+import { IconContext } from '@react-icons/all-files/lib/esm'
 import React, { useState } from 'react'
-import { IconContext } from 'react-icons'
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { MediaProvider } from '../components/mediaProvider'
 import { ClassicPageContainer } from '../modes/classic/classicPageContainer'

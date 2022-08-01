@@ -1,21 +1,19 @@
+import { FaAngleDoubleLeft } from '@react-icons/all-files/fa/FaAngleDoubleLeft'
+import { FaAngleDoubleRight } from '@react-icons/all-files/fa/FaAngleDoubleRight'
+import { FaAngleLeft } from '@react-icons/all-files/fa/FaAngleLeft'
+import { FaAngleRight } from '@react-icons/all-files/fa/FaAngleRight'
+import { FaChessKnight } from '@react-icons/all-files/fa/FaChessKnight'
+import { FaChevronUp } from '@react-icons/all-files/fa/FaChevronUp'
+import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope'
+import { FaFeatherAlt } from '@react-icons/all-files/fa/FaFeatherAlt'
+import { FaGlobe } from '@react-icons/all-files/fa/FaGlobe'
+import { FaGlobeAmericas } from '@react-icons/all-files/fa/FaGlobeAmericas'
+import { FaHome } from '@react-icons/all-files/fa/FaHome'
+import { FaList } from '@react-icons/all-files/fa/FaList'
+import { FaPaw } from '@react-icons/all-files/fa/FaPaw'
+import { FaPoll } from '@react-icons/all-files/fa/FaPoll'
+import { FaSyncAlt } from '@react-icons/all-files/fa/FaSyncAlt'
 import React, { useContext, useEffect, useState } from 'react'
-import {
-	FaAngleDoubleLeft,
-	FaAngleDoubleRight,
-	FaAngleLeft,
-	FaAngleRight,
-	FaChessKnight,
-	FaChevronUp,
-	FaEnvelope,
-	FaFeatherAlt,
-	FaGlobe,
-	FaGlobeAmericas,
-	FaHome,
-	FaList,
-	FaPaw,
-	FaPoll,
-	FaSyncAlt,
-} from 'react-icons/fa'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
