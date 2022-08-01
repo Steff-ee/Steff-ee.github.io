@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { Suspense, useContext, useRef, useState } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { PivotItem } from '../../components/pivots/pivotItem'
 import { Pivots } from '../../components/pivots/pivots'
@@ -13,12 +13,12 @@ import {
 } from '../../shared/helpers/styles'
 import { IScrollPosition, useScroll } from '../../shared/helpers/useScroll'
 import { useDefaultTextStyle } from '../../shared/helpers/useStyles'
-import { Fireflies } from '../../shared/presentational/components/fireflies'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { ClassicNav } from './classicNav'
 import { Footer } from './footer'
 import { IMobilePivotsProps, IPageTemplateProps, IParallaxPivotsProps } from './pageTemplate.types'
 import { MobileTitle, ParallaxTitle } from './titles'
+const Fireflies = React.lazy(() => import('../../shared/presentational/components/fireflies'))
 
 const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) => {
 	const { arePivotsSticky, selectedPivotTitle, setPivot, pivotsItems, pivotsPositionRef } = props
@@ -214,7 +214,9 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					ref={contentPositionRef}
 				>
 					{mediaSize !== MediaSize.Small && classicNav}
-					<Fireflies />
+					<Suspense>
+						<Fireflies />
+					</Suspense>
 					{pivots}
 					<div style={contentWrapperStyle}>
 						<div style={{ maxWidth: '100%', zIndex: 1 }}>{Content}</div>
