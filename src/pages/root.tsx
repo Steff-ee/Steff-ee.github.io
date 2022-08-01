@@ -10,7 +10,7 @@ import { commonIconProps } from '../shared/helpers/styles'
 import { OpenPostsProvider } from '../shared/posts/openPosts'
 import { PivotRoutes } from '../shared/posts/post.types'
 import { ColorsProvider } from '../shared/presentational/hooks/useColors'
-import { CatsPage } from './cats/cats'
+import { CatsPage } from './cats/catsPage'
 import { PageNotFound } from './pageNotFound'
 
 export const Root: React.FunctionComponent = (): JSX.Element => {

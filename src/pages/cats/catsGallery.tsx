@@ -2,10 +2,9 @@ import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import React, { useContext } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
-import { SeasonalPageTemplate } from '../../modes/classic/seasonalPageTemplate'
 import { catPhotos } from '../../shared/helpers/catPhotos'
 
-export const CatsGallery: React.FunctionComponent = () => {
+const CatsGallery: React.FunctionComponent = () => {
 	const mediaSize = useContext(MediaContext)
 	let cols = 3
 	if (mediaSize === MediaSize.Small) {
@@ -30,6 +29,4 @@ export const CatsGallery: React.FunctionComponent = () => {
 	)
 }
 
-export const CatsPage: React.FunctionComponent = () => {
-	return <SeasonalPageTemplate showPostsNav={false} Content={<CatsGallery />} />
-}
+export default CatsGallery
