@@ -77,8 +77,7 @@ module.exports = {
 	},
 	mode: dev ? 'development' : 'production',
 	plugins: dev
-		? [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin(),
-			new BundleAnalyzerPlugin()]
+		? [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin()]
 		: [HTMLWebpackPluginConfig, DefinePluginConfig,
 			new BundleAnalyzerPlugin()],
 }

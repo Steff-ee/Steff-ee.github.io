@@ -54,7 +54,7 @@ export const useVerticalIconNav = (props: IVerticalIconNavProps): IUseVerticalIc
 		width: iconWidth,
 		height: iconHeight,
 		color: navbarTextColor,
-		icon: <FaBars size={'2x'} />,
+		icon: <FaBars />,
 		onClick: () => {
 			onIconsMenuIconClick?.()
 			setIsOpen(!isOpen)
