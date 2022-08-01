@@ -30,26 +30,26 @@ export const useSeasonalBackgroundProps = (page: string | undefined) => {
 	switch (page) {
 		case PageRoutes.Stories:
 			return {
-				...getStoriesPageBackground(),
+				...getStoriesPageBackground(season),
 				backgroundStyle,
 			}
 
 		case PageRoutes.Games:
 			return {
-				...getGamePageBackground(),
+				...getGamePageBackground(season),
 				backgroundStyle,
 			}
 
 		case PageRoutes.Conjecture:
 			return {
-				...getConjecturePageBackground(),
+				...getConjecturePageBackground(season),
 				backgroundStyle,
 			}
 
 		case PageRoutes.Home:
 		default:
 			return {
-				...getHomePageBackground(),
+				...getHomePageBackground(season),
 				backgroundStyle,
 			}
 	}

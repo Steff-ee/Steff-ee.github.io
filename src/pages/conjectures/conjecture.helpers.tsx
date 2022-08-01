@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { IPageTemplateBackgroundsProps } from '../../modes/classic/pageTemplate.types'
-import { SeasonsContext } from '../../modes/seasons/seasons'
 import { Seasons } from '../../modes/seasons/seasonsHelpers'
 import {
 	autumnBackgrounds,
@@ -44,12 +43,9 @@ export const getConjecturePageContent = (
 	return undefined
 }
 
-export const getConjecturePageBackground = (): Omit<
-	IPageTemplateBackgroundsProps,
-	'backgroundStyle'
-> => {
-	const { season } = useContext(SeasonsContext)
-
+export const getConjecturePageBackground = (
+	season: Seasons
+): Omit<IPageTemplateBackgroundsProps, 'backgroundStyle'> => {
 	let headerPicture: IPicture
 	switch (season) {
 		case Seasons.Winter:
