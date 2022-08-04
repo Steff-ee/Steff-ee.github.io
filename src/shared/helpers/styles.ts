@@ -50,9 +50,9 @@ export const grandTitleStyle: React.CSSProperties = {
 
 const navBarStyle: React.CSSProperties = {
 	width: '100%',
-	height: '65px',
+	height: '66px',
 	display: 'block',
-	top: -1,
+	top: -2,
 	zIndex: 3,
 }
 
