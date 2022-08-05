@@ -21,7 +21,7 @@ export const Post: React.FunctionComponent<IPostProps> = (props) => {
 	const label = route === PageRoutes.Home ? dateStr : `${dateStr} / ${capitalize(route)}`
 
 	return (
-		<div style={{ maxWidth: '736px', margin: '0px 5%' }}>
+		<div style={{ maxWidth: '736px', margin: '0px 16px' }}>
 			<div style={titleTextStyle}>{title}</div>
 			{subtitle && (
 				<div

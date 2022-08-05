@@ -13,7 +13,6 @@ const aboutImageStyleMobile: React.CSSProperties = {
 const aboutImageStyleBigScreen: React.CSSProperties = {
 	width: '375px',
 	height: '500px',
-	margin: '0px 4% 32px 4%',
 }
 
 export const AboutPage: React.FunctionComponent = (): JSX.Element => {
@@ -82,6 +81,8 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 						<div>the company of a good book</div>
 					</div>
 				</div>
+			</div>
+			<div style={{ textAlign: 'center' }}>
 				<FadeLoadImage src={profileImg} style={aboutImageStyle} />
 			</div>
 		</div>

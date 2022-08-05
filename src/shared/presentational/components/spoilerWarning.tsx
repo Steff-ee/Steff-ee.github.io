@@ -15,8 +15,8 @@ export const SpoilerWarning: React.FunctionComponent<ISpoilerWarningProps> = (pr
 				fontWeight: 600,
 				color: Colors.BloodRed,
 				border: `1px solid ${Colors.BloodRed}`,
-				padding: '8px 4%',
-				margin: '0 8% 24px 8%',
+				padding: '8px 24px',
+				margin: '0 48px 24px 48px',
 				boxShadow: '3px 3px rgba(108, 43, 38, 0.6)',
 			}}
 		>

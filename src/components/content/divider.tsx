@@ -10,7 +10,7 @@ export const Divider: React.FunctionComponent<IDividerProps> = (props) => {
 	const { thickness = 1, rootStyle: rootStyleProp } = props
 	const { text: textColor } = useColors()
 
-	let rootStyle: React.CSSProperties = { width: '100%', padding: `40px 5% 48px 5%` }
+	let rootStyle: React.CSSProperties = { width: '100%', padding: `40px 24px 48px 24px` }
 	rootStyle = useMemo(() => {
 		if (rootStyleProp) {
 			return { ...rootStyle, ...rootStyleProp }

@@ -98,6 +98,6 @@ export const useListStyle = (): React.CSSProperties => {
 
 	return {
 		...lightTextStyle,
-		margin: '16px 5% 32px 5%',
+		margin: '16px 32px 32px 32px',
 	}
 }
