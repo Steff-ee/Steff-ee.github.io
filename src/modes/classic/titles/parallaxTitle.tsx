@@ -14,6 +14,7 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 	const { headerBackgroundImage, mediaSize, skipMorph } = props
 	const { headerTitleText: headerTitleTextColor, border: borderColor } = useColors()
 	const { season } = useContext(SeasonsContext)
+	var isChromium = window.chrome
 
 	const { zoomStyles, onStartZoom, onStopZoom } = useZoom(1.35, 35000)
 
@@ -25,7 +26,7 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 		backgroundOpacity = 0.9
 	}
 
-	const { morphedText: title, doNextMorph } = useTextMorphClickSequence(
+	let { morphedText: title, doNextMorph } = useTextMorphClickSequence(
 		[
 			{ texts: ['RAMBLING', 'AFTER'] },
 			{ texts: ['RAMBLING', 'THOUGHTS'] },
@@ -41,6 +42,10 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 		skipMorph
 	)
 
+	if (isChromium) {
+		title = 'RAMBLING'
+	}
+
 	const topBarHeight = showTopBar ? 44 : 1
 	const bannerHeight = 480
 
@@ -53,6 +58,14 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 		titleLineHeight = '120px'
 	}
 	// (parallax title is not used for small)
+
+	const textItselfStyle = {
+		...grandTitleStyle,
+		color: headerTitleTextColor,
+		fontSize: titleFontSize,
+		lineHeight: titleLineHeight,
+		margin: '0px 16px',
+	}
 
 	return (
 		<>
@@ -116,20 +129,11 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'center',
-					cursor: 'pointer',
+					cursor: isChromium ? 'default' : 'pointer',
 				}}
 			>
-				<div
-					style={{
-						...grandTitleStyle,
-						color: headerTitleTextColor,
-						fontSize: titleFontSize,
-						lineHeight: titleLineHeight,
-						margin: '0 16px',
-					}}
-				>
-					{title}
-				</div>
+				<div style={textItselfStyle}>{title}</div>
+				{isChromium && <div style={textItselfStyle}>AFTER</div>}
 			</div>
 		</>
 	)
