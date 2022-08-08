@@ -3,8 +3,8 @@ import { useLightTextStyle } from '../../helpers/useStyles'
 
 export interface ILinkFrameProps {
 	title: JSX.Element | string
-	description: JSX.Element | string
 	link: string
+	description?: JSX.Element | string
 	displayLarger?: boolean
 	// put the shadow on bottom and right, instead of the default bottom and left
 	rightShadow?: boolean
@@ -48,7 +48,9 @@ export const LinkFrame: React.FunctionComponent<ILinkFrameProps> = (props) => {
 			<a href={link} target="_blank" style={{ fontSize: displayLarger ? 24 : 21 }}>
 				{title}
 			</a>
-			<div style={{ ...lightTextStyle, padding: '6px 0px 0px 6px' }}>{description}</div>
+			{description && (
+				<div style={{ ...lightTextStyle, padding: '6px 0px 0px 6px' }}>{description}</div>
+			)}
 		</div>
 	)
 }
