@@ -203,7 +203,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 export const POST_00140: IPost = {
 	id: 140,
 	title: 'Link Roundup - 10/05/2022',
-	subtitle: `AI art!`,
+	subtitle: `(Battle)bots, shutdowns and Omegle Bars`,
 	createdTime: 1665025000000,
 	route: PageRoutes.Home,
 	pivot: HomePivots.Posts,
