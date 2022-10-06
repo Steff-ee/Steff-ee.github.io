@@ -28,21 +28,16 @@ export const LinkFrame: React.FunctionComponent<ILinkFrameProps> = (props) => {
 
 	return (
 		<div
-			className={isHovering ? 'linkHover' : ''}
 			style={{
 				padding: '24px 24px 24px 36px',
 				marginBottom: '40px',
 				boxShadow,
-				cursor: isHovering ? 'pointer' : 'none',
 			}}
 			onMouseEnter={(): void => {
 				setIsHovering(true)
 			}}
 			onMouseLeave={(): void => {
 				setIsHovering(false)
-			}}
-			onClick={(): void => {
-				window.open(link, '_blank')
 			}}
 		>
 			<a href={link} target="_blank" style={{ fontSize: displayLarger ? 24 : 21 }}>

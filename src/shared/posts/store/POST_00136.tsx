@@ -116,7 +116,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 				title={`Music`}
 				description={
 					<>
-						I decided to also share music every month; here's Dancing in the Dark by
+						I decided to also share music every month; here's "Dancing in the Dark" by
 						Bass Astral x Igo, feat. Runforrest.
 					</>
 				}

@@ -129,7 +129,7 @@ const PostContent: React.FunctionComponent = (): JSX.Element => {
 			/>
 			<LinkFrame
 				title={`Music`}
-				description={<>IM U by Beacon.</>}
+				description={<>"IM U" by Beacon.</>}
 				link={'https://www.youtube.com/watch?v=DSEIEdRo02Q'}
 			/>
 		</>
