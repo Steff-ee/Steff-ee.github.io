@@ -5,7 +5,6 @@ const CatsGallery = React.lazy(() => import('./catsGallery'))
 export const CatsPage: React.FunctionComponent = () => {
 	return (
 		<SeasonalPageTemplate
-			showPostsNav={false}
 			Content={
 				<Suspense>
 					<CatsGallery />

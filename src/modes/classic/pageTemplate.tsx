@@ -167,7 +167,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 				backClick={backClick}
 				nextClick={nextClick}
 				latestClick={latestClick}
-				showPosts={showPostsNav}
+				showPosts={!!showPostsNav}
 				scrollRef={scrollRef}
 				positionRef={contentPositionRef}
 			/>
@@ -208,7 +208,6 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					<Suspense>
 						<Fireflies />
 					</Suspense>
-					{pivots}
 					<div style={contentWrapperStyle}>
 						<div style={{ maxWidth: '100%', zIndex: 1 }}>{Content}</div>
 					</div>

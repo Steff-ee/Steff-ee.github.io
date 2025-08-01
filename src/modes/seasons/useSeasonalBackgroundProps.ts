@@ -34,18 +34,6 @@ export const useSeasonalBackgroundProps = (page: string | undefined) => {
 				backgroundStyle,
 			}
 
-		case PageRoutes.Games:
-			return {
-				...getGamePageBackground(season),
-				backgroundStyle,
-			}
-
-		case PageRoutes.Conjecture:
-			return {
-				...getConjecturePageBackground(season),
-				backgroundStyle,
-			}
-
 		case PageRoutes.Home:
 		default:
 			return {

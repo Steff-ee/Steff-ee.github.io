@@ -3,8 +3,8 @@ import { PageRoutes } from '../helpers/routes'
 import { IPost, PivotRoutes } from './post.types'
 
 export interface IOpenPostsContext {
-	getLastOpenPost: (page: PageRoutes, pivot: PivotRoutes | undefined) => IPost | undefined
-	setLastOpenPost: (page: PageRoutes, pivot: PivotRoutes, post: IPost) => void
+	getLastOpenPost: (page: PageRoutes) => IPost | undefined
+	setLastOpenPost: (page: PageRoutes, post: IPost) => void
 }
 
 export const OpenPostsContext = React.createContext<IOpenPostsContext>({
@@ -20,27 +20,20 @@ export const OpenPostsProvider: React.FunctionComponent<React.PropsWithChildren>
 	}>({
 		[PageRoutes.Home]: {},
 		[PageRoutes.Stories]: {},
-		[PageRoutes.Games]: {},
-		[PageRoutes.Conjecture]: {},
 	})
 
 	return (
 		<OpenPostsContext.Provider
 			value={{
 				getLastOpenPost: (
-					page: PageRoutes,
-					pivot: PivotRoutes | undefined
+					page: PageRoutes
 				): IPost | undefined => {
-					if (pivot === undefined) {
-						return undefined
-					}
-
-					return dictionary[page][pivot]
+					return dictionary[page]['1']
 				},
-				setLastOpenPost: (page: PageRoutes, pivot: PivotRoutes, post: IPost): void => {
+				setLastOpenPost: (page: PageRoutes, post: IPost): void => {
 					// (TODO) more efficient way?
 					const newDictionary = { ...dictionary }
-					newDictionary[page][pivot] = post
+					newDictionary[page]['1'] = post
 					setDictionary(newDictionary)
 				},
 			}}

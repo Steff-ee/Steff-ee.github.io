@@ -10,14 +10,17 @@ export const linksPath = '#/home/links'
 export enum PageRoutes {
 	Home = 'home',
 	Stories = 'stories',
-	Games = 'games',
-	Conjecture = 'conjecture',
+	Lego = 'lego',
 	Cats = 'cats',
+	Penultima = 'penultima',
+	Cancer = 'cancer',
+
+	// Deprecated
+	Conjecture = 'conjecture',
+	Games = 'games,'
 }
 
 export interface IRouteParams {
-	page?: PageRoutes
-	pivot?: PivotRoutes
 	postId?: string
 }
 
@@ -49,14 +52,13 @@ export const RouteContext = React.createContext<IRouteContext>({
 
 export const getPath = (
 	page: string,
-	pivot: string | undefined,
 	postId?: string | number
 ): string => {
 	if (postId !== undefined) {
-		return `/#/${page}/${pivot}/${postId}`
+		return `/#/${page}/${postId}`
 	}
 
-	return `/#/${page}/${pivot}`
+	return `/#/${page}`
 }
 
 export const redirectTo = (path: string): void => {

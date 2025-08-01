@@ -3,6 +3,7 @@ import { FadeLoadImage } from '../../components/fadeLoadImage'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { profileImg } from '../../shared/helpers/assets'
 import { useLightTextStyle, useTitleTextStyle } from '../../shared/helpers/useStyles'
+import { SeasonalPageTemplate } from '../../modes/classic/seasonalPageTemplate'
 
 const aboutImageStyleMobile: React.CSSProperties = {
 	width: '300px',
@@ -27,7 +28,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 		aboutImageStyle = aboutImageStyleBigScreen
 	}
 
-	return (
+	const Content = (
 		<div style={{ display: 'block', padding: '0px 30px' }}>
 			<div
 				style={{
@@ -46,31 +47,10 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 						}}
 					>
 						<div style={{ ...titleTextStyle, margin: '0px 32px 32px 0px' }}>Hola!</div>
-						<div
-							style={{
-								...lightTextStyle,
-								textAlign: 'right',
-								marginBottom: '32px',
-								flexGrow: 1,
-							}}
-						>
-							<div style={{ fontSize: 21 }}>
-								<div>Check out my</div>
-								<a href={'#/home/resume'}>resume</a>
-							</div>
-						</div>
 					</div>
-					<p>When not writing code, writing stories.</p>
+					<p>When I'm not writing code, I'm reading and writing fiction. Always learning and making mistakes. Husband; cat dad; cancer fighter.</p>
 					<p>
-						Always curious, always learning, and not always <i>not</i> making mistakes
-						(así será).
-					</p>
-					<p>
-						Wrote this blog using React 18. Check out the code{' '}
-						<a href="https://github.com/Steff-ee/Steff-ee.github.io" target="_blank">
-							here
-						</a>
-						!
+						Grateful to be alive given how statistically unlikely my existence is (and yours is too!).
 					</p>
 					<div style={lightTextStyle}>
 						<div>I hope you have enjoyed your stay</div>
@@ -78,7 +58,7 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 						<div>wherever you're going, wherefore,</div>
 						<div>—or perhaps wherever you're took—</div>
 						<div>you're joined by good company, or</div>
-						<div>the company of a good book</div>
+						<div>the company of a good book.</div>
 					</div>
 				</div>
 			</div>
@@ -87,4 +67,5 @@ export const AboutPage: React.FunctionComponent = (): JSX.Element => {
 			</div>
 		</div>
 	)
+	return <SeasonalPageTemplate Content={Content} />
 }

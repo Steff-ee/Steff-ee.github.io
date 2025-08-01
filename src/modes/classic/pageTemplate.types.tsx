@@ -10,7 +10,7 @@ export interface IPageTemplateBackgroundsProps {
 
 export interface IPageTemplateProps extends IPageTemplateBackgroundsProps {
 	Content: JSX.Element
-	showPostsNav: boolean
+	showPostsNav?: boolean
 
 	/* Pivots */
 	selectedPivotTitle?: string | undefined

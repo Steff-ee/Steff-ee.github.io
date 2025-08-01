@@ -1,6 +1,6 @@
 import { StoryPivots } from '../../pages/stories/stories.types'
 import { PageRoutes } from '../helpers/routes'
-import { IPost, PivotRoutes } from './post.types'
+import { IPost } from './post.types'
 import { POST_00100 } from './store/POST_00100'
 import { POST_00102 } from './store/POST_00102'
 import { POST_00103 } from './store/POST_00103'
@@ -18,11 +18,7 @@ import { POST_00124 } from './store/POST_00124'
 import { POST_00126 } from './store/POST_00126'
 import { POST_00128 } from './store/POST_00128'
 import { POST_00130 } from './store/POST_00130'
-import { POST_00132 } from './store/POST_00132'
 import { POST_00134 } from './store/POST_00134'
-import { POST_00136 } from './store/POST_00136'
-import { POST_00138 } from './store/POST_00138'
-import { POST_00140 } from './store/POST_00140'
 
 /* ALL POSTS */
 
@@ -45,11 +41,7 @@ export const allPosts: IPost[] = [
 	POST_00126,
 	POST_00128,
 	POST_00130,
-	POST_00132,
 	POST_00134,
-	POST_00136,
-	POST_00138,
-	POST_00140,
 ]
 
 export const allPostsByPage: { [page: string]: IPost[] } = {}
@@ -83,40 +75,14 @@ stories.forEach((post, index) => {
 	storiesDictionary[post.id] = index
 })
 
-/* GAMES */
-
-export const gamesPosts: IPost[] = allPostsByPage[PageRoutes.Games]
-
-const gamesPostsDictionary: { [id: number]: number } = {}
-gamesPosts.forEach((post, index) => {
-	gamesPostsDictionary[post.id] = index
-})
-
-/* CONJECTURE */
-
-export const conjecturePosts: IPost[] = allPostsByPage[PageRoutes.Conjecture]
-
-const conjecturePostsDictionary: { [id: number]: number } = {}
-conjecturePosts.forEach((post, index) => {
-	conjecturePostsDictionary[post.id] = index
-})
-
 /* NAVIGATION */
 
-export const getPageList = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost[] => {
+export const getPageList = (page: PageRoutes): IPost[] => {
 	switch (page) {
 		case PageRoutes.Home:
 			return allPosts
 		case PageRoutes.Stories:
-			if (pivot === StoryPivots.Stories) {
-				return stories
-			}
-
 			return postsAboutStories
-		case PageRoutes.Games:
-			return gamesPosts
-		case PageRoutes.Conjecture:
-			return conjecturePosts
 	}
 
 	return []
@@ -125,21 +91,12 @@ export const getPageList = (page: PageRoutes, pivot: PivotRoutes | undefined): I
 const getPageListIndexOfPost = (
 	postId: number,
 	page: PageRoutes,
-	pivot: PivotRoutes | undefined
 ): number => {
 	switch (page) {
 		case PageRoutes.Home:
 			return allPostsDictionary[postId]
 		case PageRoutes.Stories:
-			if (pivot === StoryPivots.Stories) {
-				return storiesDictionary[postId]
-			}
-
 			return postsAboutStoriesDictionary[postId]
-		case PageRoutes.Games:
-			return gamesPostsDictionary[postId]
-		case PageRoutes.Conjecture:
-			return conjecturePostsDictionary[postId]
 	}
 
 	return -1
@@ -153,11 +110,10 @@ export const getPostFromId = (postId: number): IPost | undefined => {
 
 export const getNextPost = (
 	post: IPost,
-	page: PageRoutes,
-	pivot: PivotRoutes | undefined
+	page: PageRoutes
 ): IPost | undefined => {
-	const index = getPageListIndexOfPost(post.id, page, pivot) + 1
-	const pageList = getPageList(page, pivot)
+	const index = getPageListIndexOfPost(post.id, page) + 1
+	const pageList = getPageList(page)
 
 	if (pageList.length > index) {
 		return pageList[index]
@@ -168,11 +124,10 @@ export const getNextPost = (
 
 export const getPrevPost = (
 	post: IPost,
-	page: PageRoutes,
-	pivot: PivotRoutes | undefined
+	page: PageRoutes
 ): IPost | undefined => {
-	const index = getPageListIndexOfPost(post.id, page, pivot) - 1
-	const pageList = getPageList(page, pivot)
+	const index = getPageListIndexOfPost(post.id, page) - 1
+	const pageList = getPageList(page)
 
 	if (index >= 0) {
 		return pageList[index]
@@ -181,36 +136,20 @@ export const getPrevPost = (
 	return undefined
 }
 
-export const getFirstPost = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost => {
+export const getFirstPost = (page: PageRoutes): IPost => {
 	switch (page) {
 		case PageRoutes.Stories:
-			if (pivot === StoryPivots.Stories) {
-				return stories[0]
-			}
-
 			return postsAboutStories[0]
-		case PageRoutes.Games:
-			return gamesPosts[0]
-		case PageRoutes.Conjecture:
-			return conjecturePosts[0]
 		case PageRoutes.Home:
 		default:
 			return allPosts[0]
 	}
 }
 
-export const getLatestPost = (page: PageRoutes, pivot: PivotRoutes | undefined): IPost => {
+export const getLatestPost = (page: PageRoutes): IPost => {
 	switch (page) {
 		case PageRoutes.Stories:
-			if (pivot === StoryPivots.Stories) {
-				return stories[stories.length - 1]
-			}
-
 			return postsAboutStories[postsAboutStories.length - 1]
-		case PageRoutes.Games:
-			return gamesPosts[gamesPosts.length - 1]
-		case PageRoutes.Conjecture:
-			return conjecturePosts[conjecturePosts.length - 1]
 		case PageRoutes.Home:
 		default:
 			return allPosts[allPosts.length - 1]

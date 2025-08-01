@@ -14,7 +14,7 @@ const ParallaxTitle: React.FunctionComponent<IParallaxTitleProps> = (props) => {
 	const { headerBackgroundImage, mediaSize, skipMorph } = props
 	const { headerTitleText: headerTitleTextColor, border: borderColor } = useColors()
 	const { season } = useContext(SeasonsContext)
-	var isChromium = window.chrome
+	var isChromium = true
 
 	const { zoomStyles, onStartZoom, onStopZoom } = useZoom(1.35, 35000)
 

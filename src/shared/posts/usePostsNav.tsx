@@ -33,22 +33,21 @@ const getPostFromRoute = (postIdFromRoute: string | undefined, page: string): IP
  */
 export const usePostsNav = (
 	page: PageRoutes,
-	pivot: PivotRoutes | undefined,
 	skip = false
 ): IUsePostsNavReturns => {
 	const { postId: postIdFromRoute } = usePageParams()
 	const location = useLocation()
 	const { getLastOpenPost, setLastOpenPost } = useContext(OpenPostsContext)
-	const firstPost = getFirstPost(page, pivot)
-	const latestPost = getLatestPost(page, pivot)
+	const firstPost = getFirstPost(page)
+	const latestPost = getLatestPost(page)
 	const postFromRoute = getPostFromRoute(postIdFromRoute, page)
 
-	const currentPost: IPost = postFromRoute || getLastOpenPost(page, pivot) || latestPost
+	const currentPost: IPost = postFromRoute || getLastOpenPost(page) || latestPost
 
 	useEffect(() => {
 		// if the new route was valid, store it in the last-open-posts provider
-		if (!!postFromRoute && pivot) {
-			setLastOpenPost(page, pivot, currentPost)
+		if (!!postFromRoute) {
+			setLastOpenPost(page, currentPost)
 		}
 	}, [location.pathname])
 
@@ -57,32 +56,32 @@ export const usePostsNav = (
 	}
 
 	if (!postFromRoute && currentPost) {
-		return { currentPost, redirectPath: getPath(page, pivot, currentPost.id) }
+		return { currentPost, redirectPath: getPath(page, currentPost.id) }
 	}
 
-	const prevPost = getPrevPost(currentPost, page, pivot)
-	const nextPost = getNextPost(currentPost, page, pivot)
+	const prevPost = getPrevPost(currentPost, page)
+	const nextPost = getNextPost(currentPost, page)
 
 	let backClick
 	if (prevPost) {
-		backClick = (): void => redirectTo(getPath(page, pivot, prevPost.id))
+		backClick = (): void => redirectTo(getPath(page, prevPost.id))
 	}
 
 	let nextClick
 	if (nextPost) {
-		nextClick = (): void => redirectTo(getPath(page, pivot, nextPost.id))
+		nextClick = (): void => redirectTo(getPath(page, nextPost.id))
 	}
 
 	// if we're already at the first or second post, no need to show "<<"
 	let firstClick
-	if (prevPost && getNextPost(firstPost, page, pivot)!.id !== currentPost.id) {
-		firstClick = (): void => redirectTo(getPath(page, pivot, firstPost.id))
+	if (prevPost && getNextPost(firstPost, page)!.id !== currentPost.id) {
+		firstClick = (): void => redirectTo(getPath(page, firstPost.id))
 	}
 
 	// if we're already at the latest or next-to-latest post, no need to show ">>"
 	let latestClick
-	if (nextPost && getPrevPost(latestPost, page, pivot)!.id !== currentPost.id) {
-		latestClick = (): void => redirectTo(getPath(page, pivot, latestPost.id))
+	if (nextPost && getPrevPost(latestPost, page)!.id !== currentPost.id) {
+		latestClick = (): void => redirectTo(getPath(page, latestPost.id))
 	}
 
 	return {

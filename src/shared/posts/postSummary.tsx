@@ -13,7 +13,6 @@ import { IPost, PivotRoutes } from './post.types'
 export interface IPostSummaryProps {
 	post: IPost
 	page: PageRoutes
-	pivot: PivotRoutes | undefined
 	displayLarge?: boolean
 	rootStyle?: React.CSSProperties
 }
@@ -74,7 +73,7 @@ const getRootStyle = (
 }
 
 export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) => {
-	let { rootStyle, post, page, pivot, displayLarge } = props
+	let { rootStyle, post, page, displayLarge } = props
 	const { title, subtitle, createdTime, route, imageSrc } = post
 	const mediaSize = useContext(MediaContext)
 	const [opacity, setOpacity] = useState(0)
@@ -97,7 +96,7 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 	const label = route === PageRoutes.Home ? dateStr : `${dateStr} / ${capitalize(route)}`
 	rootStyle = getRootStyle(rootStyle, displayLarge, isSmall, opacity)
 
-	const path = getPath(page, pivot, post.id)
+	const path = getPath(page, post.id)
 	const onClick = useCallback(() => redirectTo(path), [path])
 
 	let useBorderTop = false

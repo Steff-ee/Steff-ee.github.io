@@ -2,7 +2,6 @@ import { FaAngleDoubleLeft } from '@react-icons/all-files/fa/FaAngleDoubleLeft'
 import { FaAngleDoubleRight } from '@react-icons/all-files/fa/FaAngleDoubleRight'
 import { FaAngleLeft } from '@react-icons/all-files/fa/FaAngleLeft'
 import { FaAngleRight } from '@react-icons/all-files/fa/FaAngleRight'
-import { FaChessKnight } from '@react-icons/all-files/fa/FaChessKnight'
 import { FaChevronUp } from '@react-icons/all-files/fa/FaChevronUp'
 import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope'
 import { FaFeatherAlt } from '@react-icons/all-files/fa/FaFeatherAlt'
@@ -11,22 +10,13 @@ import { FaGlobeAmericas } from '@react-icons/all-files/fa/FaGlobeAmericas'
 import { FaHome } from '@react-icons/all-files/fa/FaHome'
 import { FaList } from '@react-icons/all-files/fa/FaList'
 import { FaPaw } from '@react-icons/all-files/fa/FaPaw'
-import { FaPoll } from '@react-icons/all-files/fa/FaPoll'
 import { FaSyncAlt } from '@react-icons/all-files/fa/FaSyncAlt'
 import React, { useContext, useEffect, useState } from 'react'
 import { INavItem } from '../../../components/iconNav/iconNav.types'
 import { SeasonsContext } from '../../../modes/seasons/seasons'
 import { Seasons } from '../../../modes/seasons/seasonsHelpers'
 import { catsTitle } from '../../../pages/cats/cats.types'
-import { conjectureTitle } from '../../../pages/conjectures/conjectures.types'
-import { gamesTitle } from '../../../pages/games/games.types'
 import { storiesTitle } from '../../../pages/stories/stories.types'
-import {
-	getConjecturePath,
-	getGamesPath,
-	getHomePath,
-	getStoriesPath,
-} from '../../helpers/navigation'
 import {
 	aboutPath,
 	catsPath,
@@ -34,12 +24,9 @@ import {
 	PageRoutes,
 	postsPath,
 	redirectTo,
-	RouteContext,
-	usePageParams,
 } from '../../helpers/routes'
 import { useIsTest } from '../../helpers/url'
 import { getScrollPosition } from '../../helpers/useScroll'
-import { OpenPostsContext } from '../../posts/openPosts'
 
 const getNextSeason = (season: Seasons, isTest: boolean): Seasons => {
 	switch (season) {
@@ -63,39 +50,18 @@ const getNextSeason = (season: Seasons, isTest: boolean): Seasons => {
 }
 
 export const useCategoryNavItems = (): INavItem[] => {
-	const { prevPivots } = useContext(RouteContext)
-	const { getLastOpenPost } = useContext(OpenPostsContext)
-	const { pivot: currentPivot } = usePageParams()
-
-	const homePath = getHomePath(getLastOpenPost, prevPivots, currentPivot)
-	const storiesPath = getStoriesPath(getLastOpenPost, prevPivots, currentPivot)
-	const gamesPath = getGamesPath(getLastOpenPost, prevPivots, currentPivot)
-	const conjecturePath = getConjecturePath(getLastOpenPost, prevPivots, currentPivot)
-
 	const navLinks: INavItem[] = [
 		{
 			icon: <FaGlobeAmericas />,
 			id: PageRoutes.Home,
 			label: 'all',
-			onClick: (): void => redirectTo(homePath),
+			onClick: (): void => redirectTo(`/#/${PageRoutes.Home}`),
 		},
 		{
 			icon: <FaFeatherAlt />,
 			id: PageRoutes.Stories,
 			label: storiesTitle,
-			onClick: (): void => redirectTo(storiesPath),
-		},
-		{
-			icon: <FaChessKnight />,
-			id: PageRoutes.Games,
-			label: gamesTitle,
-			onClick: (): void => redirectTo(gamesPath),
-		},
-		{
-			icon: <FaPoll />,
-			id: PageRoutes.Conjecture,
-			label: conjectureTitle,
-			onClick: (): void => redirectTo(conjecturePath),
+			onClick: (): void => redirectTo(`/#/${PageRoutes.Stories}`),
 		},
 	]
 

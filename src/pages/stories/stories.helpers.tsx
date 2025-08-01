@@ -34,16 +34,6 @@ export const showPostsListForStories = (pivot: PivotRoutes | undefined): boolean
 	return pivot !== StoryPivots.Links
 }
 
-export const getStoriesPageContent = (
-	selectedPivotTitle: PivotRoutes | undefined
-): JSX.Element | undefined => {
-	if (selectedPivotTitle === StoryPivots.Links) {
-		return <StoryLinks />
-	}
-
-	return undefined
-}
-
 export const getStoriesPageBackground = (
 	season: Seasons
 ): Omit<IPageTemplateBackgroundsProps, 'backgroundStyle'> => {

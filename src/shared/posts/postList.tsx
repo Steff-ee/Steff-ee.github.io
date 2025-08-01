@@ -2,17 +2,16 @@ import React, { useContext } from 'react'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { PageRoutes } from '../helpers/routes'
 import { IPost, PivotRoutes } from './post.types'
-import { getPageList } from './posts'
+import { allPosts, getPageList } from './posts'
 import { PostSummary } from './postSummary'
 
 export interface IPostProps {
 	page: PageRoutes
-	pivot: PivotRoutes | undefined
 }
 
 export const PostList: React.FunctionComponent<IPostProps> = (props) => {
-	const { page, pivot } = props
-	const posts: IPost[] = getPageList(page, pivot)
+	const { page } = props
+	const posts: IPost[] = allPosts
 	const reversedPosts = [...posts]
 	reversedPosts.reverse()
 	const isSmall = useContext(MediaContext) === MediaSize.Small
@@ -30,7 +29,6 @@ export const PostList: React.FunctionComponent<IPostProps> = (props) => {
 						rootStyle={{ padding }}
 						post={post}
 						page={page}
-						pivot={pivot}
 						displayLarge={idx === 0}
 					/>
 				</div>
