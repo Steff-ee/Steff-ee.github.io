@@ -26,7 +26,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 	if (hoverIndex === -1 && defaultActiveItemIndex > -1) {
 		hoverIndex = defaultActiveItemIndex
 	}
-	const activeNavItem = hoverIndex >= 0 ? navItems[hoverIndex] : undefined
+	const activeNavItem = hoverIndex >= 0 && !suppressLabels ? navItems[hoverIndex] : undefined
 	const { navbarText: navbarTextColor } = useColors()
 	const frostedStyle = useFrostedGlass()
 	const isSmall = useContext(MediaContext) === MediaSize.Small
@@ -75,7 +75,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				})}
 			</div>
 			<Suspense>
-				{!suppressLabels && <NavListLabel
+				<NavListLabel
 					navItem={activeNavItem}
 					height={iconHeight}
 					width={labelWidth}
@@ -86,7 +86,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 						position: 'absolute',
 						...orientationStyle,
 					}}
-				/>}
+				/>
 			</Suspense>
 		</div>
 	)
