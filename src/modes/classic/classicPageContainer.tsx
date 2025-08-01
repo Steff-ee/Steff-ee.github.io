@@ -15,7 +15,10 @@ export const PostsPage: React.FunctionComponent = (): JSX.Element => {
 		nextClick,
 		latestClick,
 		redirectPath,
-	} = usePostsNav(PageRoutes.Stories, !postId)
+	} = usePostsNav(PageRoutes.Posts, !postId)
+
+	console.log('postId', postId)
+	console.log('firstClick', firstClick)
 
 	if (redirectPath) {
 		redirectTo(redirectPath)
@@ -27,7 +30,7 @@ export const PostsPage: React.FunctionComponent = (): JSX.Element => {
 	if (!!postId) {
 		Content = <Post post={currentPost} />
 	} else {
-		Content = <PostList page={PageRoutes.Stories} />
+		Content = <PostList page={PageRoutes.Posts} />
 	}
 
 	const templateProps = {

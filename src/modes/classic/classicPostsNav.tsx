@@ -7,6 +7,7 @@ import {
 	useBackCommand,
 	useFirstCommand,
 	useLatestCommand,
+	useMenuCommand,
 	useNextCommand,
 	useReturnToTopCommand,
 } from '../../shared/presentational/components/navBarCommands'
@@ -26,15 +27,16 @@ export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (
 		props
 	const location = useLocation()
 	const primaryRoute = getPrimaryRoute(location.pathname)
+	console.log('yo primaryRoute', primaryRoute)
 	const backCommand = useBackCommand(backClick, primaryRoute)
 	const nextCommand = useNextCommand(nextClick, primaryRoute)
-	const returnToTopCommand = useReturnToTopCommand(scrollRef, positionRef)
+	const menuCommand = useMenuCommand()
 	const firstCommand = useFirstCommand(firstClick, primaryRoute)
 	const latestCommand = useLatestCommand(latestClick, primaryRoute)
 
 	const navItems = useMemo(() => {
-		return [firstCommand, backCommand, returnToTopCommand, nextCommand, latestCommand]
-	}, [firstCommand, backCommand, returnToTopCommand, nextCommand, latestCommand])
+		return [firstCommand, backCommand, menuCommand, nextCommand, latestCommand]
+	}, [firstCommand, backCommand, nextCommand, latestCommand])
 
 	return (
 		<HorizontalIconNav

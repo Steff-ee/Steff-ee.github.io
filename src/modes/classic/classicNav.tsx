@@ -17,10 +17,6 @@ const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
 		<div style={rootStyle}>
 			<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 				<div>
-					<ClassicPageNav orientation={NavOrientation.Left} />
-				</div>
-				<div style={{ flexGrow: 1 }} />
-				<div>
 					<ClassicPostsNav
 						scrollRef={scrollRef}
 						positionRef={positionRef}

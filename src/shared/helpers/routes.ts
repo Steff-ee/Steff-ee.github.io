@@ -9,13 +9,14 @@ export const linksPath = '#/home/links'
 
 export enum PageRoutes {
 	Home = 'home',
-	Stories = 'stories',
+	Posts = 'posts',
 	Lego = 'lego',
 	Cats = 'cats',
 	Penultima = 'penultima',
 	Cancer = 'cancer',
 
 	// Deprecated
+	Stories = 'stories',
 	Conjecture = 'conjecture',
 	Games = 'games,'
 }

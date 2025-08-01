@@ -79,7 +79,7 @@ stories.forEach((post, index) => {
 
 export const getPageList = (page: PageRoutes): IPost[] => {
 	switch (page) {
-		case PageRoutes.Home:
+		case PageRoutes.Posts:
 			return allPosts
 		case PageRoutes.Stories:
 			return postsAboutStories
@@ -93,7 +93,7 @@ const getPageListIndexOfPost = (
 	page: PageRoutes,
 ): number => {
 	switch (page) {
-		case PageRoutes.Home:
+		case PageRoutes.Posts:
 			return allPostsDictionary[postId]
 		case PageRoutes.Stories:
 			return postsAboutStoriesDictionary[postId]
@@ -113,7 +113,9 @@ export const getNextPost = (
 	page: PageRoutes
 ): IPost | undefined => {
 	const index = getPageListIndexOfPost(post.id, page) + 1
+	console.log('yo index', index, 'post id', post.id, 'page', page)
 	const pageList = getPageList(page)
+	console.log('yo pageList ln', pageList.length)
 
 	if (pageList.length > index) {
 		return pageList[index]
@@ -140,7 +142,7 @@ export const getFirstPost = (page: PageRoutes): IPost => {
 	switch (page) {
 		case PageRoutes.Stories:
 			return postsAboutStories[0]
-		case PageRoutes.Home:
+		case PageRoutes.Posts:
 		default:
 			return allPosts[0]
 	}
@@ -150,7 +152,7 @@ export const getLatestPost = (page: PageRoutes): IPost => {
 	switch (page) {
 		case PageRoutes.Stories:
 			return postsAboutStories[postsAboutStories.length - 1]
-		case PageRoutes.Home:
+		case PageRoutes.Posts:
 		default:
 			return allPosts[allPosts.length - 1]
 	}

@@ -22,6 +22,7 @@ export interface INavItem {
 	labelPosition?: LabelPosition
 	isSelected?: boolean
 	disabled?: boolean
+	fullyDisabled?: boolean
 	tabIndex?: number
 	ref?: React.RefObject<HTMLDivElement>
 
@@ -67,7 +68,7 @@ export interface IVerticalIconNavProps extends Omit<ICommonIconNavProps, 'rootSt
 	showIconLabels: boolean
 
 	menuButtonProps?: Partial<INavItem>
-	
+
 	/* When true, returns empty components */
 	skip?: boolean
 

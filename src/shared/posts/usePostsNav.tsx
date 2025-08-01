@@ -18,7 +18,7 @@ const getPostFromRoute = (postIdFromRoute: string | undefined, page: string): IP
 	if (postIdFromRoute) {
 		const postId = parseInt(postIdFromRoute, 10)
 		const postFromRoute = getPostFromId(postId)
-		if (postFromRoute && page !== postFromRoute.route && page !== PageRoutes.Home) {
+		if (postFromRoute && page !== postFromRoute.route && page !== PageRoutes.Posts) {
 			return undefined
 		}
 

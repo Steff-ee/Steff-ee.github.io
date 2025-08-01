@@ -32,10 +32,10 @@ export const Root: React.FunctionComponent = (): JSX.Element => {
 										element={<Navigate to={PageRoutes.Home} />}
 									/>
 									<Route path={'/' + PageRoutes.Home} element={<AboutPage />} />
-									<Route path={'/' + PageRoutes.Stories} element={<PostsPage />} />
+									<Route path={'/' + PageRoutes.Posts} element={<PostsPage />} />
 									<Route path={'/' + PageRoutes.Cats} element={<CatsPage />} />
 									<Route
-										path={`/${PageRoutes.Stories}/:postId`}
+										path={`/${PageRoutes.Posts}/:postId`}
 										element={<PostsPage />}
 									/>
 									<Route element={<PageNotFound />} />

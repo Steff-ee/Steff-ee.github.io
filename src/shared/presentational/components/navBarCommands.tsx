@@ -27,6 +27,7 @@ import {
 } from '../../helpers/routes'
 import { useIsTest } from '../../helpers/url'
 import { getScrollPosition } from '../../helpers/useScroll'
+import { FaBars } from '@react-icons/all-files/fa/FaBars'
 
 const getNextSeason = (season: Seasons, isTest: boolean): Seasons => {
 	switch (season) {
@@ -123,6 +124,18 @@ const postCategoryToString = (postCategory: string): string => {
 	return `${postCategory} `
 }
 
+
+export const useMenuCommand = (
+): INavItem => {
+	return {
+		icon: <FaBars />,
+		id: 'menu',
+		label: `Menu`,
+		onClick: () => { console.log('TODO') },
+		disabled: false,
+	}
+}
+
 export const useBackCommand = (
 	onClick: (() => void) | undefined,
 	postCategory: string
@@ -133,6 +146,7 @@ export const useBackCommand = (
 		label: `Previous ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
+		fullyDisabled: postCategory != 'posts'
 	}
 }
 
@@ -146,6 +160,7 @@ export const useNextCommand = (
 		label: `Next ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
+		fullyDisabled: postCategory != 'posts'
 	}
 }
 
@@ -159,6 +174,7 @@ export const useFirstCommand = (
 		label: `First ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
+		fullyDisabled: postCategory != 'posts'
 	}
 }
 
@@ -172,6 +188,7 @@ export const useLatestCommand = (
 		label: `Latest ${postCategoryToString(postCategory)} post`,
 		onClick,
 		disabled: onClick === undefined,
+		fullyDisabled: postCategory != 'posts'
 	}
 }
 

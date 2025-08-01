@@ -26,6 +26,7 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 		labelTextStyle,
 		isSelected = false,
 		disabled = false,
+		fullyDisabled = false,
 		tabIndex = 0,
 	} = props
 	const [hasAttention, setHasAttention] = useState<boolean>(false)
@@ -33,6 +34,10 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 	const backgroundColor = hasAttention ? borderHighlight : undefined
 	const filter = disabled ? disabledFadeFilterValue : ''
 	let isSelectedStyle: React.CSSProperties = {}
+
+	if (fullyDisabled) {
+		return <div style={{ height: '64px', width: '64px', marginTop: '-9px', backgroundColor }}></div>
+	}
 
 	if (isSelected) {
 		isSelectedStyle = {

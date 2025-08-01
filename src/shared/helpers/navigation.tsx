@@ -7,6 +7,10 @@ import { PivotRoutes } from '../posts/post.types'
 import { doesItemExistInIterable } from './genericHelpers'
 import { IRouteContext, PageRoutes } from './routes'
 
+export const getPostsPath = (): string => {
+	return `/#/${PageRoutes.Posts}`
+}
+
 export const getHomePath = (
 	getLastOpenPost: IOpenPostsContext['getLastOpenPost'],
 	prevPivots?: IRouteContext['prevPivots'],
@@ -62,6 +66,8 @@ export const getAnyPagePath = (
 	pivot?: PivotRoutes
 ): string => {
 	switch (page) {
+		case PageRoutes.Posts:
+			return getPostsPath()
 		case PageRoutes.Stories:
 			return getStoriesPath(getLastOpenPost, prevPivots, pivot)
 		case PageRoutes.Home:

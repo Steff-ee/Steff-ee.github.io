@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { PageRoutes } from '../helpers/routes'
-import { IPost, PivotRoutes } from './post.types'
+import { IPost } from './post.types'
 
 export interface IOpenPostsContext {
 	getLastOpenPost: (page: PageRoutes) => IPost | undefined
@@ -18,7 +18,7 @@ export const OpenPostsProvider: React.FunctionComponent<React.PropsWithChildren>
 	const [dictionary, setDictionary] = useState<{
 		[pageRoute: string]: { [pivotRoute: string]: IPost }
 	}>({
-		[PageRoutes.Home]: {},
+		[PageRoutes.Posts]: {},
 		[PageRoutes.Stories]: {},
 	})
 
