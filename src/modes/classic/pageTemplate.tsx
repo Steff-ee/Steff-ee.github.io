@@ -137,6 +137,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 				scrollRef={scrollRef}
 				positionRef={contentPositionRef}
 				menuClick={() => setShowMenu(!showMenu)}
+				menuShowing={showMenu}
 			/>
 			<div
 				style={{
@@ -172,7 +173,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					ref={contentPositionRef}
 				>
 					{mediaSize !== MediaSize.Small && classicNav}
-					{showMenu && <Menu items={menuItems} />}
+					<Menu show={showMenu} items={menuItems} />
 					<Suspense>
 						<Fireflies />
 					</Suspense>

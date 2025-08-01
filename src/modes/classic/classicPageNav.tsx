@@ -9,11 +9,12 @@ import {
 } from '../../shared/presentational/components/navBarCommands'
 
 export interface IClassicPageNavProps {
+	suppressLabels: boolean,
 	orientation: NavOrientation
 }
 
 export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (props) => {
-	const { orientation } = props
+	const { suppressLabels, orientation } = props
 	const changeThemeNavItem = useChangeThemeNavItem()
 	const { categoryButtonProps, CategoryList, isOpen } = useCategoryMenu({})
 
@@ -26,6 +27,7 @@ export const ClassicPageNav: React.FunctionComponent<IClassicPageNavProps> = (pr
 	return (
 		<>
 			<HorizontalIconNav
+				suppressLabels={suppressLabels}
 				navItems={navItems}
 				orientation={orientation}
 				defaultActiveItemIndex={isOpen ? 0 : undefined}

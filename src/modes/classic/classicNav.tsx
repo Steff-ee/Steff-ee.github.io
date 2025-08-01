@@ -8,7 +8,7 @@ import { Menu, menuItems } from './menu'
 const ClassicNavMobile = React.lazy(() => import('./classicNavMobile'))
 
 const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
-	const { menuClick, scrollRef, positionRef, rootStyle, firstClick, backClick, nextClick, latestClick } =
+	const { menuShowing, menuClick, scrollRef, positionRef, rootStyle, firstClick, backClick, nextClick, latestClick } =
 		props
 	const frostedStyle = useFrostedGlass()
 
@@ -26,6 +26,7 @@ const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
 						nextClick={nextClick}
 						latestClick={latestClick}
 						menuClick={menuClick}
+						suppressLabels={menuShowing}
 					/>
 				</div>
 			</div>

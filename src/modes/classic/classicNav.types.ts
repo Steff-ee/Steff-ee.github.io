@@ -10,4 +10,5 @@ export interface IClassicNavProps {
 	nextClick?: () => void
 	latestClick?: () => void
 	menuClick: () => void
+	menuShowing: boolean
 }

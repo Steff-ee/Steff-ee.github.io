@@ -4,8 +4,15 @@ import { Colors } from '../../shared/helpers/constants'
 import { aboutPath, catsPath, postsPath, redirectTo } from '../../shared/helpers/routes'
 
 export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
-    const { rootStyle, items } =
+    const { rootStyle, show, items } =
         props
+
+    const transformStyle: (index: number) => React.CSSProperties = (index: number) => ({
+        opacity: show ? 1 : 0,
+        transform: `translateY(${show ? '0' : '10px'})`,
+        transition: `opacity 0.4s ease, transform 0.4s ease`,
+        transitionDelay: `calc(${index + 1} * 200ms)`,
+    })
 
     // the empty div on !showPages is to keep the space-between working
     return (
@@ -14,7 +21,8 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
             position: 'sticky',
             left: 0,
             right: 0,
-            bottom: 0,
+            bottom: show ? 0 : undefined,
+            height: show ? undefined : 0,
             top: 64,
             zIndex: 2,
         }}>
@@ -22,19 +30,21 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
                 return (
                     <MenuItem
                         {...item}
+                        rootStyle={transformStyle(itemIndex)}
                         key={`menu-${itemIndex}`}
                         id={item.id}
                     />
                 )
             })}
-            <div style={{ left: 0, right: 0, height: '100vh', backgroundColor: 'black' }}></div>
+            <div style={{ left: 0, right: 0, height: '100vh', backgroundColor: 'black', ...transformStyle(items.length) }}></div>
         </div>
     )
 }
 
 export const MenuItem: React.FunctionComponent<IMenuItem> = (props) => {
-    const { id, label, onClick } = props
+    const { rootStyle, id, label, onClick } = props
     return <div
+        key={id}
         aria-label={label}
         onClick={onClick}
         style={{
@@ -48,6 +58,7 @@ export const MenuItem: React.FunctionComponent<IMenuItem> = (props) => {
             justifyContent: 'center',
             alignItems: 'center',
             cursor: 'pointer',
+            ...rootStyle,
         }}>{label}</div>
 }
 

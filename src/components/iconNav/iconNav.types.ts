@@ -59,6 +59,8 @@ export interface ICommonIconNavProps {
 	iconWidth?: string
 	iconHeight?: string
 	labelWidth?: string
+
+	suppressLabels: boolean
 }
 
 export type IHorizontalIconNavProps = ICommonIconNavProps

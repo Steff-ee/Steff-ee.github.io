@@ -13,6 +13,7 @@ const NavListLabel = React.lazy(() => import('./navListLabel'))
  */
 export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps> = (props) => {
 	const {
+		suppressLabels,
 		navItems,
 		rootStyle,
 		iconWidth = '64px',
@@ -74,7 +75,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 				})}
 			</div>
 			<Suspense>
-				<NavListLabel
+				{!suppressLabels && <NavListLabel
 					navItem={activeNavItem}
 					height={iconHeight}
 					width={labelWidth}
@@ -85,7 +86,7 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 						position: 'absolute',
 						...orientationStyle,
 					}}
-				/>
+				/>}
 			</Suspense>
 		</div>
 	)

@@ -21,10 +21,11 @@ export interface IClassicRightNavProps {
 	nextClick?: () => void
 	latestClick?: () => void
 	menuClick: () => void
+	suppressLabels: boolean
 }
 
 export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (props) => {
-	const { menuClick, firstClick, backClick, nextClick, latestClick, orientation } =
+	const { suppressLabels, menuClick, firstClick, backClick, nextClick, latestClick, orientation } =
 		props
 	const location = useLocation()
 	const primaryRoute = getPrimaryRoute(location.pathname)
@@ -43,6 +44,7 @@ export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (
 			selectedId={primaryRoute}
 			navItems={navItems}
 			orientation={orientation}
+			suppressLabels={suppressLabels}
 		/>
 	)
 }
