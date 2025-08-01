@@ -2,16 +2,19 @@ import React from 'react'
 import { IMenuItem, IMenuProps } from './menu.types'
 import { Colors } from '../../shared/helpers/constants'
 import { aboutPath, catsPath, postsPath, redirectTo } from '../../shared/helpers/routes'
+import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 
 export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
     const { rootStyle, show, items } =
         props
 
+    const frostedStyle = useFrostedGlass()
+
     const transformStyle: (index: number) => React.CSSProperties = (index: number) => ({
         opacity: show ? 1 : 0,
         transform: `translateY(${show ? '0' : '10px'})`,
         transition: `opacity 0.4s ease, transform 0.4s ease`,
-        transitionDelay: `calc(${index + 1} * 200ms)`,
+        transitionDelay: `calc(${index + 1} * 50ms)`,
     })
 
     // the empty div on !showPages is to keep the space-between working
@@ -32,13 +35,13 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
                     return (
                         <MenuItem
                             {...item}
-                            rootStyle={transformStyle(itemIndex)}
+                            rootStyle={{ ...transformStyle(itemIndex), ...frostedStyle }}
                             key={`menu-${itemIndex}`}
                             id={item.id}
                         />
                     )
                 })}
-                <div style={{ left: 0, right: 0, height: '100vh', backgroundColor: 'black', ...transformStyle(items.length) }}></div>
+                <div style={{ left: 0, right: 0, height: '100vh', ...frostedStyle, ...transformStyle(items.length) }}></div>
             </div>
         </div>
     )
@@ -52,7 +55,6 @@ export const MenuItem: React.FunctionComponent<IMenuItem> = (props) => {
         onClick={onClick}
         style={{
             color: Colors.LightSand,
-            backgroundColor: 'black',
             position: 'relative',
             height: 64,
             left: 0,
