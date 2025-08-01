@@ -10,12 +10,15 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
 
     const frostedStyle = useFrostedGlass()
 
-    const transformStyle: (index: number) => React.CSSProperties = (index: number) => ({
-        opacity: show ? 1 : 0,
-        transform: `translateY(${show ? '0' : '10px'})`,
-        transition: `opacity 0.4s ease, transform 0.4s ease`,
-        transitionDelay: `calc(${index + 1} * 50ms)`,
-    })
+    const transformStyle: (index: number) => React.CSSProperties = (index: number) => {
+        const delayIndex = show ? index + 1 : items.length - index;
+        return {
+            opacity: show ? 1 : 0,
+            transform: `translateY(${show ? '0' : '10px'})`,
+            transition: `opacity 0.4s ease, transform 0.4s ease`,
+            transitionDelay: `calc(${delayIndex + 1} * 50ms)`,
+        }
+    }
 
     // the empty div on !showPages is to keep the space-between working
     return (
