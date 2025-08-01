@@ -9,4 +9,5 @@ export interface IClassicNavProps {
 	backClick?: () => void
 	nextClick?: () => void
 	latestClick?: () => void
+	menuClick: () => void
 }

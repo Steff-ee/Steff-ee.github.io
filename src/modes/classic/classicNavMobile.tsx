@@ -98,6 +98,7 @@ const ClassicNavMobile: React.FunctionComponent<IClassicNavProps> = (props) => {
 										backClick={backClick}
 										nextClick={nextClick}
 										latestClick={latestClick}
+										menuClick={() => console.log('TODO')}
 									/>
 								</animated.div>
 							)

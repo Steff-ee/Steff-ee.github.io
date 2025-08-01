@@ -117,7 +117,7 @@ export const SubscribeNavItem: INavItem = {
 }
 
 const postCategoryToString = (postCategory: string): string => {
-	if (postCategory === 'home') {
+	if (postCategory === 'posts') {
 		return ''
 	}
 
@@ -126,12 +126,13 @@ const postCategoryToString = (postCategory: string): string => {
 
 
 export const useMenuCommand = (
+	onClick: () => void
 ): INavItem => {
 	return {
 		icon: <FaBars />,
 		id: 'menu',
 		label: `Menu`,
-		onClick: () => { console.log('TODO') },
+		onClick,
 		disabled: false,
 	}
 }

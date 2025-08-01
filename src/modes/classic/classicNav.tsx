@@ -1,14 +1,14 @@
-import React, { Suspense, useContext } from 'react'
+import React, { Suspense, useContext, useState } from 'react'
 import { NavOrientation } from '../../components/iconNav/iconNav.types'
 import { MediaContext, MediaSize } from '../../components/mediaProvider'
 import { useFrostedGlass } from '../../shared/helpers/frostedGlass'
 import { IClassicNavProps } from './classicNav.types'
-import { ClassicPageNav } from './classicPageNav'
 import { ClassicPostsNav } from './classicPostsNav'
+import { Menu, menuItems } from './menu'
 const ClassicNavMobile = React.lazy(() => import('./classicNavMobile'))
 
 const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
-	const { scrollRef, positionRef, rootStyle, firstClick, backClick, nextClick, latestClick } =
+	const { menuClick, scrollRef, positionRef, rootStyle, firstClick, backClick, nextClick, latestClick } =
 		props
 	const frostedStyle = useFrostedGlass()
 
@@ -25,6 +25,7 @@ const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
 						backClick={backClick}
 						nextClick={nextClick}
 						latestClick={latestClick}
+						menuClick={menuClick}
 					/>
 				</div>
 			</div>

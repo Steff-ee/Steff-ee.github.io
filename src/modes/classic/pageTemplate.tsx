@@ -14,6 +14,7 @@ import ClassicNav from './classicNav'
 import { Footer } from './footer'
 import { IPageTemplateProps } from './pageTemplate.types'
 import { Title } from './titles/titles'
+import { Menu, menuItems } from './menu'
 const Fireflies = React.lazy(() => import('../../shared/presentational/components/fireflies'))
 
 // const ParallaxPivots: React.FunctionComponent<IParallaxPivotsProps> = (props) => {
@@ -106,6 +107,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	const contentPositionRef = useRef(null)
 	const scrollRef = useRef(null)
 	const { border: borderColor, text: textColor } = useColors()
+	const [showMenu, setShowMenu] = useState(false)
 
 	const skipMorph = mediaSize === MediaSize.Small
 
@@ -134,6 +136,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 				showPosts={!!showPostsNav}
 				scrollRef={scrollRef}
 				positionRef={contentPositionRef}
+				menuClick={() => setShowMenu(!showMenu)}
 			/>
 			<div
 				style={{
@@ -169,6 +172,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					ref={contentPositionRef}
 				>
 					{mediaSize !== MediaSize.Small && classicNav}
+					{showMenu && <Menu items={menuItems} />}
 					<Suspense>
 						<Fireflies />
 					</Suspense>

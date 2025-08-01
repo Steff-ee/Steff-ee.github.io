@@ -20,17 +20,17 @@ export interface IClassicRightNavProps {
 	backClick?: () => void
 	nextClick?: () => void
 	latestClick?: () => void
+	menuClick: () => void
 }
 
 export const ClassicPostsNav: React.FunctionComponent<IClassicRightNavProps> = (props) => {
-	const { firstClick, backClick, nextClick, latestClick, scrollRef, positionRef, orientation } =
+	const { menuClick, firstClick, backClick, nextClick, latestClick, orientation } =
 		props
 	const location = useLocation()
 	const primaryRoute = getPrimaryRoute(location.pathname)
-	console.log('yo primaryRoute', primaryRoute)
 	const backCommand = useBackCommand(backClick, primaryRoute)
 	const nextCommand = useNextCommand(nextClick, primaryRoute)
-	const menuCommand = useMenuCommand()
+	const menuCommand = useMenuCommand(menuClick)
 	const firstCommand = useFirstCommand(firstClick, primaryRoute)
 	const latestCommand = useLatestCommand(latestClick, primaryRoute)
 
