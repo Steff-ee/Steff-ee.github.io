@@ -25,18 +25,21 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
             height: show ? undefined : 0,
             top: 64,
             zIndex: 2,
+            marginBottom: show ? 'calc(-100vh - 256px)' : undefined,
         }}>
-            {items.map((item: IMenuItem, itemIndex: number): JSX.Element => {
-                return (
-                    <MenuItem
-                        {...item}
-                        rootStyle={transformStyle(itemIndex)}
-                        key={`menu-${itemIndex}`}
-                        id={item.id}
-                    />
-                )
-            })}
-            <div style={{ left: 0, right: 0, height: '100vh', backgroundColor: 'black', ...transformStyle(items.length) }}></div>
+            <div>
+                {items.map((item: IMenuItem, itemIndex: number): JSX.Element => {
+                    return (
+                        <MenuItem
+                            {...item}
+                            rootStyle={transformStyle(itemIndex)}
+                            key={`menu-${itemIndex}`}
+                            id={item.id}
+                        />
+                    )
+                })}
+                <div style={{ left: 0, right: 0, height: '100vh', backgroundColor: 'black', ...transformStyle(items.length) }}></div>
+            </div>
         </div>
     )
 }
