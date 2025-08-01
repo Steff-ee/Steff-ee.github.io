@@ -1,6 +1,7 @@
 import React from 'react'
 import { IMenuItem, IMenuProps } from './menu.types'
 import { Colors } from '../../shared/helpers/constants'
+import { aboutPath, catsPath, postsPath, redirectTo } from '../../shared/helpers/routes'
 
 export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
     const { rootStyle, items } =
@@ -32,35 +33,43 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
 }
 
 export const MenuItem: React.FunctionComponent<IMenuItem> = (props) => {
-    const { id, label } = props
-    return <div style={{
-        color: Colors.LightSand,
-        backgroundColor: 'black',
-        position: 'relative',
-        height: 64,
-        left: 0,
-        right: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }}>{label}</div>
+    const { id, label, onClick } = props
+    return <div
+        aria-label={label}
+        onClick={onClick}
+        style={{
+            color: Colors.LightSand,
+            backgroundColor: 'black',
+            position: 'relative',
+            height: 64,
+            left: 0,
+            right: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            cursor: 'pointer',
+        }}>{label}</div>
 }
 
 export const menuItems: IMenuItem[] = [
     {
         id: 'about',
-        label: 'About'
+        label: 'About',
+        onClick: () => redirectTo(aboutPath),
     },
     {
         id: 'new-posts',
-        label: 'Newest Posts'
+        label: 'Newest Posts',
+        onClick: () => window.open('https://ramblingafter.substack.com/', '_blank'),
     },
     {
         id: 'old-posts',
-        label: 'Old Posts'
+        label: 'Old Posts',
+        onClick: () => redirectTo(postsPath),
     },
     {
         id: 'cats',
-        label: 'Cats'
+        label: 'Cats',
+        onClick: () => redirectTo(catsPath),
     },
 ]

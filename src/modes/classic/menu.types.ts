@@ -8,4 +8,5 @@ export interface IMenuProps {
 export interface IMenuItem {
     id: string,
     label: string,
+    onClick: () => void,
 }

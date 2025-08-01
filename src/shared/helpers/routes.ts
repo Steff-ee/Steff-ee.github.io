@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 import { PivotRoutes } from '../posts/post.types'
 
 export const catsPath = '#/cats'
-export const aboutPath = '#/home/about'
-export const postsPath = '#/home/posts'
-export const linksPath = '#/home/links'
+export const aboutPath = '#/home'
+export const postsPath = '#/posts'
+export const linksPath = '#/links'
 
 export enum PageRoutes {
 	Home = 'home',
