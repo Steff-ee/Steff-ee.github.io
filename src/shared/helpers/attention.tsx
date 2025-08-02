@@ -5,7 +5,8 @@ import React, { ReactElement, useCallback } from 'react'
  */
 export const useAttention = (
 	inputElement: ReactElement,
-	onAttention: Array<((hasAttention: boolean) => void) | undefined>
+	onAttention: Array<((hasAttention: boolean) => void) | undefined>,
+	isSmall: boolean,
 ): ReactElement => {
 	const getAttention = useCallback(() => onAttention.map((fn) => fn?.(true)), onAttention)
 	const loseAttention = useCallback(() => onAttention.map((fn) => fn?.(false)), onAttention)
@@ -38,12 +39,29 @@ export const useAttention = (
 		},
 		[loseAttention]
 	)
+	const onTouchStart = useCallback(
+		(event: any) => {
+			inputElement.props.onTouchStart?.(event)
+			getAttention()
+		},
+		[getAttention]
+	)
+	const onTouchEnd = useCallback(
+		(event: any) => {
+			inputElement.props.onTouchEnd?.(event)
+			loseAttention()
+		},
+		[loseAttention]
+	)
+
 
 	const element = React.cloneElement(inputElement, {
-		onMouseEnter,
-		onMouseLeave,
+		onMouseEnter: isSmall ? undefined : onMouseEnter,
+		onMouseLeave: isSmall ? undefined : onMouseLeave,
 		onFocus,
 		onBlur,
+		onTouchStart,
+		onTouchEnd,
 	})
 
 	return element

@@ -91,5 +91,5 @@ export const HorizontalIconNav: React.FunctionComponent<IHorizontalIconNavProps>
 		</div>
 	)
 
-	return useAttention(element, [onAttention])
+	return useAttention(element, [onAttention], isSmall)
 }

@@ -165,5 +165,5 @@ export const PostSummary: React.FunctionComponent<IPostSummaryProps> = (props) =
 		</div>
 	)
 
-	return useAttention(element, [onAttention])
+	return useAttention(element, [onAttention], isSmall)
 }

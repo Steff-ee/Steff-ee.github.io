@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useAttention } from '../../shared/helpers/attention'
 import { useColors } from '../../shared/presentational/hooks/useColors'
 import { IconButton } from '../iconButton'
 import { INavItem, LabelPosition } from './iconNav.types'
 import { NavLabel } from './navLabel'
+import { MediaContext, MediaSize } from '../mediaProvider'
 
 const disabledFadeFilterValue = 'opacity(0.25)'
 
@@ -31,6 +32,7 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 	} = props
 	const [hasAttention, setHasAttention] = useState<boolean>(false)
 	const { borderHighlight } = useColors()
+	const mediaSize = useContext(MediaContext)
 	const backgroundColor = hasAttention ? borderHighlight : undefined
 	const filter = disabled ? disabledFadeFilterValue : ''
 	let isSelectedStyle: React.CSSProperties = {}
@@ -89,5 +91,5 @@ export const NavItem = React.forwardRef<HTMLDivElement, INavItem>((props, ref) =
 		</div>
 	)
 
-	return useAttention(element, [onAttention, setHasAttention])
+	return useAttention(element, [onAttention, setHasAttention], mediaSize === MediaSize.Small)
 })
