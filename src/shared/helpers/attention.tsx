@@ -26,14 +26,14 @@ export const useAttention = (
 	)
 	const onMouseEnter = useCallback(
 		(event: any) => {
-			inputElement.props.onMouseEnter?.(event)
+			inputElement.props.onPointerEnter?.(event)
 			getAttention()
 		},
 		[getAttention]
 	)
 	const onMouseLeave = useCallback(
 		(event: any) => {
-			inputElement.props.onMouseLeave?.(event)
+			inputElement.props.onPointerLeave?.(event)
 			loseAttention()
 		},
 		[loseAttention]

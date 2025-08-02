@@ -18,6 +18,7 @@ const ClassicNavMobile: React.FunctionComponent<IClassicNavProps> = (props) => {
 		backClick,
 		nextClick,
 		latestClick,
+		menuShowing,
 	} = props
 	const [isScrollingDownward, setIsScrollingDownward] = useState<boolean>(true)
 	const { menuButtonProps, MenuList } = useMobileMenu({})
@@ -99,6 +100,7 @@ const ClassicNavMobile: React.FunctionComponent<IClassicNavProps> = (props) => {
 										nextClick={nextClick}
 										latestClick={latestClick}
 										menuClick={() => console.log('TODO')}
+										suppressLabels={menuShowing}
 									/>
 								</animated.div>
 							)
