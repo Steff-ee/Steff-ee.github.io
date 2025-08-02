@@ -10,6 +10,7 @@ export const useAttention = (
 ): ReactElement => {
 	const getAttention = useCallback(() => onAttention.map((fn) => fn?.(true)), onAttention)
 	const loseAttention = useCallback(() => onAttention.map((fn) => fn?.(false)), onAttention)
+	let attentionTimeout: ReturnType<typeof setTimeout> | undefined
 
 	const onFocus = useCallback(
 		(event: any) => {
@@ -42,13 +43,21 @@ export const useAttention = (
 	const onTouchStart = useCallback(
 		(event: any) => {
 			inputElement.props.onTouchStart?.(event)
-			getAttention()
+			attentionTimeout = setTimeout(() => {
+				getAttention()
+			}, 200)
 		},
 		[getAttention]
 	)
 	const onTouchEnd = useCallback(
 		(event: any) => {
 			inputElement.props.onTouchEnd?.(event)
+
+			if (attentionTimeout) {
+				clearTimeout(attentionTimeout)
+				attentionTimeout = undefined
+			}
+
 			loseAttention()
 		},
 		[loseAttention]
