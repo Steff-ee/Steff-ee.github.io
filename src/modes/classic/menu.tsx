@@ -30,7 +30,8 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props) => {
             bottom: show ? 0 : undefined,
             height: show ? undefined : 0,
             top: 64,
-            zIndex: show ? 2 : -99,
+            zIndex: 2,
+            pointerEvents: show ? 'auto' : 'none',
             marginBottom: show ? 'calc(-100vh - 256px)' : undefined,
         }}>
             <div>

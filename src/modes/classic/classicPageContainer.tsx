@@ -17,9 +17,6 @@ export const PostsPage: React.FunctionComponent = (): JSX.Element => {
 		redirectPath,
 	} = usePostsNav(PageRoutes.Posts, !postId)
 
-	console.log('postId', postId)
-	console.log('firstClick', firstClick)
-
 	if (redirectPath) {
 		redirectTo(redirectPath)
 

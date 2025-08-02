@@ -113,9 +113,7 @@ export const getNextPost = (
 	page: PageRoutes
 ): IPost | undefined => {
 	const index = getPageListIndexOfPost(post.id, page) + 1
-	console.log('yo index', index, 'post id', post.id, 'page', page)
 	const pageList = getPageList(page)
-	console.log('yo pageList ln', pageList.length)
 
 	if (pageList.length > index) {
 		return pageList[index]
