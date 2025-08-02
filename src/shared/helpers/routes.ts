@@ -14,6 +14,7 @@ export enum PageRoutes {
 	Cats = 'cats',
 	Penultima = 'penultima',
 	Cancer = 'cancer',
+	Resume = 'resume',
 
 	// Deprecated
 	Stories = 'stories',
