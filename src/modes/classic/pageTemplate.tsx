@@ -128,7 +128,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 	const classicNav = (
 		<>
 			<ClassicNav
-				rootStyle={navBarStyle}
+				rootStyle={{ ...navBarStyle, backgroundColor: 'black' }}
 				firstClick={firstClick}
 				backClick={backClick}
 				nextClick={nextClick}
@@ -162,7 +162,6 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 			}}
 			ref={scrollRef}
 		>
-			{mediaSize === MediaSize.Small && classicNav}
 			<Title headerBackgroundImage={headerBackgroundImage} skipMorph={skipMorph} />
 			<div>
 				<div
@@ -172,7 +171,7 @@ export const PageTemplate: React.FunctionComponent<IPageTemplateProps> = (props)
 					}}
 					ref={contentPositionRef}
 				>
-					{mediaSize !== MediaSize.Small && classicNav}
+					{classicNav}
 					<Menu show={showMenu} items={menuItems} />
 					<Suspense>
 						<Fireflies />

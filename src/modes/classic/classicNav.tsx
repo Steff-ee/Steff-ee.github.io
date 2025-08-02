@@ -43,15 +43,15 @@ const ClassicNavLarge: React.FunctionComponent<IClassicNavProps> = (props) => {
 }
 
 const ClassicNav: React.FunctionComponent<IClassicNavProps> = (props) => {
-	const isSmall = useContext(MediaContext) === MediaSize.Small
+	// const isSmall = useContext(MediaContext) === MediaSize.Small
 
-	if (isSmall) {
-		return (
-			<Suspense>
-				<ClassicNavMobile {...props} />
-			</Suspense>
-		)
-	}
+	// if (isSmall) {
+	// 	return (
+	// 		<Suspense>
+	// 			<ClassicNavMobile {...props} />
+	// 		</Suspense>
+	// 	)
+	// }
 
 	return <ClassicNavLarge {...props} />
 }
